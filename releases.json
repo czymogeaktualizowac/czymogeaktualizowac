@@ -1,0 +1,892 @@
+{
+  "generatedAt" : "2026-11-14T23:03:17.979231534Z",
+  "plugins" : {
+    "apaczka-pl" : {
+      "slug" : "apaczka-pl",
+      "name" : "Apaczka: integracja z WooCommerce",
+      "vendor" : "Apaczka",
+      "category" : "shipping",
+      "activeInstalls" : 3000,
+      "latestVersion" : "1.4.4",
+      "lastUpdated" : "2026-08-25 2:42pm GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.4",
+      "supportThreads" : 0,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://www.apaczka.com/zostan-sprzedawca",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "1.4.4",
+        "released" : "2026-08-25T14:42:42.836877Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Apaczka.pl",
+          "version" : "1.4.4",
+          "license" : "GPLv3",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "5.9",
+          "testedWp" : "7.1",
+          "stableTag" : "1.4.4",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 1.4.4 =\r\n* Fix: output of alternative map button in cart\r\n* Fix: plugin check fixes"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 93,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 93 listed files checked: code files match"
+        },
+        "zipSha256" : "5d024165e5657e9a48423cdc67e33a1e2f8b5c9a8360f6977738a8df37d3e97d",
+        "zipBytes" : 314967,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "apaczka-pl-mapa-punktow" : {
+      "slug" : "apaczka-pl-mapa-punktow",
+      "name" : "Apaczka.pl Mapa Punktów",
+      "vendor" : "Apaczka",
+      "category" : "shipping",
+      "activeInstalls" : 2000,
+      "latestVersion" : "1.4.7",
+      "lastUpdated" : "2026-08-25 1:53pm GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "false",
+      "supportThreads" : 0,
+      "supportThreadsResolved" : 0,
+      "homepage" : "",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "1.4.7",
+        "released" : "2026-08-25T13:53:21.825378Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Apaczka.pl Mapa Punktów",
+          "version" : "1.4.7",
+          "license" : "GPLv3",
+          "requiresWp" : "5.0",
+          "wcTested" : "11.0.1",
+          "testedWp" : "7.1",
+          "stableTag" : "1.4.7",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 1.4.7 - 2026.08.25 =\n* Fix: map init\n* Fix: output of alternative map button in cart"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 22,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 22 listed files checked: code files match"
+        },
+        "zipSha256" : "615d19247f12a62c0c55fe156f00c0f4a453367ce303034ea5cb96a0e8b41bf5",
+        "zipBytes" : 46741,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "dhl-polska" : {
+      "slug" : "dhl-polska",
+      "name" : "DHL eCommerce (Poland) dla WooCommerce",
+      "vendor" : "DHL",
+      "category" : "shipping",
+      "activeInstalls" : 300,
+      "latestVersion" : "2.0.7",
+      "lastUpdated" : "2026-11-05 10:45am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.4",
+      "supportThreads" : 0,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://octol.io/dhl-polska",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "2.0.7",
+        "released" : "2026-11-05T10:45:28.388420Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "DHL Polska - Oficjalna integracja dla WooCommerce",
+          "version" : "2.0.7",
+          "license" : "GPLv2 or later",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.9",
+          "wcTested" : "11.3",
+          "testedWp" : "7.1",
+          "stableTag" : "2.0.7",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 2.0.7 - 2026-11-05 =\n* Mapa punktów i automatów DHL otwiera się w okolicy bieżącego adresu dostawy w klasycznej i blokowej kasie WooCommerce."
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 955,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 955 listed files checked: code files match"
+        },
+        "zipSha256" : "9da22800b35231d64c2fb481df9022d9b0fe7a58ccfa0371168b9cb452b3abd2",
+        "zipBytes" : 1962508,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "flexible-invoices" : {
+      "slug" : "flexible-invoices",
+      "name" : "Flexible PDF Invoices for WooCommerce & WordPress",
+      "vendor" : "WP Desk",
+      "category" : "invoicing",
+      "activeInstalls" : 6000,
+      "latestVersion" : "7.1.2",
+      "lastUpdated" : "2026-11-07 4:16am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.4",
+      "supportThreads" : 1,
+      "supportThreadsResolved" : 1,
+      "homepage" : "https://wordpress.org/plugins/flexible-invoices/",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "7.1.2",
+        "released" : "2026-11-07T04:16:06.454227Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Flexible Invoices for WooCommerce and WordPress",
+          "version" : "7.1.2",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.9",
+          "wcTested" : "11.3",
+          "testedWp" : "7.1",
+          "stableTag" : "7.1.2",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 7.1.2 - 2026-11-07 =\n* Added support for WooCommerce 11.3"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 1631,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 1631 listed files checked: code files match"
+        },
+        "zipSha256" : "1f8a4e872c6419b1ec1457805bc20b87738ef3b2cae941b3d61654664ec3b093",
+        "zipBytes" : 11968250,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "flexible-shipping" : {
+      "slug" : "flexible-shipping",
+      "name" : "Weight Based Shipping Table Rate for WooCommerce – Flexible Shipping",
+      "vendor" : "WP Desk",
+      "category" : "shipping",
+      "activeInstalls" : 100000,
+      "latestVersion" : "6.13.8",
+      "lastUpdated" : "2026-11-09 6:48pm GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.4",
+      "supportThreads" : 3,
+      "supportThreadsResolved" : 3,
+      "homepage" : "https://octol.io/fs-plugin-uri",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "6.13.8",
+        "released" : "2026-11-09T18:48:40.201959Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Flexible Shipping",
+          "version" : "6.13.8",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.9",
+          "wcTested" : "11.3",
+          "testedWp" : "7.1",
+          "stableTag" : "6.13.8",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 6.13.8 - 2026-11-09 =\n* Fixed a PHP TypeError when displaying order item metadata containing null values.\n\nFor older changelog entries, see the [changelog.txt file](https://plugins.svn.wordpress.org/flexible-shipping/trunk/changelog.txt)."
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 1059,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 1059 listed files checked: code files match"
+        },
+        "zipSha256" : "ea83a41c7f046639584d67af3f9b684e9f02864dd494bd7513d7fa2f633244d2",
+        "zipBytes" : 12763448,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : false,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "furgonetka" : {
+      "slug" : "furgonetka",
+      "name" : "Furgonetka.pl: Przesyłki & Narzędzia e-commerce",
+      "vendor" : "Furgonetka",
+      "category" : "shipping",
+      "activeInstalls" : 7000,
+      "latestVersion" : "1.9.10",
+      "lastUpdated" : "2026-11-02 9:36am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.1",
+      "supportThreads" : 1,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://furgonetka.pl",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "1.9.10",
+        "released" : "2026-11-02T09:36:35.840571Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Furgonetka.pl",
+          "version" : "1.9.10",
+          "license" : "GPL-2.0+",
+          "requiresPhp" : "7.1",
+          "requiresWp" : "5.0",
+          "wcRequires" : "4.0",
+          "wcTested" : "11.2.1",
+          "testedWp" : "7.1",
+          "stableTag" : "1.9.10",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 1.9.10 =\n* Verified compatibility with WooCommerce 11.2.1"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 109,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 109 listed files checked: code files match"
+        },
+        "zipSha256" : "74d552d54715f9eb35957d26b72cf795de6d0881cc55add6b900d5baafd5a0e0",
+        "zipBytes" : 152717,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "globkurier" : {
+      "slug" : "globkurier",
+      "name" : "globkurier.pl – Integracja z WooCommerce",
+      "vendor" : "GlobKurier",
+      "category" : "shipping",
+      "activeInstalls" : 100,
+      "latestVersion" : "2.7.1",
+      "lastUpdated" : "2026-10-28 10:23am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.4",
+      "supportThreads" : 0,
+      "supportThreadsResolved" : 0,
+      "homepage" : "",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "2.7.1",
+        "released" : "2026-10-28T10:23:18.848148Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "globkurier.pl – Integracja z WooCommerce",
+          "version" : "2.7.1",
+          "license" : "GPLv3",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.0",
+          "testedWp" : "7.1",
+          "stableTag" : "2.7.1",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "2.7.1 - 28.10.2026\n\tFix: shipment with dangerous goods declared is blocked in the form with a clear message (GlobKurier does not accept dangerous goods) instead of an API error\n\tPerformance: Protocols page loads shipments page by page (AJAX) instead of the whole history at once\n\tPerformance: shipment history and protocols use an indexed table (filled once in the background, verified before use)\n\tPerformance: admin pages reuse the saved API token instead of logging in to the API on every view; token cleared when login or password changes\n\tPerformance: payment methods and carriers with pickup points cached in settings (12 h, refreshed on save); last known values used when the API is unavailabl …"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 105,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 105 listed files checked: code files match"
+        },
+        "zipSha256" : "f15386d88cc72bee5da54a60eaa1df0481a7c6deb9e268dc03f0c9c5c0e54b52",
+        "zipBytes" : 1852538,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "imoje" : {
+      "slug" : "imoje",
+      "name" : "imoje",
+      "vendor" : "ING / imoje",
+      "category" : "payment",
+      "activeInstalls" : 2000,
+      "latestVersion" : "4.16.1",
+      "lastUpdated" : "2026-09-08 10:02am GMT",
+      "apiTestedWp" : "7.1.0",
+      "apiRequiresPhp" : "5.6",
+      "supportThreads" : 0,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://imoje.pl",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "4.16.1",
+        "released" : "2026-09-08T10:02:02.165483Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "imoje",
+          "version" : "4.16.1",
+          "license" : "GPLv3",
+          "requiresPhp" : "5.6",
+          "testedWp" : "7.1.0",
+          "stableTag" : "4.16.1",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 4.16.1 =\r\n* remove redundant calls to ING Pay API\r\n* improve notifications - support for surcharges\r\n* support for legacy endpoints"
+        },
+        "checksum" : {
+          "status" : "MISMATCH",
+          "filesChecked" : 194,
+          "mismatched" : [ "includes/libs/payment-core/src/Invoice.php" ],
+          "missing" : [ ],
+          "detail" : "1 code file(s) differ from the WordPress.org checksums, 0 missing: includes/libs/payment-core/src/Invoice.php"
+        },
+        "zipSha256" : "27f8a649301f27461f3259e72004277b863a8dad462ae01d38e4499b99304431",
+        "zipBytes" : 472009,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "inpost-for-woocommerce" : {
+      "slug" : "inpost-for-woocommerce",
+      "name" : "InPost PL",
+      "vendor" : "InPost",
+      "category" : "shipping",
+      "activeInstalls" : 10000,
+      "latestVersion" : "2.0.0",
+      "lastUpdated" : "2026-11-04 8:03am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.4",
+      "supportThreads" : 3,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://wordpress.org/plugins/inpost-for-woocommerce/",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "2.0.0",
+        "released" : "2026-11-04T08:03:02.189363Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "InPost PL",
+          "version" : "2.0.0",
+          "license" : "GPLv3",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "5.3",
+          "testedWp" : "7.1",
+          "stableTag" : "2.0.0",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 2.0.0 =\r\n* Feat: output in UI additional tracking number for returned shipments\r\n* Fix: additional setting for Insurance\r\n* Feat: quick links in Bulk mode to edit insurance value"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 167,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 167 listed files checked: code files match"
+        },
+        "zipSha256" : "21e8c74868e063f58f35f209fb2ecf127f8b4369fe861a7b2fdafdfbd8b47dac",
+        "zipBytes" : 658141,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "ksef-for-flexible-invoices" : {
+      "slug" : "ksef-for-flexible-invoices",
+      "name" : "Flexible Invoices for WooCommerce – KSeF Add-on",
+      "vendor" : "WP Desk",
+      "category" : "invoicing",
+      "activeInstalls" : 700,
+      "latestVersion" : "2.6.1",
+      "lastUpdated" : "2026-11-12 7:48am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.4",
+      "supportThreads" : 1,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://www.wpdesk.pl/sklep/faktury-ksef/",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "2.6.1",
+        "released" : "2026-11-12T07:48:10.533338Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Flexible Invoices KSeF",
+          "version" : "2.6.1",
+          "license" : "GPL v2 or later",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.8",
+          "wcTested" : "11.2",
+          "testedWp" : "7.1",
+          "stableTag" : "2.6.1",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 2.6.1 - 2026-11-12 =\n* Fixed KSeF XML schema validation when Ministry of Finance schema servers were unreachable."
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 1266,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 1266 listed files checked: code files match"
+        },
+        "zipSha256" : "bae7c7a624fda32e2c32945f763c846df2948e21f88cebe0bfbf7eabe41cfb5e",
+        "zipBytes" : 2116561,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : false,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "omnibus" : {
+      "slug" : "omnibus",
+      "name" : "Omnibus — show the lowest price",
+      "vendor" : "iworks",
+      "category" : "compliance",
+      "activeInstalls" : 10000,
+      "latestVersion" : "3.0.5",
+      "lastUpdated" : "2026-10-22 8:13am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "8.2",
+      "supportThreads" : 1,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://github.com/iworks/omnibus/",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "3.0.5",
+        "released" : "2026-10-22T08:13:20.518091Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Omnibus — show the lowest price",
+          "version" : "3.0.5",
+          "license" : "GPLv3 or later",
+          "requiresPhp" : "8.2",
+          "requiresWp" : "6.0",
+          "testedWp" : "7.1",
+          "stableTag" : "3.0.5",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 3.0.5 (2026-10-22) =\r\n* The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.3.2."
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 69,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 69 listed files checked: code files match"
+        },
+        "zipSha256" : "94bc8b28338fb161f4a6568149d698d98826eb76655acec66f5651dccd1d9d9e",
+        "zipBytes" : 105251,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "pay-by-paynow-pl" : {
+      "slug" : "pay-by-paynow-pl",
+      "name" : "Pay by paynow.pl",
+      "vendor" : "mBank / Paynow",
+      "category" : "payment",
+      "activeInstalls" : 7000,
+      "latestVersion" : "2.5.13",
+      "lastUpdated" : "2026-11-06 9:27am GMT",
+      "apiTestedWp" : "6.7.11",
+      "apiRequiresPhp" : "7.2",
+      "supportThreads" : 1,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://github.com/pay-now/paynow-woocommerce",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "2.5.13",
+        "released" : "2026-11-06T09:27:55.133629Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Pay by paynow.pl",
+          "version" : "2.5.13",
+          "license" : "GPLv3",
+          "requiresPhp" : "7.2",
+          "requiresWp" : "6.0",
+          "wcRequires" : "8.0.0",
+          "wcTested" : "10.2.0",
+          "testedWp" : "6.7",
+          "stableTag" : "2.5.13",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 2.5.11 =\n* Fixed: Payment methods not appearing in WooCommerce 10.X Settings -> Payments\n* Fixed: Severe performance issues and high server load in WooCommerce 9.X admin panel\n* Improved: Full Site Editing and WooCommerce Blocks compatibility\n* Improved: Payment methods caching - reduced API calls by 80%\n* Added: Official compatibility declaration for Cart & Checkout Blocks\n* Updated: WordPress 6.7 and WooCommerce 10.2.0 compatibility"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 367,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 367 listed files checked: code files match"
+        },
+        "zipSha256" : "b65b463dd8d0381edd2e5b9d6520dcd64b5306129dc6b1c06b8014ebad9843d8",
+        "zipBytes" : 492111,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "pay-wp" : {
+      "slug" : "pay-wp",
+      "name" : "Autopay dla WooCommerce",
+      "vendor" : "Autopay",
+      "category" : "payment",
+      "activeInstalls" : 1000,
+      "latestVersion" : "2.3.2",
+      "lastUpdated" : "2026-11-07 6:29am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.4",
+      "supportThreads" : 5,
+      "supportThreadsResolved" : 4,
+      "homepage" : "https://www.wpdesk.pl/sk/pay-wp-plugin",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "2.3.2",
+        "released" : "2026-11-07T06:29:43.336372Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Autopay for WooCommerce",
+          "version" : "2.3.2",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.9",
+          "wcTested" : "11.3",
+          "testedWp" : "7.1",
+          "stableTag" : "2.3.2",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 2.3.2 - 2026-11-07 =\n* Added support for WooCommerce 11.3"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 1201,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 1201 listed files checked: code files match"
+        },
+        "zipSha256" : "4b3cb47c74325c910c370484b68ddf75c0a0a96a25af2f8f349abf9c469b5892",
+        "zipBytes" : 1767284,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "platnosci-online-blue-media" : {
+      "slug" : "platnosci-online-blue-media",
+      "name" : "Autopay",
+      "vendor" : "Autopay",
+      "category" : "payment",
+      "activeInstalls" : 3000,
+      "latestVersion" : "5.1.0",
+      "lastUpdated" : "2026-10-26 2:42pm GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.4",
+      "supportThreads" : 0,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://wordpress.org/plugins/platnosci-online-blue-media",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "5.1.0",
+        "released" : "2026-10-26T14:42:22.869673Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Autopay",
+          "version" : "5.1.0",
+          "license" : "GPL-2.0-or-later",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.0",
+          "wcRequires" : "7.9",
+          "wcTested" : "11.2.1",
+          "testedWp" : "7.1",
+          "stableTag" : "5.1.0",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "### 5.1.0 (26.10.2026) ###\n* Security: improved payment notification handling and order status processing. Immediate update is recommended.\n* Added: integration with \"Flexible Subscriptions\" for WooCommerce, supporting recurring card payments, automatic renewals, manual renewal payments and one-time additional payments.\n* Added: synchronization of subscription card activation/deactivation (RPAN/RPDN) and subscription cancellation, deactivation and suspension with Autopay.\n* Added: support for mixed carts containing subscription and one-time products.\n* Added: automatic filtering of payment channels as the cart changes in classic and block checkout.\n* Added: recurring payment logs and subscri …"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 709,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 709 listed files checked: code files match"
+        },
+        "zipSha256" : "3953e845a8d0ca6f728db2c67d6f9be831c06a57326912bf2617815c023ac317",
+        "zipBytes" : 1856615,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "trustmate-io-integration-for-woocommerce" : {
+      "slug" : "trustmate-io-integration-for-woocommerce",
+      "name" : "TrustMate.io – WooCommerce integration",
+      "vendor" : "TrustMate",
+      "category" : "reviews",
+      "activeInstalls" : 3000,
+      "latestVersion" : "1.18.1",
+      "lastUpdated" : "2026-09-28 5:50am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "false",
+      "supportThreads" : 0,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://trustmate.io",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "1.18.1",
+        "released" : "2026-09-28T05:50:02.763574Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "TrustMate.io integration for WooCommerce",
+          "version" : "1.18.1",
+          "license" : "GPLv2 or later",
+          "testedWp" : "7.1",
+          "stableTag" : "1.18.1",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 1.18.1 =\n* Fixed server-side rendered widgets not showing up with themes that load the page footer twice.\n* Greek, Croatian, Norwegian and Portuguese translations updated."
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 215,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 215 listed files checked: code files match"
+        },
+        "zipSha256" : "133bd357be7bc4fd94e0771e12bdd2734cff6bd4bca161bda567b73c8711a2e6",
+        "zipBytes" : 10290529,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    },
+    "wc-price-history" : {
+      "slug" : "wc-price-history",
+      "name" : "WC Price History",
+      "vendor" : "Konrad Karpieszuk",
+      "category" : "compliance",
+      "activeInstalls" : 5000,
+      "latestVersion" : "3.2.9",
+      "lastUpdated" : "2026-10-30 9:27am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.2",
+      "supportThreads" : 2,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://github.com/kkarpieszuk/wc-price-history",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "3.2.9",
+        "released" : "2026-10-30T09:27:41.114804Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "WC Price History",
+          "version" : "3.2.9",
+          "license" : "Expat",
+          "requiresPhp" : "7.2",
+          "requiresWp" : "5.8",
+          "testedWp" : "7.1",
+          "stableTag" : "3.2.9",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 3.2.9 =\n- Fix: Price history updates no longer drop subsequent products in the same request. Replaced request-wide `remove_action` on `woocommerce_update_product` with a per-product recursion guard released in `finally`, so a draft (or other early return) no longer disables history for later products. (#226)"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 55,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 55 listed files checked: code files match"
+        },
+        "zipSha256" : "1d38d4ed92f74bb756241df1140af7cb7399cf3e30b0801748237b68f8a3d53e",
+        "zipBytes" : 100988,
+        "forum" : {
+          "topics7d" : 1,
+          "mentioningVersion" : 0,
+          "level" : "LOW",
+          "windowComplete" : true,
+          "sample" : [ {
+            "title" : "Pro license activation",
+            "link" : "https://wordpress.org/support/topic/pro-license-activation-3/",
+            "date" : "2026-10-30T11:33:23Z"
+          } ]
+        }
+      } ]
+    },
+    "woo-payu-payment-gateway" : {
+      "slug" : "woo-payu-payment-gateway",
+      "name" : "PayU GPO Payment for WooCommerce",
+      "vendor" : "PayU",
+      "category" : "payment",
+      "activeInstalls" : 10000,
+      "latestVersion" : "2.12.0",
+      "lastUpdated" : "2026-11-03 11:49am GMT",
+      "apiTestedWp" : "7.1.4",
+      "apiRequiresPhp" : "7.4",
+      "supportThreads" : 1,
+      "supportThreadsResolved" : 0,
+      "homepage" : "https://github.com/PayU/woo-payu-payment-gateway",
+      "checkedAt" : "2026-11-14T23:03:17.979231534Z",
+      "releases" : [ {
+        "version" : "2.12.0",
+        "released" : "2026-11-03T11:49:59.220247Z",
+        "firstSeen" : "2026-11-14T23:03:17.979231534Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "PayU Payment Gateway for WooCommerce",
+          "version" : "2.12.0",
+          "license" : "Apache License 2.0",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "5.0",
+          "wcRequires" : "6.0",
+          "wcTested" : "11.2.1",
+          "testedWp" : "7.1.4",
+          "stableTag" : "2.12.0",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 2.12.0 - 2026-11-02 =\r\n* [Fix] Change order status for custom statuses\r\n* [Update] Optimized loading Google Pay and Apple Pay scripts\r\n* [Fix] Products without discount"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 150,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 150 listed files checked: code files match"
+        },
+        "zipSha256" : "1e4b650877391b56b3744c9e541c0f26ce93f45910f121891c5c2019fdb82610",
+        "zipBytes" : 232599,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      } ]
+    }
+  },
+  "ecosystem" : {
+    "wp" : {
+      "latest" : "7.1.4",
+      "previousMajorLatest" : "7.0.8",
+      "development" : "7.2-beta5"
+    },
+    "woo" : {
+      "latest" : "11.3.0",
+      "previousMajorLatest" : "11.2.2"
+    },
+    "php" : [ {
+      "cycle" : "8.5",
+      "latest" : "8.5.12",
+      "releaseDate" : "2025-11-20",
+      "activeSupportUntil" : "2027-12-31",
+      "eol" : "2029-12-31"
+    }, {
+      "cycle" : "8.4",
+      "latest" : "8.4.27",
+      "releaseDate" : "2024-11-21",
+      "activeSupportUntil" : "2026-12-31",
+      "eol" : "2028-12-31"
+    }, {
+      "cycle" : "8.3",
+      "latest" : "8.3.36",
+      "releaseDate" : "2023-11-23",
+      "activeSupportUntil" : "2025-12-31",
+      "eol" : "2027-12-31"
+    }, {
+      "cycle" : "8.2",
+      "latest" : "8.2.35",
+      "releaseDate" : "2022-12-08",
+      "activeSupportUntil" : "2024-12-31",
+      "eol" : "2026-12-31"
+    }, {
+      "cycle" : "8.1",
+      "latest" : "8.1.34",
+      "releaseDate" : "2021-11-25",
+      "activeSupportUntil" : "2023-11-25",
+      "eol" : "2025-12-31"
+    }, {
+      "cycle" : "8.0",
+      "latest" : "8.0.30",
+      "releaseDate" : "2020-11-26",
+      "activeSupportUntil" : "2022-11-26",
+      "eol" : "2023-11-26"
+    }, {
+      "cycle" : "7.4",
+      "latest" : "7.4.33",
+      "releaseDate" : "2019-11-28",
+      "activeSupportUntil" : "2021-11-28",
+      "eol" : "2022-11-28"
+    } ],
+    "checkedAt" : "2026-11-14T23:03:17.979231534Z"
+  }
+}
