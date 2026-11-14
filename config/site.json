@@ -1,0 +1,9 @@
+{
+  "baseUrl": "https://czymogeaktualizowac.pl",
+  "name": "Czy mogę zaktualizować?",
+  "tagline": "Niezależne testy wydań polskich wtyczek WooCommerce",
+  "contactEmail": "kontakt@czymogeaktualizowac.pl",
+  "signupFormUrl": "",
+  "pluginCtaEnabled": false,
+  "analyticsHtml": ""
+}

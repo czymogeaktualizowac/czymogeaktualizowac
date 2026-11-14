@@ -1,0 +1,139 @@
+# Door 1 pipeline: watch -> lab (one job per new release) -> publish (+ alert drafts).
+# Runs on GitHub-hosted runners; free and unlimited for public repositories (verify current terms).
+# Phase 0 TODO before going live: pin every `uses:` to a commit SHA, create the `data` branch,
+# enable GitHub Pages (source: GitHub Actions) and the `sandbox` environment (protected, holds sandbox-only secrets).
+name: pipeline
+
+on:
+  schedule:
+    - cron: "17 4,16 * * *"   # twice a day
+  workflow_dispatch:
+    inputs:
+      backfill:
+        description: "Also process the N previous releases of every plugin (history)"
+        default: "0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write          # pushes the data branch
+    outputs:
+      releases: ${{ steps.matrix.outputs.releases }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out the data branch (git is the database)
+        run: |
+          if git ls-remote --exit-code --heads origin data >/dev/null 2>&1; then
+            git fetch origin data
+            git worktree add data origin/data
+          else
+            git worktree add --orphan -b data data
+          fi
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn -B -q -DskipTests package
+      - name: Watch WordPress.org
+        run: java -jar app/target/czymogeaktualizowac.jar watch --backfill "${{ github.event.inputs.backfill || '0' }}"
+      - name: Commit data
+        run: |
+          cd data
+          git config user.name "czymogeaktualizowac bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "data: watch $(date -u +%FT%TZ)"
+          git push origin HEAD:data
+      - id: matrix
+        run: |
+          echo "releases=$(jq -c '[.changes[] | select(.kind=="plugin-release") | {slug: .subject, version: .version}]' data/last-run.json)" >> "$GITHUB_OUTPUT"
+
+  lab:
+    needs: watch
+    if: needs.watch.outputs.releases != '[]'
+    runs-on: ubuntu-24.04
+    environment: sandbox       # sandbox-only credentials for L3/L4; never live credentials
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        release: ${{ fromJson(needs.watch.outputs.releases) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn -B -q -DskipTests package
+      - run: java -cp app/target/czymogeaktualizowac.jar com.microsoft.playwright.CLI install --with-deps chromium
+      - run: java -jar app/target/czymogeaktualizowac.jar lab prepare
+      - name: Run profiles P1-P3 (solo), then P3 in the full stack
+        env:
+          # sandbox settings for L3, one secret per gateway (see config/plugins.json: sandboxEnvPrefix)
+          LAB_SANDBOX_PAYNOW_OPTION_JSON: ${{ secrets.LAB_SANDBOX_PAYNOW_OPTION_JSON }}
+          LAB_SANDBOX_PAYU_OPTION_JSON: ${{ secrets.LAB_SANDBOX_PAYU_OPTION_JSON }}
+        run: |
+          java -jar app/target/czymogeaktualizowac.jar lab run --plugin "${{ matrix.release.slug }}" --version "${{ matrix.release.version }}" --profiles P1,P2,P3
+          java -jar app/target/czymogeaktualizowac.jar lab run --plugin "${{ matrix.release.slug }}" --version "${{ matrix.release.version }}" --profiles P3 --mode stack
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ matrix.release.slug }}-${{ matrix.release.version }}
+          path: data/results
+
+  publish:
+    needs: [watch, lab]
+    if: always() && needs.watch.result == 'success'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: results-*
+          path: data/results
+          merge-multiple: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn -B -q -DskipTests package
+      - name: Plan alerts against the last published state (drafts only until a mail provider is connected)
+        run: java -jar app/target/czymogeaktualizowac.jar alerts
+      - name: Build the site and record the published state
+        run: java -jar app/target/czymogeaktualizowac.jar publish --mark-published
+      - name: Commit data
+        run: |
+          cd data
+          git config user.name "czymogeaktualizowac bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "data: results and published state $(date -u +%FT%TZ)"
+          git push origin HEAD:data
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site-out
+      - uses: actions/deploy-pages@v4

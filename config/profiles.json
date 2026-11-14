@@ -1,0 +1,10 @@
+[
+  {"id": "P1", "name": "Legacy-PL", "php": "8.1", "wp": "previous", "woo": "previous", "checkoutTypes": ["classic"],
+   "why": "30% sklepów Woo, które pokazują wersję PHP, działa na PHP 8.1 lub starszym; WooCommerce 11.6 (luty 2027) wymaga PHP 8.1+."},
+  {"id": "P2", "name": "Mainstream", "php": "8.2", "wp": "latest", "woo": "latest", "checkoutTypes": ["classic", "block"],
+   "why": "Najczęstsza wspierana konfiguracja (do potwierdzenia na danych z crawla)."},
+  {"id": "P3", "name": "Current", "php": "8.3", "wp": "latest", "woo": "latest", "checkoutTypes": ["classic", "block"],
+   "why": "Konfiguracja staranego sklepu: aktualne PHP, WordPress i WooCommerce."},
+  {"id": "P4", "name": "Edge", "php": "8.4", "wp": "development", "woo": "prerelease", "checkoutTypes": ["block"],
+   "why": "Wczesne ostrzeżenie: czy beta/RC WordPressa i WooCommerce złamie polskie wtyczki."}
+]

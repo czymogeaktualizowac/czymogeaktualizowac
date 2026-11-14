@@ -1,0 +1,13 @@
+target/
+cache/
+# watcher/lab output lives on the `data` branch (checked out into data/ in CI), not on the code branch
+/data/
+site-out/
+out/
+*.class
+.idea/
+*.iml
+.vscode/
+# local secrets / sandbox credentials for the lab (never commit)
+lab.local.json
+.env

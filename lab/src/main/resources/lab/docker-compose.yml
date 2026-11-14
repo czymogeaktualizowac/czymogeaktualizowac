@@ -1,0 +1,46 @@
+# One disposable WooCommerce lab store. Parameters come from the environment (see LabEnv):
+#   LAB_PROJECT  compose project name      PHP   PHP version tag (8.1 .. 8.5)      PORT  free host port
+# Nothing here is persistent: the database lives in tmpfs and `down -v` removes everything.
+name: ${LAB_PROJECT}
+services:
+  db:
+    image: mariadb:11.4
+    environment:
+      MARIADB_DATABASE: wp
+      MARIADB_USER: wp
+      MARIADB_PASSWORD: wp
+      MARIADB_ROOT_PASSWORD: root
+    tmpfs:
+      - /var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 3s
+      timeout: 5s
+      retries: 40
+  wp:
+    image: wordpress:php${PHP}-apache
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wp
+      WORDPRESS_DB_USER: wp
+      WORDPRESS_DB_PASSWORD: wp
+      WORDPRESS_DEBUG: "1"
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_DEBUG_LOG', true);
+        define('WP_DEBUG_DISPLAY', false);
+        define('WP_HOME', 'http://localhost:${PORT}');
+        define('WP_SITEURL', 'http://localhost:${PORT}');
+        define('FS_METHOD', 'direct');
+        define('AUTOMATIC_UPDATER_DISABLED', true);
+        define('WP_AUTO_UPDATE_CORE', false);
+        define('WP_MEMORY_LIMIT', '512M');
+    ports:
+      - "${PORT}:80"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS -o /dev/null http://localhost/wp-admin/install.php || exit 1"]
+      interval: 3s
+      timeout: 5s
+      retries: 60
