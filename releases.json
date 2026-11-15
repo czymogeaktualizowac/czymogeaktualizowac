@@ -1,5 +1,5 @@
 {
-  "generatedAt" : "2026-11-15T22:48:09.664455353Z",
+  "generatedAt" : "2026-11-15T22:51:36.972925100Z",
   "plugins" : {
     "apaczka-pl" : {
       "slug" : "apaczka-pl",
@@ -14,7 +14,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://www.apaczka.com/zostan-sprzedawca",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "1.4.4",
         "released" : "2026-08-25T14:42:42.836877Z",
@@ -94,7 +94,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "1.4.7",
         "released" : "2026-08-25T13:53:21.825378Z",
@@ -173,7 +173,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://octol.io/dhl-polska",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "2.0.7",
         "released" : "2026-11-05T10:45:28.388420Z",
@@ -257,7 +257,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 1,
       "homepage" : "https://wordpress.org/plugins/flexible-invoices/",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "7.1.2",
         "released" : "2026-11-07T04:16:06.454227Z",
@@ -339,7 +339,7 @@
       "supportThreads" : 3,
       "supportThreadsResolved" : 3,
       "homepage" : "https://octol.io/fs-plugin-uri",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "6.13.8",
         "released" : "2026-11-09T18:48:40.201959Z",
@@ -421,7 +421,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://furgonetka.pl",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "1.9.10",
         "released" : "2026-11-02T09:36:35.840571Z",
@@ -505,7 +505,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "2.7.1",
         "released" : "2026-10-28T10:23:18.848148Z",
@@ -585,7 +585,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://imoje.pl",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "4.16.1",
         "released" : "2026-09-08T10:02:02.165483Z",
@@ -663,7 +663,7 @@
       "supportThreads" : 3,
       "supportThreadsResolved" : 0,
       "homepage" : "https://wordpress.org/plugins/inpost-for-woocommerce/",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "2.0.0",
         "released" : "2026-11-04T08:03:02.189363Z",
@@ -743,7 +743,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://www.wpdesk.pl/sklep/faktury-ksef/",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "2.6.1",
         "released" : "2026-11-12T07:48:10.533338Z",
@@ -827,7 +827,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/iworks/omnibus/",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "3.0.5",
         "released" : "2026-10-22T08:13:20.518091Z",
@@ -911,7 +911,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/pay-now/paynow-woocommerce",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "2.5.13",
         "released" : "2026-11-06T09:27:55.133629Z",
@@ -995,7 +995,7 @@
       "supportThreads" : 5,
       "supportThreadsResolved" : 4,
       "homepage" : "https://www.wpdesk.pl/sk/pay-wp-plugin",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "2.3.2",
         "released" : "2026-11-07T06:29:43.336372Z",
@@ -1077,7 +1077,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://wordpress.org/plugins/platnosci-online-blue-media",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "5.1.0",
         "released" : "2026-10-26T14:42:22.869673Z",
@@ -1161,7 +1161,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://trustmate.io",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "1.18.1",
         "released" : "2026-09-28T05:50:02.763574Z",
@@ -1237,7 +1237,7 @@
       "supportThreads" : 2,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/kkarpieszuk/wc-price-history",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "3.2.9",
         "released" : "2026-10-30T09:27:41.114804Z",
@@ -1321,7 +1321,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/PayU/woo-payu-payment-gateway",
-      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
+      "checkedAt" : "2026-11-15T22:51:36.972925100Z",
       "releases" : [ {
         "version" : "2.12.0",
         "released" : "2026-11-03T11:49:59.220247Z",
@@ -1446,6 +1446,6 @@
       "activeSupportUntil" : "2021-11-28",
       "eol" : "2022-11-28"
     } ],
-    "checkedAt" : "2026-11-15T22:48:09.664455353Z"
+    "checkedAt" : "2026-11-15T22:51:36.972925100Z"
   }
 }
