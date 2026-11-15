@@ -1,5 +1,5 @@
 {
-  "generatedAt" : "2026-11-15T22:36:56.677016991Z",
+  "generatedAt" : "2026-11-15T22:48:09.664455353Z",
   "plugins" : {
     "apaczka-pl" : {
       "slug" : "apaczka-pl",
@@ -14,7 +14,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://www.apaczka.com/zostan-sprzedawca",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "1.4.4",
         "released" : "2026-08-25T14:42:42.836877Z",
@@ -47,6 +47,38 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "1.4.3",
+        "released" : "2026-03-25T08:42:07.786982Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Apaczka.pl",
+          "version" : "1.4.3",
+          "license" : "GPLv3",
+          "requiresPhp" : "7.2",
+          "requiresWp" : "5.3",
+          "testedWp" : "6.9",
+          "stableTag" : "1.4.3",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 1.4.3 =\r\n* Fix: change Cancelled order status\r\n* Fix: sender dispatch point when create package"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 93,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 93 listed files checked: code files match"
+        },
+        "zipSha256" : "2a7a118e3b973dd646dfc6656e1ee914a00091e5c3944df9c28f8560879325b2",
+        "zipBytes" : 313208,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "apaczka-pl-mapa-punktow" : {
@@ -62,7 +94,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "1.4.7",
         "released" : "2026-08-25T13:53:21.825378Z",
@@ -95,6 +127,37 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "1.4.6",
+        "released" : "2026-03-09T11:50:45.511938Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Apaczka.pl Mapa Punktów",
+          "version" : "1.4.6",
+          "requiresWp" : "4.0",
+          "wcTested" : "10.5.3",
+          "testedWp" : "6.9",
+          "stableTag" : "1.4.6",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 1.4.6 - 2026.03.09 =\n* Fix: DHL operator on map\n* Feat: map ver. 8.7"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 22,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 22 listed files checked: code files match"
+        },
+        "zipSha256" : "b9fb26aaa2c4f9b821d9d2823bf12a43b6251707b7d6f6cd9f0a3b8baa086674",
+        "zipBytes" : 45855,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "dhl-polska" : {
@@ -110,7 +173,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://octol.io/dhl-polska",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "2.0.7",
         "released" : "2026-11-05T10:45:28.388420Z",
@@ -145,6 +208,40 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "2.0.6",
+        "released" : "2026-10-27T04:40:34.153812Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "DHL Polska - Oficjalna integracja dla WooCommerce",
+          "version" : "2.0.6",
+          "license" : "GPLv2 or later",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.9",
+          "wcTested" : "11.3",
+          "testedWp" : "7.1",
+          "stableTag" : "2.0.6",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 2.0.6 - 2026-10-27 =\n* Dodano wsparcie dla WooCommerce 11.3"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 955,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 955 listed files checked: code files match"
+        },
+        "zipSha256" : "8d2598d092f1ccba8a2586d26552c98b06ebf73adde951049f7e6a5798ec2e96",
+        "zipBytes" : 1961651,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "flexible-invoices" : {
@@ -160,7 +257,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 1,
       "homepage" : "https://wordpress.org/plugins/flexible-invoices/",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "7.1.2",
         "released" : "2026-11-07T04:16:06.454227Z",
@@ -194,6 +291,39 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "7.1.1",
+        "released" : "2026-11-05T11:06:20.943463Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Flexible Invoices for WooCommerce and WordPress",
+          "version" : "7.1.1",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.8",
+          "wcTested" : "11.2",
+          "testedWp" : "7.1",
+          "stableTag" : "7.1.1",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 7.1.1 - 2026-11-05 =\n- The message regarding a duplicate invoice number has been updated. The message does not display the next invoice number to avoid confusion.\n- Code changes related to the related documents metabox and the validation of duplicate documents\n- The script responsible for searching for duplicate documents now searches only for documents with the “published” status.\n- Missing Customer_State placeholder in block invoice template"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 1631,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 1631 listed files checked: code files match"
+        },
+        "zipSha256" : "d86bdc8cc2559a1c564718b9bc734540081c2ddb7b0525ab719d2f31226a0e1b",
+        "zipBytes" : 11968107,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "flexible-shipping" : {
@@ -209,7 +339,7 @@
       "supportThreads" : 3,
       "supportThreadsResolved" : 3,
       "homepage" : "https://octol.io/fs-plugin-uri",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "6.13.8",
         "released" : "2026-11-09T18:48:40.201959Z",
@@ -243,6 +373,39 @@
           "windowComplete" : false,
           "sample" : [ ]
         }
+      }, {
+        "version" : "6.13.7",
+        "released" : "2026-10-30T12:59:41.073454Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Flexible Shipping",
+          "version" : "6.13.7",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.9",
+          "wcTested" : "11.3",
+          "testedWp" : "7.1",
+          "stableTag" : "6.13.7",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 6.13.7 - 2026-10-29 =\n* Added information about Black Friday special offer."
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 1059,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 1059 listed files checked: code files match"
+        },
+        "zipSha256" : "9d10569844f4127e7bb605bb0abf1edcea145ac62ddf95c07cae041b4b471e55",
+        "zipBytes" : 12763524,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "furgonetka" : {
@@ -258,7 +421,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://furgonetka.pl",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "1.9.10",
         "released" : "2026-11-02T09:36:35.840571Z",
@@ -293,6 +456,40 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "1.9.9",
+        "released" : "2026-09-21T06:52:53.877873Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Furgonetka.pl",
+          "version" : "1.9.9",
+          "license" : "GPL-2.0+",
+          "requiresPhp" : "7.1",
+          "requiresWp" : "5.0",
+          "wcRequires" : "4.0",
+          "wcTested" : "11.1.0",
+          "testedWp" : "7.1",
+          "stableTag" : "1.9.9",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 1.9.9 =\n* Fixed plugin deactivation clearing the map configuration - pickup point settings are now preserved\n* Fixed the stored plugin version being reset on deactivation and account disconnection, which caused all migrations to run again after the next update"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 109,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 109 listed files checked: code files match"
+        },
+        "zipSha256" : "42709be217e858ff1138189ac4f48228a92f83d2a210fb22a10f43f477749a82",
+        "zipBytes" : 152703,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "globkurier" : {
@@ -308,7 +505,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "2.7.1",
         "released" : "2026-10-28T10:23:18.848148Z",
@@ -341,6 +538,38 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "2.7",
+        "released" : "2026-10-27T10:13:07.857746Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "globkurier.pl – Integracja z WooCommerce",
+          "version" : "2.7",
+          "license" : "GPLv3",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.0",
+          "testedWp" : "7.1",
+          "stableTag" : "2.7",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "2.7 - 27.10.2026\n\tAdded: dangerous goods declaration (containsDangerousGoods) in the shipment form and bulk send\n\tSecurity: pickup point search no longer overwrites the shared ORLEN points list\n\tSecurity: data from the API and order addresses escaped in the admin panel, maps and shipment history\n\tSecurity: nonces and capability checks for crossborder terminals, extra carrier point session and data removal\n\tSecurity: public point search limited (known countries only, shorter API timeout, no login retries)\n\tSecurity: nonces for PDF label and protocol links\n\tSecurity: per-order capability check when shipping, in bulk send and customs import\n\tSecurity: addon and required carrier fields escaped i …"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 104,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 104 listed files checked: code files match"
+        },
+        "zipSha256" : "c34b219ca912c0eb25d9cc968cda166f0ffd2d6ee9e7a6aa5d1835d5a8d7e1fe",
+        "zipBytes" : 1841059,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "imoje" : {
@@ -356,7 +585,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://imoje.pl",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "4.16.1",
         "released" : "2026-09-08T10:02:02.165483Z",
@@ -388,6 +617,37 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "4.16.0",
+        "released" : "2026-09-01T09:32:54.948946Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "imoje",
+          "version" : "4.16.0",
+          "license" : "GPLv3",
+          "requiresPhp" : "5.6",
+          "testedWp" : "7.0.4",
+          "stableTag" : "4.16.0",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 4.16.0 =\r\n* updated the logos, text and instructions relating to the rebranding of imoje to ING Pay\r\n* optimised the plugin’s internal mechanisms\r\n* made improvements to the collection of order information required to issue an invoice in ING Księgowość\r\n* added caching of payment methods\r\n* added new logs\r\n* for BLIK payments with a code, added a message informing the user that the transaction value limit has been exceeded\r\n* enhanced the module’s security\r\n* optimised the code and introduced an idempotent mechanism for refunds"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 194,
+          "mismatched" : [ "readme.txt" ],
+          "missing" : [ ],
+          "detail" : "all 194 listed files checked: code files match (1 non-code file(s) differ: readme/translations)"
+        },
+        "zipSha256" : "20175522e64034e24c47537b4e250a76a49f89e048ec97d527bed83d578ff115",
+        "zipBytes" : 472213,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "inpost-for-woocommerce" : {
@@ -403,7 +663,7 @@
       "supportThreads" : 3,
       "supportThreadsResolved" : 0,
       "homepage" : "https://wordpress.org/plugins/inpost-for-woocommerce/",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "2.0.0",
         "released" : "2026-11-04T08:03:02.189363Z",
@@ -436,6 +696,38 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "1.9.9",
+        "released" : "2026-10-13T10:35:51.868872Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "InPost PL",
+          "version" : "1.9.9",
+          "license" : "GPLv3",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "5.3",
+          "testedWp" : "7.1",
+          "stableTag" : "1.9.9",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 1.9.9 =\r\n* Feat: filter for custom order statuses regarding webhook change status\r\n* Feat: new setting to change UI in plugin for Courier shipments from 'mm' to 'cm'"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 166,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 166 listed files checked: code files match"
+        },
+        "zipSha256" : "2fa062d3728990c151aad33a9ec3cb0926ace6be2e1f2679da4d079c7703993b",
+        "zipBytes" : 649138,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "ksef-for-flexible-invoices" : {
@@ -451,7 +743,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://www.wpdesk.pl/sklep/faktury-ksef/",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "2.6.1",
         "released" : "2026-11-12T07:48:10.533338Z",
@@ -486,6 +778,40 @@
           "windowComplete" : false,
           "sample" : [ ]
         }
+      }, {
+        "version" : "2.6.0",
+        "released" : "2026-11-04T11:24:21.048306Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Flexible Invoices KSeF",
+          "version" : "2.6.0",
+          "license" : "GPL v2 or later",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.8",
+          "wcTested" : "11.2",
+          "testedWp" : "7.1",
+          "stableTag" : "2.6.0",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 2.6.0 - 2026-10-04 =\n* WooCommerce is no longer required for certain foreign issuing cases.\n* Fixed problem with requirement checked function not stopping plugin properly when requirements are not met.\n* Generated XML no longer contains Adres node if no address is provided"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 1264,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 1264 listed files checked: code files match"
+        },
+        "zipSha256" : "92bba170297d04b3bbb08227f5a6fc0d1eceaf2cdcab8be78fa8013e2ff53c47",
+        "zipBytes" : 2109219,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "omnibus" : {
@@ -501,7 +827,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/iworks/omnibus/",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "3.0.5",
         "released" : "2026-10-22T08:13:20.518091Z",
@@ -534,6 +860,42 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "3.0.4",
+        "released" : "2025-07-21T07:53:04.730443Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Omnibus — show the lowest price",
+          "version" : "3.0.4",
+          "license" : "GPLv3 or later",
+          "requiresPhp" : "8.0",
+          "requiresWp" : "6.0",
+          "testedWp" : "6.8",
+          "stableTag" : "3.0.4",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 3.0.4 (2025-07-21) =\r\n* The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.3.1."
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 49,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 49 listed files checked: code files match"
+        },
+        "zipSha256" : "26affb00a880c054d66ea4475b0b241878a54853edcdb8ba00a0e50f97aa4843",
+        "zipBytes" : 74736,
+        "forum" : {
+          "topics7d" : 1,
+          "mentioningVersion" : 0,
+          "level" : "LOW",
+          "windowComplete" : true,
+          "sample" : [ {
+            "title" : "Variable product problem",
+            "link" : "https://wordpress.org/support/topic/variable-product-problem-9/",
+            "date" : "2025-07-22T22:47:37Z"
+          } ]
+        }
       } ]
     },
     "pay-by-paynow-pl" : {
@@ -549,7 +911,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/pay-now/paynow-woocommerce",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "2.5.13",
         "released" : "2026-11-06T09:27:55.133629Z",
@@ -584,6 +946,40 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "2.5.12",
+        "released" : "2026-09-29T13:23:38.446686Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Pay by paynow.pl",
+          "version" : "2.5.12",
+          "license" : "GPLv3",
+          "requiresPhp" : "7.2",
+          "requiresWp" : "6.0",
+          "wcRequires" : "8.0.0",
+          "wcTested" : "10.2.0",
+          "testedWp" : "6.7",
+          "stableTag" : "2.5.12",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 2.5.11 =\n* Fixed: Payment methods not appearing in WooCommerce 10.X Settings -> Payments\n* Fixed: Severe performance issues and high server load in WooCommerce 9.X admin panel\n* Improved: Full Site Editing and WooCommerce Blocks compatibility\n* Improved: Payment methods caching - reduced API calls by 80%\n* Added: Official compatibility declaration for Cart & Checkout Blocks\n* Updated: WordPress 6.7 and WooCommerce 10.2.0 compatibility"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 367,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 367 listed files checked: code files match"
+        },
+        "zipSha256" : "6eed48a59b5772ad0d4c604fd41de3b43f8786ff808d515707f6610c2f1fb595",
+        "zipBytes" : 491799,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "pay-wp" : {
@@ -599,7 +995,7 @@
       "supportThreads" : 5,
       "supportThreadsResolved" : 4,
       "homepage" : "https://www.wpdesk.pl/sk/pay-wp-plugin",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "2.3.2",
         "released" : "2026-11-07T06:29:43.336372Z",
@@ -633,6 +1029,39 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "2.3.1",
+        "released" : "2026-11-04T11:02:57.753585Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Autopay for WooCommerce",
+          "version" : "2.3.1",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.8",
+          "wcTested" : "11.2",
+          "testedWp" : "7.1",
+          "stableTag" : "2.3.1",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 2.3.1 - 2026-11-04 =\n* Fixed a security vulnerability in ITN payment notifications."
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 1201,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 1201 listed files checked: code files match"
+        },
+        "zipSha256" : "0dfc37ba0787025cc151a2485f695a8de23a013aaf2f091f406e9d1bd7fbb236",
+        "zipBytes" : 1767273,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "platnosci-online-blue-media" : {
@@ -648,7 +1077,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://wordpress.org/plugins/platnosci-online-blue-media",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "5.1.0",
         "released" : "2026-10-26T14:42:22.869673Z",
@@ -683,6 +1112,40 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "5.0.5",
+        "released" : "2026-09-28T13:47:59.832248Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Autopay",
+          "version" : "5.0.5",
+          "license" : "GPL-2.0-or-later",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.0",
+          "wcRequires" : "7.9",
+          "wcTested" : "11.0",
+          "testedWp" : "7.1",
+          "stableTag" : "5.0.5",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "### 5.0.5 (28.09.2026) ###\n* Fixed: the BLIK Pay Later and instalments payment descriptions displayed as raw HTML code instead of formatted text on checkout.\n\n### 5.0.4 (22.09.2026) ###\n* Fixed: the ITN confirmation response sent back to Autopay declared an invalid `standalone=\"\"` XML pseudo-attribute, causing Autopay to reject the response with an XML parse error (\"Invalid XML pseudo-attribute 'standalone'\"). The attribute is no longer emitted.\n\n### 5.0.3 (17.09.2026) ###\n* Fixed: improved Apple Pay availability detection during checkout, preventing empty Apple Pay sections from appearing on unsupported devices and browsers, including when checkout scripts are loaded in a different order.\n* …"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 681,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 681 listed files checked: code files match"
+        },
+        "zipSha256" : "4d6ed32987ebac5090a3a409b6d9d652b6b29b9ee6a7817f38477f0cfabed192",
+        "zipBytes" : 1489358,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "trustmate-io-integration-for-woocommerce" : {
@@ -698,7 +1161,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://trustmate.io",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "1.18.1",
         "released" : "2026-09-28T05:50:02.763574Z",
@@ -729,6 +1192,36 @@
           "windowComplete" : true,
           "sample" : [ ]
         }
+      }, {
+        "version" : "1.18.0",
+        "released" : "2026-09-18T07:48:49.867454Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "TrustMate.io integration for WooCommerce",
+          "version" : "1.18.0",
+          "license" : "GPLv2 or later",
+          "testedWp" : "7.1",
+          "stableTag" : "1.18.0",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 1.18.0 =\n* New: server-side rendered widgets. Ratings and reviews are built straight into the page, so Google\n  and AI assistants such as ChatGPT can see them even better than before. Switch it on in the Widgets\n  tab. Works with the Hydra widget.\n* Widget language is now also detected for Polylang, not only WPML.\n* Czech, Norwegian and Swedish translations are now loaded correctly; Norwegian and Portuguese\n  translations updated."
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 215,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 215 listed files checked: code files match"
+        },
+        "zipSha256" : "b1652ed51ad51dc1b7c58532b2816510dbe0bf9e61b6959941ae594189b88111",
+        "zipBytes" : 10290382,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "wc-price-history" : {
@@ -744,7 +1237,7 @@
       "supportThreads" : 2,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/kkarpieszuk/wc-price-history",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "3.2.9",
         "released" : "2026-10-30T09:27:41.114804Z",
@@ -781,6 +1274,38 @@
             "date" : "2026-10-30T11:33:23Z"
           } ]
         }
+      }, {
+        "version" : "3.2.8",
+        "released" : "2026-10-15T10:53:41.158385Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "WC Price History",
+          "version" : "3.2.8",
+          "license" : "Expat",
+          "requiresPhp" : "7.2",
+          "requiresWp" : "5.8",
+          "testedWp" : "7.1",
+          "stableTag" : "3.2.8",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 3.2.8 =\n- Fix: Lowest price in the last N days (database tables and legacy storage) now includes the last known price before the window (carry-forward), so a recent price increase no longer hides the earlier lower price that was still in effect during most of the period. (#222)\n- Enhancement: Warn on the product edit screen (classic and WooCommerce block/React product editor, including SPA navigation) and products list when sale-start Omnibus counting is enabled but a product on sale has no scheduled sale start date — including variable products where only some on-sale variations lack a start date. (#130)"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 55,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 55 listed files checked: code files match"
+        },
+        "zipSha256" : "a0eaaefb29d402e11f8a35c71496919f4b59ab48284aa5e3e75703f2e4455441",
+        "zipBytes" : 100662,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
       } ]
     },
     "woo-payu-payment-gateway" : {
@@ -796,7 +1321,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/PayU/woo-payu-payment-gateway",
-      "checkedAt" : "2026-11-15T22:36:56.677016991Z",
+      "checkedAt" : "2026-11-15T22:48:09.664455353Z",
       "releases" : [ {
         "version" : "2.12.0",
         "released" : "2026-11-03T11:49:59.220247Z",
@@ -824,6 +1349,40 @@
         },
         "zipSha256" : "1e4b650877391b56b3744c9e541c0f26ce93f45910f121891c5c2019fdb82610",
         "zipBytes" : 232599,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : true,
+          "sample" : [ ]
+        }
+      }, {
+        "version" : "2.11.0",
+        "released" : "2026-09-08T12:16:15.484255Z",
+        "firstSeen" : "2026-11-15T22:48:09.664455353Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "PayU Payment Gateway for WooCommerce",
+          "version" : "2.11.0",
+          "license" : "Apache License 2.0",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "5.0",
+          "wcRequires" : "6.0",
+          "wcTested" : "11.1.0",
+          "testedWp" : "7.1",
+          "stableTag" : "2.11.0",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 2.11.0 - 2026-09-08 =\r\n* [Add] Apple Pay as separate method\r\n* [Fix] Total in Google Pay and repayment\r\n* [Fix] Icons size"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 150,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 150 listed files checked: code files match"
+        },
+        "zipSha256" : "cda1e47d01d3290435c20f1aa191c2e96c16850f17590005bee03d84a0470545",
+        "zipBytes" : 232059,
         "forum" : {
           "topics7d" : 0,
           "mentioningVersion" : 0,
@@ -887,6 +1446,6 @@
       "activeSupportUntil" : "2021-11-28",
       "eol" : "2022-11-28"
     } ],
-    "checkedAt" : "2026-11-15T22:36:56.677016991Z"
+    "checkedAt" : "2026-11-15T22:48:09.664455353Z"
   }
 }
