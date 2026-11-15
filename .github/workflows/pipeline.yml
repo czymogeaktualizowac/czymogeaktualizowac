@@ -54,9 +54,22 @@ jobs:
           git add -A
           git diff --cached --quiet || git commit -m "data: watch $(date -u +%FT%TZ)"
           git push origin HEAD:data
+      # Lab queue: every known stable release without a lab result yet. This covers new releases, the first-run
+      # baseline and backfilled history alike (the watcher reports only new releases as "changes", for alerts).
+      # Newest release of each plugin first; capped per run, the rest is picked up by the next runs.
       - id: matrix
+        env:
+          LAB_QUEUE_CAP: "40"
         run: |
-          echo "releases=$(jq -c '[.changes[] | select(.kind=="plugin-release") | {slug: .subject, version: .version}]' data/last-run.json)" >> "$GITHUB_OUTPUT"
+          jq -r '.plugins[] | .slug as $s | .releases | map(select(.prerelease | not)) | to_entries[]
+                 | "\(.key)\t\($s)\t\(.value.version)"' data/releases.json \
+            | sort -s -n -k1,1 \
+            | while IFS=$'\t' read -r rank slug version; do
+                [ -f "data/results/$slug/$version.json" ] || jq -cn --arg s "$slug" --arg v "$version" '{slug: $s, version: $v}'
+              done \
+            | jq -cs --argjson cap "$LAB_QUEUE_CAP" '.[0:$cap]' > lab-queue.json
+          echo "lab queue: $(jq length lab-queue.json) release(s)"
+          echo "releases=$(cat lab-queue.json)" >> "$GITHUB_OUTPUT"
 
   lab:
     needs: watch
