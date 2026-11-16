@@ -1,5 +1,15 @@
 {
-  "at" : "2026-11-16T05:43:57.421132786Z",
-  "changes" : [ ],
+  "at" : "2026-11-16T17:31:59.732583483Z",
+  "changes" : [ {
+    "kind" : "plugin-release",
+    "subject" : "flexible-invoices",
+    "version" : "7.1.3",
+    "detail" : "Flexible Invoices 7.1.3"
+  }, {
+    "kind" : "plugin-release",
+    "subject" : "ksef-for-flexible-invoices",
+    "version" : "2.6.2",
+    "detail" : "KSeF dla WooCommerce (WP Desk) 2.6.2"
+  } ],
   "errors" : [ ]
 }
