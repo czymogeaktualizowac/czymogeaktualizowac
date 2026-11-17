@@ -10,28 +10,28 @@
     "php" : "8.1",
     "wp" : "7.0.8",
     "woo" : "11.2.2",
-    "startedAt" : "2026-11-15T23:08:19.761621194Z",
-    "finishedAt" : "2026-11-15T23:08:50.975256788Z",
+    "startedAt" : "2026-11-17T22:06:46.879914494Z",
+    "finishedAt" : "2026-11-17T22:07:45.324924770Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2034
+      "durationMs" : 1822
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 975
+      "durationMs" : 1016
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1314
+      "durationMs" : 1357
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki: Error {",
+      "durationMs" : 26124
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -50,28 +50,28 @@
     "php" : "8.2",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:09:18.129617121Z",
-    "finishedAt" : "2026-11-15T23:09:48.378297486Z",
+    "startedAt" : "2026-11-17T22:08:33.811204783Z",
+    "finishedAt" : "2026-11-17T22:09:27.207985444Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 1954
+      "durationMs" : 1842
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 1262
+      "durationMs" : 1240
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 2810
+      "durationMs" : 2811
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki: Error {",
+      "durationMs" : 26988
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -90,28 +90,28 @@
     "php" : "8.2",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:08:51.001775322Z",
-    "finishedAt" : "2026-11-15T23:09:18.120554700Z",
+    "startedAt" : "2026-11-17T22:07:45.361735174Z",
+    "finishedAt" : "2026-11-17T22:08:33.808131264Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2016
+      "durationMs" : 1854
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1065
+      "durationMs" : 1000
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1300
+      "durationMs" : 1333
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki: Error {",
+      "durationMs" : 25530
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -130,13 +130,13 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:10:15.173699299Z",
-    "finishedAt" : "2026-11-15T23:10:40.913814168Z",
+    "startedAt" : "2026-11-17T22:10:12.822031974Z",
+    "finishedAt" : "2026-11-17T22:11:05.503927875Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 1909
+      "durationMs" : 1850
     }, {
       "level" : "L1",
       "status" : "PASS",
@@ -146,12 +146,12 @@
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 2781
+      "durationMs" : 2827
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki: Error {",
+      "durationMs" : 26359
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -170,28 +170,28 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:09:48.380598195Z",
-    "finishedAt" : "2026-11-15T23:10:15.171670550Z",
+    "startedAt" : "2026-11-17T22:09:27.211144779Z",
+    "finishedAt" : "2026-11-17T22:10:12.818540760Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 1980
+      "durationMs" : 1832
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 977
+      "durationMs" : 994
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1429
+      "durationMs" : 1321
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki: Error {",
+      "durationMs" : 25578
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -210,28 +210,28 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:11:39.636353529Z",
-    "finishedAt" : "2026-11-15T23:12:28.253603129Z",
+    "startedAt" : "2026-11-17T22:12:22.314085710Z",
+    "finishedAt" : "2026-11-17T22:13:31.277700445Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 21373
+      "durationMs" : 18773
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 2715
+      "durationMs" : 2758
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3640
+      "durationMs" : 3315
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki: Error {",
+      "durationMs" : 26392
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -250,28 +250,28 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:10:47.808373360Z",
-    "finishedAt" : "2026-11-15T23:11:39.614235286Z",
+    "startedAt" : "2026-11-17T22:11:12.791327691Z",
+    "finishedAt" : "2026-11-17T22:12:22.279502972Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 21847
+      "durationMs" : 18933
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem (informacyjnie: 1 wyjątków JS i 1 błędów konsoli niezwiązanych jednoznacznie z wtyczką)",
-      "durationMs" : 6809
+      "durationMs" : 5486
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 2867
+      "durationMs" : 2888
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki: Error {",
+      "durationMs" : 25603
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
