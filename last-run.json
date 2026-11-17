@@ -1,20 +1,5 @@
 {
-  "at" : "2026-11-17T17:22:44.781859058Z",
-  "changes" : [ {
-    "kind" : "plugin-release",
-    "subject" : "woo-payu-payment-gateway",
-    "version" : "2.12.1",
-    "detail" : "PayU (Woo) 2.12.1"
-  }, {
-    "kind" : "plugin-release",
-    "subject" : "ksef-for-flexible-invoices",
-    "version" : "2.6.3",
-    "detail" : "KSeF dla WooCommerce (WP Desk) 2.6.3"
-  }, {
-    "kind" : "wordpress-prerelease",
-    "subject" : "wordpress",
-    "version" : "7.2-RC1",
-    "detail" : "WordPress 7.2-RC1"
-  } ],
+  "at" : "2026-11-17T22:04:36.927403403Z",
+  "changes" : [ ],
   "errors" : [ ]
 }
