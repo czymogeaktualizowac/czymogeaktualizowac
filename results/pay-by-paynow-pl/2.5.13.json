@@ -10,28 +10,28 @@
     "php" : "8.1",
     "wp" : "7.0.8",
     "woo" : "11.2.2",
-    "startedAt" : "2026-11-17T22:06:46.879914494Z",
-    "finishedAt" : "2026-11-17T22:07:45.324924770Z",
+    "startedAt" : "2026-11-17T22:20:58.539035528Z",
+    "finishedAt" : "2026-11-17T22:21:56.778448961Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
-      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 1822
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych (pominięto 1 błędów, które występują też bez wtyczki: to błąd WordPressa/WooCommerce lub laboratorium)",
+      "durationMs" : 2660
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1016
+      "durationMs" : 1104
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1357
+      "durationMs" : 1488
     }, {
       "level" : "L3",
       "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki: Error {",
-      "durationMs" : 26124
+      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
+      "durationMs" : 25757
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -40,7 +40,7 @@
     } ],
     "highestPassed" : "L2",
     "notes" : "",
-    "logExcerpt" : [ ]
+    "logExcerpt" : [ "[17-Nov-2026 22:21:13 UTC] PHP Fatal error:  Cannot redeclare addslashes_gpc() (previously declared in /var/www/html/wp-includes/formatting.php:2848) in /var/www/html/wp-includes/deprecated.php on line 6505", "[17-Nov-2026 22:21:13 UTC] PHP Fatal error:  Cannot redeclare addslashes_gpc() (previously declared in /var/www/html/wp-includes/formatting.php:2848) in /var/www/html/wp-includes/deprecated.php on line 6505" ]
   }, {
     "pluginSlug" : "pay-by-paynow-pl",
     "pluginVersion" : "2.5.13",
@@ -50,28 +50,28 @@
     "php" : "8.2",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:08:33.811204783Z",
-    "finishedAt" : "2026-11-17T22:09:27.207985444Z",
+    "startedAt" : "2026-11-17T22:22:50.879061961Z",
+    "finishedAt" : "2026-11-17T22:23:50.459762352Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 1842
+      "durationMs" : 2688
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 1240
+      "durationMs" : 1498
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 2811
+      "durationMs" : 3113
     }, {
       "level" : "L3",
       "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki: Error {",
-      "durationMs" : 26988
+      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
+      "durationMs" : 27246
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -90,28 +90,28 @@
     "php" : "8.2",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:07:45.361735174Z",
-    "finishedAt" : "2026-11-17T22:08:33.808131264Z",
+    "startedAt" : "2026-11-17T22:21:56.820759427Z",
+    "finishedAt" : "2026-11-17T22:22:50.873977513Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 1854
+      "durationMs" : 2702
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1000
+      "durationMs" : 1122
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1333
+      "durationMs" : 1480
     }, {
       "level" : "L3",
       "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki: Error {",
-      "durationMs" : 25530
+      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
+      "durationMs" : 25802
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -130,28 +130,28 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:10:12.822031974Z",
-    "finishedAt" : "2026-11-17T22:11:05.503927875Z",
+    "startedAt" : "2026-11-17T22:24:47.848203613Z",
+    "finishedAt" : "2026-11-17T22:25:47.047051284Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 1850
+      "durationMs" : 2701
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 1217
+      "durationMs" : 1520
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 2827
+      "durationMs" : 3073
     }, {
       "level" : "L3",
       "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki: Error {",
-      "durationMs" : 26359
+      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
+      "durationMs" : 26864
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -170,28 +170,28 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:09:27.211144779Z",
-    "finishedAt" : "2026-11-17T22:10:12.818540760Z",
+    "startedAt" : "2026-11-17T22:23:50.463035824Z",
+    "finishedAt" : "2026-11-17T22:24:47.843019012Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 1832
+      "durationMs" : 2671
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 994
+      "durationMs" : 1149
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1321
+      "durationMs" : 1462
     }, {
       "level" : "L3",
       "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki: Error {",
-      "durationMs" : 25578
+      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
+      "durationMs" : 25995
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -210,28 +210,28 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:12:22.314085710Z",
-    "finishedAt" : "2026-11-17T22:13:31.277700445Z",
+    "startedAt" : "2026-11-17T22:27:25.987205762Z",
+    "finishedAt" : "2026-11-17T22:28:56.517146832Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 18773
+      "durationMs" : 30155
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 2758
+      "durationMs" : 3429
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3315
+      "durationMs" : 3763
     }, {
       "level" : "L3",
       "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki: Error {",
-      "durationMs" : 26392
+      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
+      "durationMs" : 27319
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
@@ -250,28 +250,28 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:11:12.791327691Z",
-    "finishedAt" : "2026-11-17T22:12:22.279502972Z",
+    "startedAt" : "2026-11-17T22:25:55.307101908Z",
+    "finishedAt" : "2026-11-17T22:27:25.948197854Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 18933
+      "durationMs" : 30083
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem (informacyjnie: 1 wyjątków JS i 1 błędów konsoli niezwiązanych jednoznacznie z wtyczką)",
-      "durationMs" : 5486
+      "durationMs" : 6411
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 2888
+      "durationMs" : 3786
     }, {
       "level" : "L3",
       "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki: Error {",
-      "durationMs" : 25603
+      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
+      "durationMs" : 25812
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
