@@ -119,18 +119,23 @@ final class StoreBrowser implements AutoCloseable {
 
     LevelResult l3(String checkout, String gatewayId, String redirectHostRegex) {
         long t0 = System.currentTimeMillis();
+        String step = "otwarcie checkoutu";
         try {
             page.navigate(store.checkout());
             page.waitForSelector(CHECKOUT_ANY);
+            step = "wybór metody płatności " + gatewayId;
             if ("classic".equals(checkout)) {
                 fillClassic();
                 page.locator("#payment_method_" + gatewayId).check();
+                step = "złożenie zamówienia";
                 page.locator("#place_order").click();
             } else {
                 fillBlock();
                 selectBlockPayment(gatewayId);
+                step = "złożenie zamówienia";
                 page.locator(".wc-block-components-checkout-place-order-button").click();
             }
+            step = "oczekiwanie na przekierowanie do bramki";
             Pattern host = Pattern.compile(redirectHostRegex);
             page.waitForURL(url -> {
                 try {
@@ -141,7 +146,9 @@ final class StoreBrowser implements AutoCloseable {
             }, new Page.WaitForURLOptions().setTimeout(45_000));
             return new LevelResult(Level.L3, Status.PASS, "przekierowanie dotarło do strony bramki (" + java.net.URI.create(page.url()).getHost() + ")", since(t0));
         } catch (PlaywrightException e) {
-            return new LevelResult(Level.L3, Status.FAIL, "brak przekierowania do bramki: " + firstLine(e.getMessage()), since(t0));
+            // where it stopped and what the store said: a gateway error notice usually names the real cause
+            return new LevelResult(Level.L3, Status.FAIL, "brak przekierowania do bramki (krok: " + step + ", strona: "
+                    + safeHostPath() + checkoutNotice() + "): " + firstLine(e.getMessage()), since(t0));
         }
     }
 
@@ -227,11 +234,55 @@ final class StoreBrowser implements AutoCloseable {
         return System.currentTimeMillis() - t0;
     }
 
-    private static String firstLine(String s) {
+    /** Host and path of the current page, without the query string. */
+    private String safeHostPath() {
+        try {
+            java.net.URI u = java.net.URI.create(page.url());
+            return u.getHost() + (u.getPath() == null ? "" : u.getPath());
+        } catch (RuntimeException e) {
+            return "?";
+        }
+    }
+
+    /** Text of a visible WooCommerce error notice (classic or block checkout), or "". */
+    private String checkoutNotice() {
+        try {
+            Locator n = page.locator(".woocommerce-error, .woocommerce-NoticeGroup-checkout, "
+                    + ".wc-block-components-notice-banner.is-error, .wc-block-store-notice.is-error");
+            for (int i = 0; i < n.count(); i++) {
+                if (n.nth(i).isVisible()) {
+                    String t = n.nth(i).innerText().strip().replaceAll("\\s+", " ");
+                    if (!t.isEmpty()) {
+                        return ", komunikat sklepu: \"" + (t.length() > 300 ? t.substring(0, 300) + "…" : t) + "\"";
+                    }
+                }
+            }
+        } catch (RuntimeException e) {
+            // diagnostics only
+        }
+        return "";
+    }
+
+    /** First meaningful line. Playwright for Java wraps errors as "Error {\n  message='…'", so take the message. */
+    static String firstLine(String s) {
         if (s == null) {
             return "";
         }
-        String l = s.strip().split("\\R")[0];
+        String[] lines = s.strip().split("\\R");
+        String l = lines[0];
+        if (l.strip().equals("Error {")) {
+            l = "";
+            for (String x : lines) {
+                String t = x.strip();
+                if (t.startsWith("message='")) {
+                    l = t.substring("message='".length());
+                    break;
+                }
+            }
+            if (l.isEmpty() && lines.length > 1) {
+                l = lines[1].strip();
+            }
+        }
         return l.length() > 300 ? l.substring(0, 300) + "…" : l;
     }
 

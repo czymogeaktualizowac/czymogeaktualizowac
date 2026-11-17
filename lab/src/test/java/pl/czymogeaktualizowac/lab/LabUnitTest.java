@@ -97,4 +97,12 @@ class LabUnitTest {
                 List.of(lr(Level.L0, Status.ERROR)), null, null, List.of()));
         assertEquals(4, svc.plan("demo", null, List.of(), Set.of(), "solo", true).size());
     }
+
+    @Test
+    void firstLineUnwrapsPlaywrightErrors() {
+        String pw = "Error {\n  message='Timeout 45000ms exceeded.\n=========================== logs ===\n  name='TimeoutError'\n}";
+        assertEquals("Timeout 45000ms exceeded.", StoreBrowser.firstLine(pw));
+        assertEquals("plain message", StoreBrowser.firstLine("plain message\nsecond line"));
+        assertEquals("", StoreBrowser.firstLine(null));
+    }
 }
