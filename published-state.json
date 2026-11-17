@@ -1,5 +1,5 @@
 {
-  "at" : "2026-11-17T22:29:58.731264222Z",
+  "at" : "2026-11-17T22:48:36.500537350Z",
   "latestVersion" : {
     "apaczka-pl" : "1.4.4",
     "apaczka-pl-mapa-punktow" : "1.4.7",
@@ -31,7 +31,7 @@
     "inpost-for-woocommerce" : "ok",
     "ksef-for-flexible-invoices" : "ok",
     "omnibus" : "ok",
-    "pay-by-paynow-pl" : "bad",
+    "pay-by-paynow-pl" : "ok",
     "pay-wp" : "ok",
     "platnosci-online-blue-media" : "ok",
     "trustmate-io-integration-for-woocommerce" : "ok",

@@ -10,37 +10,37 @@
     "php" : "8.1",
     "wp" : "7.0.8",
     "woo" : "11.2.2",
-    "startedAt" : "2026-11-17T22:20:58.539035528Z",
-    "finishedAt" : "2026-11-17T22:21:56.778448961Z",
+    "startedAt" : "2026-11-17T22:42:21.697225589Z",
+    "finishedAt" : "2026-11-17T22:43:05.841119474Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
-      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych (pominięto 1 błędów, które występują też bez wtyczki: to błąd WordPressa/WooCommerce lub laboratorium)",
-      "durationMs" : 2660
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 2313
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1104
+      "durationMs" : 969
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1488
+      "durationMs" : 1314
     }, {
       "level" : "L3",
-      "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
-      "durationMs" : 25757
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 6322
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
-    "logExcerpt" : [ "[17-Nov-2026 22:21:13 UTC] PHP Fatal error:  Cannot redeclare addslashes_gpc() (previously declared in /var/www/html/wp-includes/formatting.php:2848) in /var/www/html/wp-includes/deprecated.php on line 6505", "[17-Nov-2026 22:21:13 UTC] PHP Fatal error:  Cannot redeclare addslashes_gpc() (previously declared in /var/www/html/wp-includes/formatting.php:2848) in /var/www/html/wp-includes/deprecated.php on line 6505" ]
+    "logExcerpt" : [ ]
   }, {
     "pluginSlug" : "pay-by-paynow-pl",
     "pluginVersion" : "2.5.13",
@@ -50,35 +50,35 @@
     "php" : "8.2",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:22:50.879061961Z",
-    "finishedAt" : "2026-11-17T22:23:50.459762352Z",
+    "startedAt" : "2026-11-17T22:43:34.010676062Z",
+    "finishedAt" : "2026-11-17T22:44:10.770090135Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2688
+      "durationMs" : 2322
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 1498
+      "durationMs" : 1261
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3113
+      "durationMs" : 2810
     }, {
       "level" : "L3",
-      "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
-      "durationMs" : 27246
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 7136
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   }, {
@@ -90,35 +90,35 @@
     "php" : "8.2",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:21:56.820759427Z",
-    "finishedAt" : "2026-11-17T22:22:50.873977513Z",
+    "startedAt" : "2026-11-17T22:43:05.874381014Z",
+    "finishedAt" : "2026-11-17T22:43:34.006941185Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2702
+      "durationMs" : 2295
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1122
+      "durationMs" : 967
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1480
+      "durationMs" : 1309
     }, {
       "level" : "L3",
-      "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
-      "durationMs" : 25802
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 5099
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   }, {
@@ -130,35 +130,35 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:24:47.848203613Z",
-    "finishedAt" : "2026-11-17T22:25:47.047051284Z",
+    "startedAt" : "2026-11-17T22:44:44.886392302Z",
+    "finishedAt" : "2026-11-17T22:45:22.057536717Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2701
+      "durationMs" : 2332
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 1520
+      "durationMs" : 1208
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3073
+      "durationMs" : 2837
     }, {
       "level" : "L3",
-      "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
-      "durationMs" : 26864
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 7561
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   }, {
@@ -170,35 +170,35 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:23:50.463035824Z",
-    "finishedAt" : "2026-11-17T22:24:47.843019012Z",
+    "startedAt" : "2026-11-17T22:44:10.772956325Z",
+    "finishedAt" : "2026-11-17T22:44:44.883438958Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2671
+      "durationMs" : 2340
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1149
+      "durationMs" : 1009
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1462
+      "durationMs" : 1331
     }, {
       "level" : "L3",
-      "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
-      "durationMs" : 25995
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 4889
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   }, {
@@ -210,35 +210,35 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:27:25.987205762Z",
-    "finishedAt" : "2026-11-17T22:28:56.517146832Z",
+    "startedAt" : "2026-11-17T22:46:35.779529393Z",
+    "finishedAt" : "2026-11-17T22:47:41.233384783Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 30155
+      "durationMs" : 27434
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 3429
+      "durationMs" : 3682
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3763
+      "durationMs" : 3317
     }, {
       "level" : "L3",
-      "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
-      "durationMs" : 27319
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 7599
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   }, {
@@ -250,35 +250,35 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-17T22:25:55.307101908Z",
-    "finishedAt" : "2026-11-17T22:27:25.948197854Z",
+    "startedAt" : "2026-11-17T22:45:30.239744021Z",
+    "finishedAt" : "2026-11-17T22:46:35.746188522Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 30083
+      "durationMs" : 27416
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem (informacyjnie: 1 wyjątków JS i 1 błędów konsoli niezwiązanych jednoznacznie z wtyczką)",
-      "durationMs" : 6411
+      "durationMs" : 6659
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3786
+      "durationMs" : 2856
     }, {
       "level" : "L3",
-      "status" : "FAIL",
-      "detail" : "brak przekierowania do bramki (krok: otwarcie checkoutu, strona: localhost/): Timeout 25000ms exceeded.",
-      "durationMs" : 25812
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 6127
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   } ]
