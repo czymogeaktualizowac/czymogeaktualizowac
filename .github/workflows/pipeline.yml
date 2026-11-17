@@ -13,6 +13,9 @@ on:
       backfill:
         description: "Also process the N previous releases of every plugin (history)"
         default: "0"
+      retest:
+        description: "Re-run the lab for the latest release of these plugins even if tested (comma-separated slugs, or all)"
+        default: ""
 
 permissions:
   contents: read
@@ -57,15 +60,22 @@ jobs:
       # Lab queue: every known stable release without a lab result yet. This covers new releases, the first-run
       # baseline and backfilled history alike (the watcher reports only new releases as "changes", for alerts).
       # Newest release of each plugin first; capped per run, the rest is picked up by the next runs.
+      # The `retest` input adds the latest release of the named plugins again, run with --force.
       - id: matrix
         env:
           LAB_QUEUE_CAP: "40"
+          RETEST: ${{ github.event.inputs.retest || '' }}
         run: |
-          jq -r '.plugins[] | .slug as $s | .releases | map(select(.prerelease | not)) | to_entries[]
-                 | "\(.key)\t\($s)\t\(.value.version)"' data/releases.json \
+          RETEST_JSON=$(jq -cn --arg r "$RETEST" '$r | split(",") | map(gsub("^\\s+|\\s+$"; "")) | map(select(length > 0))')
+          UNKNOWN=$(jq -r --argjson rt "$RETEST_JSON" '[.plugins[].slug] as $known | $rt - $known - ["all"] | join(",")' data/releases.json)
+          if [ -n "$UNKNOWN" ]; then echo "::error::retest: unknown plugin slug(s): $UNKNOWN"; exit 1; fi
+          jq -r --argjson rt "$RETEST_JSON" '.plugins[] | .slug as $s | .releases | map(select(.prerelease | not)) | to_entries[]
+                 | "\(.key)\t\($s)\t\(.value.version)\t\(if .key == 0 and ($rt | any(. == "all" or . == $s)) then 1 else 0 end)"' data/releases.json \
             | sort -s -n -k1,1 \
-            | while IFS=$'\t' read -r rank slug version; do
-                [ -f "data/results/$slug/$version.json" ] || jq -cn --arg s "$slug" --arg v "$version" '{slug: $s, version: $v}'
+            | while IFS=$'\t' read -r rank slug version force; do
+                if [ "$force" = 1 ] || [ ! -f "data/results/$slug/$version.json" ]; then
+                  jq -cn --arg s "$slug" --arg v "$version" --argjson f "$force" '{slug: $s, version: $v, force: ($f == 1)}'
+                fi
               done \
             | jq -cs --argjson cap "$LAB_QUEUE_CAP" '.[0:$cap]' > lab-queue.json
           echo "lab queue: $(jq length lab-queue.json) release(s)"
@@ -100,13 +110,25 @@ jobs:
           # sandbox settings for L3, one secret per gateway (see config/plugins.json: sandboxEnvPrefix)
           LAB_SANDBOX_PAYNOW_OPTION_JSON: ${{ secrets.LAB_SANDBOX_PAYNOW_OPTION_JSON }}
           LAB_SANDBOX_PAYU_OPTION_JSON: ${{ secrets.LAB_SANDBOX_PAYU_OPTION_JSON }}
+          SLUG: ${{ matrix.release.slug }}
+          VERSION: ${{ matrix.release.version }}
+          FORCE: ${{ matrix.release.force && '--force' || '' }}
         run: |
-          java -jar app/target/czymogeaktualizowac.jar lab run --plugin "${{ matrix.release.slug }}" --version "${{ matrix.release.version }}" --profiles P1,P2,P3
-          java -jar app/target/czymogeaktualizowac.jar lab run --plugin "${{ matrix.release.slug }}" --version "${{ matrix.release.version }}" --profiles P3 --mode stack
+          java -jar app/target/czymogeaktualizowac.jar lab run --plugin "$SLUG" --version "$VERSION" --profiles P1,P2,P3 $FORCE
+          java -jar app/target/czymogeaktualizowac.jar lab run --plugin "$SLUG" --version "$VERSION" --profiles P3 --mode stack $FORCE
+      # Upload only this release's result file: the data checkout holds every older result too, and publish merges
+      # all artifacts into one folder, so a stale copy from another job could overwrite a fresh result.
+      - name: Stage this release's result
+        env:
+          SLUG: ${{ matrix.release.slug }}
+          VERSION: ${{ matrix.release.version }}
+        run: |
+          mkdir -p "lab-out/$SLUG"
+          cp "data/results/$SLUG/$VERSION.json" "lab-out/$SLUG/"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: results-${{ matrix.release.slug }}-${{ matrix.release.version }}
-          path: data/results
+          path: lab-out
 
   publish:
     needs: [watch, lab]
