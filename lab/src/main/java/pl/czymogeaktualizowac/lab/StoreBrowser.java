@@ -119,8 +119,10 @@ final class StoreBrowser implements AutoCloseable {
 
     LevelResult l3(String checkout, String gatewayId, String redirectHostRegex) {
         long t0 = System.currentTimeMillis();
-        String step = "otwarcie checkoutu";
+        String step = "dodanie produktu do koszyka";
         try {
+            addProductToCart();
+            step = "otwarcie checkoutu";
             page.navigate(store.checkout());
             page.waitForSelector(CHECKOUT_ANY);
             step = "wybór metody płatności " + gatewayId;
@@ -155,6 +157,7 @@ final class StoreBrowser implements AutoCloseable {
     LevelResult l4(String checkout, String shippingMethodRegex, String lockerSelector) {
         long t0 = System.currentTimeMillis();
         try {
+            addProductToCart();
             page.navigate(store.checkout());
             page.waitForSelector(CHECKOUT_ANY);
             // address first: shipping methods depend on it
@@ -173,6 +176,16 @@ final class StoreBrowser implements AutoCloseable {
     }
 
     // ------------------------------------------------------------------ helpers
+
+    /**
+     * L3/L4 start from a fresh cart: L2 places an order, which empties the cart, and WooCommerce then redirects
+     * the checkout page away (the first Paynow L3 runs timed out on the home page because of this).
+     */
+    private void addProductToCart() {
+        page.navigate(store.baseUrl() + "/?add-to-cart=" + store.productId());
+        page.navigate(store.cart());
+        page.getByText("Produkt testowy").first().waitFor();
+    }
 
     private void fillClassic() {
         fill("#billing_first_name", "Jan");
