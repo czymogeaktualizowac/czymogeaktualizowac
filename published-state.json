@@ -1,5 +1,5 @@
 {
-  "at" : "2026-11-17T05:19:13.018941501Z",
+  "at" : "2026-11-17T17:31:24.024103176Z",
   "latestVersion" : {
     "apaczka-pl" : "1.4.4",
     "apaczka-pl-mapa-punktow" : "1.4.7",
@@ -10,14 +10,14 @@
     "globkurier" : "2.7.1",
     "imoje" : "4.16.1",
     "inpost-for-woocommerce" : "2.0.0",
-    "ksef-for-flexible-invoices" : "2.6.2",
+    "ksef-for-flexible-invoices" : "2.6.3",
     "omnibus" : "3.0.5",
     "pay-by-paynow-pl" : "2.5.13",
     "pay-wp" : "2.3.2",
     "platnosci-online-blue-media" : "5.1.0",
     "trustmate-io-integration-for-woocommerce" : "1.18.1",
     "wc-price-history" : "3.2.9",
-    "woo-payu-payment-gateway" : "2.12.0"
+    "woo-payu-payment-gateway" : "2.12.1"
   },
   "verdict" : {
     "apaczka-pl" : "ok",
@@ -40,6 +40,6 @@
   },
   "woo" : "11.3.0",
   "wp" : "7.1.4",
-  "wpDev" : "7.2-beta5",
+  "wpDev" : "7.2-RC1",
   "php" : "8.5.12"
 }
