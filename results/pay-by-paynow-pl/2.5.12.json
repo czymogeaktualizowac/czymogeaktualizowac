@@ -10,37 +10,37 @@
     "php" : "8.1",
     "wp" : "7.0.8",
     "woo" : "11.2.2",
-    "startedAt" : "2026-11-15T23:39:18.432275398Z",
-    "finishedAt" : "2026-11-15T23:39:52.484471308Z",
+    "startedAt" : "2026-11-18T08:20:29.352132627Z",
+    "finishedAt" : "2026-11-18T08:21:06.083457438Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
-      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych (pominięto 1 błędów, które występują też bez wtyczki: to błąd WordPressa/WooCommerce lub laboratorium)",
-      "durationMs" : 2914
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 2250
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1227
+      "durationMs" : 1073
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1607
+      "durationMs" : 1431
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 5404
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
-    "logExcerpt" : [ "[15-Nov-2026 23:39:33 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/var/www/html/wp-includes/blocks/breadcrumbs.php' (include_path='.:/usr/local/lib/php') in /var/www/html/wp-includes/blocks/require-dynamic-blocks.php:10", "[15-Nov-2026 23:39:33 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/var/www/html/wp-includes/blocks/breadcrumbs.php' (include_path='.:/usr/local/lib/php') in /var/www/html/wp-includes/blocks/require-dynamic-blocks.php:10" ]
+    "logExcerpt" : [ ]
   }, {
     "pluginSlug" : "pay-by-paynow-pl",
     "pluginVersion" : "2.5.12",
@@ -50,35 +50,35 @@
     "php" : "8.2",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:40:22.437217532Z",
-    "finishedAt" : "2026-11-15T23:40:55.778987939Z",
+    "startedAt" : "2026-11-18T08:21:37.027437376Z",
+    "finishedAt" : "2026-11-18T08:22:14.080831642Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2887
+      "durationMs" : 2300
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 1680
+      "durationMs" : 1384
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3186
+      "durationMs" : 2920
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 6173
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   }, {
@@ -90,35 +90,35 @@
     "php" : "8.2",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:39:52.519685917Z",
-    "finishedAt" : "2026-11-15T23:40:22.420592186Z",
+    "startedAt" : "2026-11-18T08:21:06.120003981Z",
+    "finishedAt" : "2026-11-18T08:21:37.023893867Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2814
+      "durationMs" : 2233
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1239
+      "durationMs" : 1045
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1561
+      "durationMs" : 1402
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 3717
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   }, {
@@ -130,35 +130,35 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:41:25.981879732Z",
-    "finishedAt" : "2026-11-15T23:41:59.545681473Z",
+    "startedAt" : "2026-11-18T08:22:44.929352150Z",
+    "finishedAt" : "2026-11-18T08:23:22.555013825Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 2232
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 1351
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
       "durationMs" : 2978
     }, {
-      "level" : "L1",
-      "status" : "PASS",
-      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 1669
-    }, {
-      "level" : "L2",
-      "status" : "PASS",
-      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3285
-    }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 6529
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   }, {
@@ -170,35 +170,35 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:40:55.781808823Z",
-    "finishedAt" : "2026-11-15T23:41:25.978898257Z",
+    "startedAt" : "2026-11-18T08:22:14.084333825Z",
+    "finishedAt" : "2026-11-18T08:22:44.925045958Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2901
+      "durationMs" : 2245
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1237
+      "durationMs" : 1067
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1583
+      "durationMs" : 1405
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 3686
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   }, {
@@ -210,35 +210,35 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:43:07.858990863Z",
-    "finishedAt" : "2026-11-15T23:44:11.890545417Z",
+    "startedAt" : "2026-11-18T08:24:31.524559689Z",
+    "finishedAt" : "2026-11-18T08:25:36.011002591Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 30852
+      "durationMs" : 23262
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 2995
+      "durationMs" : 2727
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 4040
+      "durationMs" : 3551
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 6250
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   }, {
@@ -250,35 +250,35 @@
     "php" : "8.3",
     "wp" : "7.1.4",
     "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:42:06.858311644Z",
-    "finishedAt" : "2026-11-15T23:43:07.824653766Z",
+    "startedAt" : "2026-11-18T08:23:30.131031037Z",
+    "finishedAt" : "2026-11-18T08:24:31.491330836Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 30286
+      "durationMs" : 23550
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem (informacyjnie: 1 wyjątków JS i 1 błędów konsoli niezwiązanych jednoznacznie z wtyczką)",
-      "durationMs" : 5296
+      "durationMs" : 5063
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3490
+      "durationMs" : 2938
     }, {
       "level" : "L3",
-      "status" : "SKIPPED",
-      "detail" : "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna LAB_SANDBOX_PAYNOW_OPTION_JSON)",
-      "durationMs" : 0
+      "status" : "PASS",
+      "detail" : "przekierowanie dotarło do strony bramki (paywall.sandbox.paynow.pl)",
+      "durationMs" : 4737
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
       "detail" : "nie dotyczy wtyczek z kategorii payment",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
+    "highestPassed" : "L3",
     "notes" : "",
     "logExcerpt" : [ ]
   } ]
