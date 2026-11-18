@@ -1,5 +1,20 @@
 {
-  "at" : "2026-11-18T08:18:07.514934596Z",
-  "changes" : [ ],
+  "at" : "2026-11-18T17:22:40.985633406Z",
+  "changes" : [ {
+    "kind" : "plugin-release",
+    "subject" : "flexible-shipping",
+    "version" : "6.13.9",
+    "detail" : "Flexible Shipping 6.13.9"
+  }, {
+    "kind" : "wordpress-release",
+    "subject" : "wordpress",
+    "version" : "7.1.5",
+    "detail" : "WordPress 7.1.5"
+  }, {
+    "kind" : "wordpress-prerelease",
+    "subject" : "wordpress",
+    "version" : "7.2-RC2",
+    "detail" : "WordPress 7.2-RC2"
+  } ],
   "errors" : [ ]
 }

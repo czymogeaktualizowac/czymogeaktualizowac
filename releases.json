@@ -1,5 +1,5 @@
 {
-  "generatedAt" : "2026-11-18T08:18:07.514934596Z",
+  "generatedAt" : "2026-11-18T17:22:40.985633406Z",
   "plugins" : {
     "apaczka-pl" : {
       "slug" : "apaczka-pl",
@@ -14,7 +14,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://www.apaczka.com/zostan-sprzedawca",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "1.4.4",
         "released" : "2026-08-25T14:42:42.836877Z",
@@ -94,7 +94,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "1.4.7",
         "released" : "2026-08-25T13:53:21.825378Z",
@@ -173,7 +173,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://octol.io/dhl-polska",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "2.0.7",
         "released" : "2026-11-05T10:45:28.388420Z",
@@ -257,7 +257,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 1,
       "homepage" : "https://wordpress.org/plugins/flexible-invoices/",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "7.1.3",
         "released" : "2026-11-16T11:12:33.822632Z",
@@ -365,15 +365,48 @@
       "vendor" : "WP Desk",
       "category" : "shipping",
       "activeInstalls" : 100000,
-      "latestVersion" : "6.13.8",
-      "lastUpdated" : "2026-11-09 6:48pm GMT",
+      "latestVersion" : "6.13.9",
+      "lastUpdated" : "2026-11-18 9:33am GMT",
       "apiTestedWp" : "7.1.4",
       "apiRequiresPhp" : "7.4",
       "supportThreads" : 3,
       "supportThreadsResolved" : 3,
       "homepage" : "https://octol.io/fs-plugin-uri",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
+        "version" : "6.13.9",
+        "released" : "2026-11-18T09:33:27.139220Z",
+        "firstSeen" : "2026-11-18T17:22:40.985633406Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Flexible Shipping",
+          "version" : "6.13.9",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.4",
+          "wcRequires" : "10.9",
+          "wcTested" : "11.3",
+          "testedWp" : "7.1",
+          "stableTag" : "6.13.9",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "= 6.13.9 - 2026-11-18 =\n* Removed the rating request pop-up.\n\nFor older changelog entries, see the [changelog.txt file](https://plugins.svn.wordpress.org/flexible-shipping/trunk/changelog.txt)."
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 1053,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 1053 listed files checked: code files match"
+        },
+        "zipSha256" : "cbfb116216acce2593b7b53ef1b9ef7845c54fbcd7b7b1a79d036b206d887a22",
+        "zipBytes" : 12755868,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : false,
+          "sample" : [ ]
+        }
+      }, {
         "version" : "6.13.8",
         "released" : "2026-11-09T18:48:40.201959Z",
         "firstSeen" : "2026-11-14T23:03:17.979231534Z",
@@ -454,7 +487,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://furgonetka.pl",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "1.9.10",
         "released" : "2026-11-02T09:36:35.840571Z",
@@ -538,7 +571,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "2.7.1",
         "released" : "2026-10-28T10:23:18.848148Z",
@@ -618,7 +651,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://imoje.pl",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "4.16.1",
         "released" : "2026-09-08T10:02:02.165483Z",
@@ -696,7 +729,7 @@
       "supportThreads" : 3,
       "supportThreadsResolved" : 0,
       "homepage" : "https://wordpress.org/plugins/inpost-for-woocommerce/",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "2.0.0",
         "released" : "2026-11-04T08:03:02.189363Z",
@@ -776,7 +809,7 @@
       "supportThreads" : 2,
       "supportThreadsResolved" : 2,
       "homepage" : "https://www.wpdesk.pl/sklep/faktury-ksef/",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "2.6.3",
         "released" : "2026-11-17T11:03:18.638982Z",
@@ -940,7 +973,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/iworks/omnibus/",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "3.0.5",
         "released" : "2026-10-22T08:13:20.518091Z",
@@ -1024,7 +1057,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/pay-now/paynow-woocommerce",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "2.5.13",
         "released" : "2026-11-06T09:27:55.133629Z",
@@ -1108,7 +1141,7 @@
       "supportThreads" : 5,
       "supportThreadsResolved" : 3,
       "homepage" : "https://www.wpdesk.pl/sk/pay-wp-plugin",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "2.3.2",
         "released" : "2026-11-07T06:29:43.336372Z",
@@ -1190,7 +1223,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://wordpress.org/plugins/platnosci-online-blue-media",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "5.1.0",
         "released" : "2026-10-26T14:42:22.869673Z",
@@ -1274,7 +1307,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://trustmate.io",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "1.18.1",
         "released" : "2026-09-28T05:50:02.763574Z",
@@ -1350,7 +1383,7 @@
       "supportThreads" : 2,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/kkarpieszuk/wc-price-history",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "3.2.9",
         "released" : "2026-10-30T09:27:41.114804Z",
@@ -1434,7 +1467,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/PayU/woo-payu-payment-gateway",
-      "checkedAt" : "2026-11-18T08:18:07.514934596Z",
+      "checkedAt" : "2026-11-18T17:22:40.985633406Z",
       "releases" : [ {
         "version" : "2.12.1",
         "released" : "2026-11-17T13:53:00.083741Z",
@@ -1542,9 +1575,9 @@
   },
   "ecosystem" : {
     "wp" : {
-      "latest" : "7.1.4",
-      "previousMajorLatest" : "7.0.8",
-      "development" : "7.2-RC1"
+      "latest" : "7.1.5",
+      "previousMajorLatest" : "7.0.9",
+      "development" : "7.2-RC2"
     },
     "woo" : {
       "latest" : "11.3.0",
@@ -1593,6 +1626,6 @@
       "activeSupportUntil" : "2021-11-28",
       "eol" : "2022-11-28"
     } ],
-    "checkedAt" : "2026-11-18T08:18:07.514934596Z"
+    "checkedAt" : "2026-11-18T17:22:40.985633406Z"
   }
 }
