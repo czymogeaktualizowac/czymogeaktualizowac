@@ -1,11 +1,11 @@
 {
-  "at" : "2026-11-18T08:26:23.464598369Z",
+  "at" : "2026-11-18T17:33:33.612621654Z",
   "latestVersion" : {
     "apaczka-pl" : "1.4.4",
     "apaczka-pl-mapa-punktow" : "1.4.7",
     "dhl-polska" : "2.0.7",
     "flexible-invoices" : "7.1.3",
-    "flexible-shipping" : "6.13.8",
+    "flexible-shipping" : "6.13.9",
     "furgonetka" : "1.9.10",
     "globkurier" : "2.7.1",
     "imoje" : "4.16.1",
@@ -39,7 +39,7 @@
     "woo-payu-payment-gateway" : "ok"
   },
   "woo" : "11.3.0",
-  "wp" : "7.1.4",
-  "wpDev" : "7.2-RC1",
+  "wp" : "7.1.5",
+  "wpDev" : "7.2-RC2",
   "php" : "8.5.12"
 }
