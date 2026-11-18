@@ -5,9 +5,11 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import pl.czymogeaktualizowac.core.Store;
 import pl.czymogeaktualizowac.publisher.Alerts;
+import pl.czymogeaktualizowac.publisher.Embargo;
 import pl.czymogeaktualizowac.publisher.SiteBuilder;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Clock;
 import java.time.Instant;
@@ -34,6 +36,17 @@ final class PublishCommands {
             Instant now = Clock.systemUTC().instant();
             SiteBuilder.BuildResult r = new SiteBuilder().build(store, parent.root.resolve(out).normalize(), now);
             Main.log("site written: " + r.outDir() + " (" + r.pages() + " files)");
+            // releases held back by the embargo; the undecided ones go to out/embargo-held.txt for the workflow to flag
+            List<Embargo.Held> held = Embargo.load(store).held(store.allResults(), now);
+            held.forEach(h -> Main.log("embargo: " + h.describe() + (h.decided() ? " [decyzja: hold]" : "")));
+            Path heldFile = parent.root.resolve("out").resolve("embargo-held.txt");
+            List<String> undecided = held.stream().filter(h -> !h.decided()).map(Embargo.Held::describe).toList();
+            if (undecided.isEmpty()) {
+                Files.deleteIfExists(heldFile);
+            } else {
+                Files.createDirectories(heldFile.getParent());
+                Files.write(heldFile, undecided);
+            }
             if (markPublished) {
                 Alerts.saveState(store, Alerts.currentState(store, now));
                 Main.log("published state recorded");

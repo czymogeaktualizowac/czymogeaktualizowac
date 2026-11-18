@@ -84,7 +84,7 @@ public final class SiteBuilder {
     public BuildResult build(Store store, Path out, Instant now) throws IOException {
         SiteConfig cfg = loadConfig(store);
         ReleasesFile releases = store.loadReleases();
-        Map<String, ResultsFile> results = store.allResults();
+        Map<String, ResultsFile> results = Embargo.load(store).apply(store.allResults(), now);
         List<TrackedPlugin> tracked = store.trackedPlugins();
         Ecosystem eco = releases.ecosystem();
 

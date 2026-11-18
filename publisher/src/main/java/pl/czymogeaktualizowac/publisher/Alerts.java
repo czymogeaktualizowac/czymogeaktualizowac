@@ -72,7 +72,7 @@ public final class Alerts {
 
     public static PublishedState currentState(Store store, Instant now) {
         ReleasesFile rel = store.loadReleases();
-        Map<String, ResultsFile> results = store.allResults();
+        Map<String, ResultsFile> results = Embargo.load(store).apply(store.allResults(), now);
         Map<String, String> latest = new LinkedHashMap<>();
         Map<String, String> verdict = new LinkedHashMap<>();
         for (var en : rel.plugins().entrySet()) {
@@ -96,7 +96,7 @@ public final class Alerts {
     public static List<Draft> plan(Store store, SiteBuilder.SiteConfig cfg, Instant now, boolean digest) {
         PublishedState prev = Files.exists(statePath(store)) ? Json.read(statePath(store), PublishedState.class) : null;
         ReleasesFile rel = store.loadReleases();
-        Map<String, ResultsFile> results = store.allResults();
+        Map<String, ResultsFile> results = Embargo.load(store).apply(store.allResults(), now);
         List<Draft> out = new ArrayList<>();
         if (prev == null) {
             return out; // first publication is a baseline: nobody has been told anything yet, so nothing is "news"

@@ -62,6 +62,20 @@ without it they are reported as "not tested". Every run first performs a **contr
 store itself does not work, the run is an infrastructure ERROR and is never counted against the plugin.
 See the site page "Jak testujemy" for the public wording.
 
+## Embargo for failing results
+
+A release with any FAIL or ERROR level is held back from the site, feeds and alerts: its pages say
+"Wyniki testów w weryfikacji" (results under review) and claim neither a pass nor a failure. The pipeline's last step
+fails while a held release waits for a decision, so GitHub e-mails you. Then either:
+
+- **a lab problem:** fix it and retest (`retest: slug@version` in Run workflow); a pass lifts the hold by itself;
+- **a real failure:** tell the vendor, then add `{"slug": "…", "version": "…", "decision": "publish", "note": "…"}`
+  to `config/embargo.json` (or `"hold"` to keep it back longer).
+
+Without a decision the result is published automatically `holdDays` (7) after the failing run. The embargo only
+controls what we publish: in this public repository the raw results stay readable on the `data` branch, in the
+Actions logs and in the run artifacts.
+
 ## Security notes
 
 - Plugin zips are untrusted: checked against the per-version checksums WordPress.org publishes (only code files decide),

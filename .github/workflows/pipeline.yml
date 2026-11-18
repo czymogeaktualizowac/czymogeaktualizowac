@@ -14,7 +14,7 @@ on:
         description: "Also process the N previous releases of every plugin (history)"
         default: "0"
       retest:
-        description: "Re-run the lab for the latest release of these plugins even if tested (comma-separated slugs, or all)"
+        description: "Re-run the lab even if tested: comma-separated slug (latest release), slug@version, or all"
         default: ""
 
 permissions:
@@ -60,17 +60,19 @@ jobs:
       # Lab queue: every known stable release without a lab result yet. This covers new releases, the first-run
       # baseline and backfilled history alike (the watcher reports only new releases as "changes", for alerts).
       # Newest release of each plugin first; capped per run, the rest is picked up by the next runs.
-      # The `retest` input adds the latest release of the named plugins again, run with --force.
+      # The `retest` input adds releases again, run with --force: `slug` (its latest release), `slug@version`, or `all`.
       - id: matrix
         env:
           LAB_QUEUE_CAP: "40"
           RETEST: ${{ github.event.inputs.retest || '' }}
         run: |
           RETEST_JSON=$(jq -cn --arg r "$RETEST" '$r | split(",") | map(gsub("^\\s+|\\s+$"; "")) | map(select(length > 0))')
-          UNKNOWN=$(jq -r --argjson rt "$RETEST_JSON" '[.plugins[].slug] as $known | $rt - $known - ["all"] | join(",")' data/releases.json)
-          if [ -n "$UNKNOWN" ]; then echo "::error::retest: unknown plugin slug(s): $UNKNOWN"; exit 1; fi
+          UNKNOWN=$(jq -r --argjson rt "$RETEST_JSON" '[.plugins[] | .slug as $s | $s, (.releases[] | select(.prerelease | not) | "\($s)@\(.version)")] as $known
+                 | $rt - $known - ["all"] | join(",")' data/releases.json)
+          if [ -n "$UNKNOWN" ]; then echo "::error::retest: unknown plugin or version: $UNKNOWN"; exit 1; fi
           jq -r --argjson rt "$RETEST_JSON" '.plugins[] | .slug as $s | .releases | map(select(.prerelease | not)) | to_entries[]
-                 | "\(.key)\t\($s)\t\(.value.version)\t\(if .key == 0 and ($rt | any(. == "all" or . == $s)) then 1 else 0 end)"' data/releases.json \
+                 | .value.version as $v
+                 | "\(.key)\t\($s)\t\($v)\t\(if (.key == 0 and ($rt | any(. == "all" or . == $s))) or ($rt | any(. == "\($s)@\($v)")) then 1 else 0 end)"' data/releases.json \
             | sort -s -n -k1,1 \
             | while IFS=$'\t' read -r rank slug version force; do
                 if [ "$force" = 1 ] || [ ! -f "data/results/$slug/$version.json" ]; then
@@ -177,3 +179,16 @@ jobs:
       - uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
+      # Last on purpose (the site is already deployed): a failing or erroring release is held back from the site,
+      # feeds and alerts (config/embargo.json). This step fails the run, so GitHub e-mails you, while any held
+      # release still waits for a decision.
+      - name: Embargo - failing results held back, review needed
+        run: |
+          if [ -s out/embargo-held.txt ]; then
+            while IFS= read -r line; do echo "::warning title=Embargo::$line"; done < out/embargo-held.txt
+            echo "Check the failure in the lab job log. A lab problem: fix it and retest (slug@version)."
+            echo "A real failure: tell the vendor, then add {\"slug\",\"version\",\"decision\": \"publish\" or \"hold\"} to config/embargo.json."
+            echo "Without a decision the result is published automatically after holdDays."
+            exit 1
+          fi
+          echo "nothing held back"

@@ -21,6 +21,11 @@ public final class Verdicts {
     }
 
     public static Verdict of(ReleaseRecord rel, List<RunResult> runs) {
+        if (Embargo.isHeld(runs)) {
+            // neutral on purpose: the result is not published yet, so the page must neither claim a pass nor hint a failure
+            return new Verdict("none", "Wyniki testów w weryfikacji",
+                    "Wyniki tej wersji sprawdzamy przed publikacją. Do tego czasu nie traktuj jej jako przetestowanej.");
+        }
         // A code-file checksum mismatch is serious but, in real data, usually a packaging artefact (SVN keywords,
         // line endings), so we flag it as a warning and say so; we never accuse an author of tampering.
         boolean checksumWarning = rel.checksum() != null && "MISMATCH".equals(rel.checksum().status());
@@ -80,6 +85,9 @@ public final class Verdicts {
 
     /** One-line summary of the levels reached, e.g. "P2 klasyczny: L2 · P2 blokowy: L2 · P3 klasyczny: L2". */
     public static String labSummary(List<RunResult> runs) {
+        if (Embargo.isHeld(runs)) {
+            return "w weryfikacji";
+        }
         if (runs.isEmpty()) {
             return "brak";
         }
