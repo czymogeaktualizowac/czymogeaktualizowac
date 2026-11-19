@@ -1,5 +1,10 @@
 {
-  "at" : "2026-11-19T05:24:46.510948866Z",
-  "changes" : [ ],
+  "at" : "2026-11-19T17:22:08.491656486Z",
+  "changes" : [ {
+    "kind" : "plugin-release",
+    "subject" : "woo-payu-payment-gateway",
+    "version" : "2.12.2",
+    "detail" : "PayU (Woo) 2.12.2"
+  } ],
   "errors" : [ ]
 }
