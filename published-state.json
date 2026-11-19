@@ -1,5 +1,5 @@
 {
-  "at" : "2026-11-19T05:26:00.104669649Z",
+  "at" : "2026-11-19T17:27:26.780402791Z",
   "latestVersion" : {
     "apaczka-pl" : "1.4.4",
     "apaczka-pl-mapa-punktow" : "1.4.7",
@@ -17,7 +17,7 @@
     "platnosci-online-blue-media" : "5.1.0",
     "trustmate-io-integration-for-woocommerce" : "1.18.1",
     "wc-price-history" : "3.2.9",
-    "woo-payu-payment-gateway" : "2.12.1"
+    "woo-payu-payment-gateway" : "2.12.2"
   },
   "verdict" : {
     "apaczka-pl" : "ok",
@@ -36,7 +36,7 @@
     "platnosci-online-blue-media" : "ok",
     "trustmate-io-integration-for-woocommerce" : "ok",
     "wc-price-history" : "ok",
-    "woo-payu-payment-gateway" : "ok"
+    "woo-payu-payment-gateway" : "none"
   },
   "woo" : "11.3.0",
   "wp" : "7.1.5",
