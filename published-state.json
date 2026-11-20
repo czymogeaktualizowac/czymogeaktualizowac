@@ -1,5 +1,5 @@
 {
-  "at" : "2026-11-19T17:27:26.780402791Z",
+  "at" : "2026-11-20T05:27:06.282399700Z",
   "latestVersion" : {
     "apaczka-pl" : "1.4.4",
     "apaczka-pl-mapa-punktow" : "1.4.7",
@@ -38,7 +38,7 @@
     "wc-price-history" : "ok",
     "woo-payu-payment-gateway" : "none"
   },
-  "woo" : "11.3.0",
+  "woo" : "11.3.1",
   "wp" : "7.1.5",
   "wpDev" : "7.2-RC2",
   "php" : "8.5.12"
