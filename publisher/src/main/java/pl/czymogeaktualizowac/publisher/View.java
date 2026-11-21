@@ -63,7 +63,8 @@ public final class View {
                               String released, Verdict verdict, String forumSummary, List<TopicRow> topics,
                               List<RunRow> runs, String changelog, String requiresPhp, String wcRequires,
                               String wcTested, String testedWp, String license, List<String> requiresPlugins,
-                              String checksumText, String zipSha256, String wpOrgUrl, boolean prerelease) {
+                              String checksumText, String zipSha256, String wpOrgUrl, boolean prerelease,
+                              /* results exist but are held by the embargo: never say "not tested" */ boolean held) {
     }
 
     public record CompatItem(String plugin, String slug, String version, String declared, String declaredCss,

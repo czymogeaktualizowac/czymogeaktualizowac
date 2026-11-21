@@ -1,0 +1,10 @@
+{
+  "database": "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+  "wordpress": {
+    "8.1": "wordpress:php8.1-apache@sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
+    "8.2": "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+    "8.3": "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+    "8.4": "wordpress:php8.4-apache@sha256:d863d10ba598fd1a793ab25740516a15e41add6c333bcaae1f36bc645a6b1971",
+    "8.5": "wordpress:php8.5-apache@sha256:3e9192dcd88c19b6fd25abf82829934bd990cc717c5b5a075b80d1212a56bfe0"
+  }
+}

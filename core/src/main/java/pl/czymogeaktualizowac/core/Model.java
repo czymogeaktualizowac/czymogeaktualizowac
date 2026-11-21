@@ -60,6 +60,24 @@ public final class Model {
             String why) {
     }
 
+    /**
+     * Docker images of the lab, pinned to digests (config/lab-images.json), so every run uses exactly the same
+     * operating system, PHP build and Apache until the pins are refreshed on purpose ({@code lab pin-images}, via a PR).
+     *
+     * @param database  "name:tag@sha256:…" of the database image
+     * @param wordpress PHP version ("8.3") -> "name:tag@sha256:…" of the WordPress image for that PHP version
+     */
+    public record LabImages(String database, Map<String, String> wordpress) {
+        public String wordpressFor(String php) {
+            String img = wordpress == null ? null : wordpress.get(php);
+            if (img == null) {
+                throw new IllegalArgumentException("no pinned WordPress image for PHP " + php
+                        + " in config/lab-images.json (add it with 'lab pin-images --php " + php + "')");
+            }
+            return img;
+        }
+    }
+
     // ---------------------------------------------------------------- watcher output
 
     public record PluginHeaders(
@@ -78,7 +96,7 @@ public final class Model {
 
     /** Result of comparing the downloaded zip with the checksums WordPress.org publishes for that version. */
     public record ChecksumResult(
-            /* OK | MISMATCH | UNAVAILABLE */ String status,
+            /* OK | MISMATCH | UNAVAILABLE (WordPress.org publishes none) | FETCH_FAILED (transient, retried) */ String status,
             int filesChecked,
             List<String> mismatched,
             List<String> missing,
@@ -90,7 +108,8 @@ public final class Model {
 
     /**
      * Cheap "this release hurts people" proxy: new support topics in the 7 days after a release.
-     * level: NONE (0 topics) | LOW (1-2) | ELEVATED (3+, or 2+ that mention the version). window: counted at checkedAt.
+     * level: NONE (0 topics) | LOW (1-2) | ELEVATED (3+, or 2 of which at least one mentions the version)
+     * | UNKNOWN (release date unknown or the feed does not reach back to it). See {@link Signals#forum}.
      */
     public record ForumSignal(
             int topics7d,
@@ -180,7 +199,18 @@ public final class Model {
             List<LevelResult> levels,
             /* highest level L0..Ln such that all lower levels PASS and this one PASSes; null if L0 failed */ Level highestPassed,
             String notes,
-            List<String> logExcerpt) {
+            List<String> logExcerpt,
+            /* what the run actually used, so an old result can be reproduced: "wordpressImage", "databaseImage",
+               "wpCli", "plugins" (every plugin active before the one under test, "slug@version" comma-separated);
+               null in results written before this field existed */ Map<String, String> environment) {
+
+        /** For results without a recorded environment (older data, tests). */
+        public RunResult(String pluginSlug, String pluginVersion, String profileId, String mode, String checkout, String php,
+                         String wp, String woo, Instant startedAt, Instant finishedAt, List<LevelResult> levels,
+                         Level highestPassed, String notes, List<String> logExcerpt) {
+            this(pluginSlug, pluginVersion, profileId, mode, checkout, php, wp, woo, startedAt, finishedAt, levels,
+                    highestPassed, notes, logExcerpt, null);
+        }
     }
 
     public record ResultsFile(String pluginSlug, String pluginVersion, List<RunResult> runs) {

@@ -33,10 +33,8 @@ public final class Http {
         }
     }
 
-    private final HttpClient client = HttpClient.newBuilder()
-            .followRedirects(HttpClient.Redirect.NORMAL)
-            .connectTimeout(Duration.ofSeconds(20))
-            .build();
+    /** Created on first request: code that never calls out (planning, tests on cached data) opens no network resources. */
+    private HttpClient client;
     private final Map<String, Long> lastRequestByHost = new HashMap<>();
     private final long minIntervalMs;
     private final int retries;
@@ -59,7 +57,14 @@ public final class Http {
     }
 
     public Response get(String url) throws IOException {
-        return send(HttpRequest.newBuilder(URI.create(url)).GET(), url, Duration.ofSeconds(60));
+        return get(url, Map.of());
+    }
+
+    /** GET with extra request headers (e.g. Accept / Authorization for a container registry). */
+    public Response get(String url, Map<String, String> headers) throws IOException {
+        HttpRequest.Builder b = HttpRequest.newBuilder(URI.create(url)).GET();
+        headers.forEach(b::header);
+        return send(b, url, Duration.ofSeconds(60));
     }
 
     /** WebDAV PROPFIND (used for the Subversion tags listing, which carries tag creation dates). */
@@ -77,7 +82,7 @@ public final class Http {
         for (int attempt = 0; attempt <= retries; attempt++) {
             politeness(request.uri().getHost());
             try {
-                HttpResponse<byte[]> r = client.send(request, HttpResponse.BodyHandlers.ofByteArray());
+                HttpResponse<byte[]> r = client().send(request, HttpResponse.BodyHandlers.ofByteArray());
                 int s = r.statusCode();
                 if (s >= 200 && s < 300 || s == 207) {
                     Map<String, String> h = new HashMap<>();
@@ -99,6 +104,16 @@ public final class Http {
             sleep(1000L * (attempt + 1));
         }
         throw last == null ? new IOException("request failed: " + url) : last;
+    }
+
+    private synchronized HttpClient client() {
+        if (client == null) {
+            client = HttpClient.newBuilder()
+                    .followRedirects(HttpClient.Redirect.NORMAL)
+                    .connectTimeout(Duration.ofSeconds(20))
+                    .build();
+        }
+        return client;
     }
 
     private synchronized void politeness(String host) {

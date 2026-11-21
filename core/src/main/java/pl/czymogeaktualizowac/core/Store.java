@@ -53,6 +53,14 @@ public final class Store {
         });
     }
 
+    public Model.LabImages labImages() {
+        Path p = configDir.resolve("lab-images.json");
+        if (!Files.exists(p)) {
+            throw new IllegalStateException("config/lab-images.json is missing: the lab only runs pinned images");
+        }
+        return Json.read(p, Model.LabImages.class);
+    }
+
     public Path releasesPath() {
         return dataDir.resolve("releases.json");
     }

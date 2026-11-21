@@ -207,7 +207,8 @@ public final class SiteBuilder {
                 dash(h == null ? null : h.wcTested()), dash(h == null ? null : h.testedWp()), dash(h == null ? null : h.license()),
                 h == null || h.requiresPlugins() == null ? List.of() : h.requiresPlugins(),
                 rel.checksum() == null ? "–" : rel.checksum().status() + ": " + rel.checksum().detail(),
-                rel.zipSha256() == null ? "–" : rel.zipSha256(), "https://wordpress.org/plugins/" + tp.slug() + "/", rel.prerelease());
+                rel.zipSha256() == null ? "–" : rel.zipSha256(), "https://wordpress.org/plugins/" + tp.slug() + "/", rel.prerelease(),
+                Embargo.isHeld(runs));
         render(out, "pluginy/" + tp.slug() + "/" + seg(rel.version()) + "/index.html", "release.jte", page);
     }
 
@@ -216,7 +217,8 @@ public final class SiteBuilder {
                 statusPl(l.status().name()), statusCss(l.status().name()), l.detail() == null ? "" : l.detail())).toList();
         return new RunRow(r.profileId(), r.php(), r.wp(), r.woo(), Verdicts.checkoutPl(r.checkout()),
                 r.mode().equals("stack") ? "pełny zestaw wtyczek" : "wtyczka solo",
-                r.highestPassed() == null ? "żaden (błąd L0)" : r.highestPassed().name(), levels);
+                Verdicts.hasLabError(r) ? "nieznany (błąd środowiska, nie wtyczki)"
+                        : r.highestPassed() == null ? "żaden (błąd L0)" : r.highestPassed().name(), levels);
     }
 
     private PluginRow pluginRow(TrackedPlugin tp, PluginState st, Map<String, ResultsFile> results) {
@@ -447,7 +449,8 @@ public final class SiteBuilder {
     static String statusCss(String s) {
         return switch (s) {
             case "PASS" -> "ok";
-            case "FAIL", "ERROR" -> "bad";
+            case "FAIL" -> "bad";
+            case "ERROR" -> "warn"; // the lab's problem, not the plugin's: never shown like a failure
             default -> "none";
         };
     }

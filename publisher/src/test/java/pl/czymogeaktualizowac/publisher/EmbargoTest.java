@@ -59,8 +59,12 @@ class EmbargoTest {
     }
 
     @Test
-    void infrastructureErrorIsHeldToo() {
-        assertEquals(1, embargo(null).held(results(run(Status.ERROR, Status.SKIPPED)), RUN_AT).size());
+    void infrastructureErrorIsNotHeldBecauseItIsNeverPublishedAsAFailure() {
+        Map<String, ResultsFile> in = results(run(Status.ERROR, Status.SKIPPED));
+        assertTrue(embargo(null).held(in, RUN_AT).isEmpty());
+        // even long after holdDays, an ERROR-only release reads "result unknown", never "bad"
+        List<RunResult> runs = embargo(null).apply(in, RUN_AT.plus(Duration.ofDays(30))).get("p|1.0.0").runs();
+        assertEquals("none", Verdicts.of(release(), runs).code());
     }
 
     @Test

@@ -15,14 +15,15 @@
 <table class="data">
   <thead><tr><th>Poziom</th><th>Co sprawdzamy</th></tr></thead>
   <tbody>
-    <tr><td><strong>L0</strong></td><td>Instalacja i aktywacja bez błędu krytycznego; strona główna, sklep, koszyk i zamówienie odpowiadają bez „fatal error”; dziennik błędów PHP bez błędów krytycznych.</td></tr>
+    <tr><td><strong>L0</strong></td><td>Instalacja i aktywacja bez błędu krytycznego; strona główna, sklep i koszyk odpowiadają bez „fatal error” (stronę zamówienia sprawdza L1); dziennik błędów PHP bez błędów krytycznych.</td></tr>
     <tr><td><strong>L1</strong></td><td>Dodanie produktu do koszyka w przeglądarce; strona koszyka i strona zamówienia (klasyczna lub blokowa) wczytują się z formularzem.</td></tr>
     <tr><td><strong>L2</strong></td><td>Złożenie zamówienia testowego z płatnością przy odbiorze; strona potwierdzenia zamówienia.</td></tr>
     <tr><td><strong>L3</strong></td><td>Bramka płatności w trybie sandbox: przekierowanie dociera do strony płatności. Tylko tam, gdzie mamy dane sandboxowe; w innym razie „pominięto”.</td></tr>
-    <tr><td><strong>L4</strong></td><td>Widget wyboru paczkomatu lub punktu odbioru wczytuje się i pozwala wybrać punkt. Tylko tam, gdzie mamy konfigurację; w innym razie „pominięto”.</td></tr>
+    <tr><td><strong>L4</strong></td><td>Widget wyboru paczkomatu lub punktu odbioru pojawia się po wybraniu metody dostawy (samego wyboru punktu nie sprawdzamy). Tylko tam, gdzie mamy konfigurację; w innym razie „pominięto”.</td></tr>
   </tbody>
 </table>
 <p><strong>„Pominięto” nigdy nie oznacza „zaliczono”.</strong> Werdykt „testy L0–L2 bez błędów” mówi tylko o L0–L2.</p>
+<p>Każdy test zaczynamy od przebiegu kontrolnego bez testowanej wtyczki (z jej zależnościami, a w trybie „stack” z pozostałymi wtyczkami zestawu). Jeśli sklep nie działa już wtedy, to problem laboratorium, nie wtyczki: pokazujemy „wynik nieznany” i powtarzamy test. Błąd przypisujemy wtyczce dopiero wtedy, gdy powtórzy się w drugim, niezależnym uruchomieniu.</p>
 
 <h2>Profile testowe</h2>
 <p>Nie testujemy wszystkich kombinacji wersji (to tysiące). Testujemy zmianę (nowe wydanie jednej wtyczki) w kilku profilach opartych na tym, co faktycznie działa w polskich sklepach:</p>

@@ -3,6 +3,7 @@ package pl.czymogeaktualizowac.app;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
+import pl.czymogeaktualizowac.core.ConfigCheck;
 import pl.czymogeaktualizowac.core.Http;
 import pl.czymogeaktualizowac.core.Store;
 import pl.czymogeaktualizowac.core.WpOrg;
@@ -21,8 +22,8 @@ import java.util.concurrent.Callable;
 /** Single entry point: {@code java -jar czymogeaktualizowac.jar <command>}. */
 @Command(name = "czymogeaktualizowac", mixinStandardHelpOptions = true, version = "0.1.0",
         description = "Independent, automated testing of Polish WooCommerce plugin releases.",
-        subcommands = {Main.WatchCmd.class, Main.SpikeCmd.class, LabCommands.class, PublishCommands.PublishCmd.class,
-                PublishCommands.AlertsCmd.class})
+        subcommands = {Main.ValidateCmd.class, Main.WatchCmd.class, Main.SpikeCmd.class, LabCommands.class,
+                PublishCommands.PublishCmd.class, PublishCommands.AlertsCmd.class})
 public class Main {
 
     @Option(names = "--root", description = "Repository root (contains config/, data/, cache/). Default: current directory.",
@@ -39,6 +40,34 @@ public class Main {
 
     static void log(String s) {
         System.out.println(s);
+    }
+
+    /** A GitHub Actions workflow annotation (shown on the run page); a no-op outside Actions. */
+    static void annotate(String level, String title, String message) {
+        if ("true".equals(System.getenv("GITHUB_ACTIONS"))) {
+            System.out.println("::" + level + " title=" + title + "::" + message.replace("\r", " ").replace("\n", " "));
+        }
+    }
+
+    @Command(name = "validate", description = "Check config/*.json: unknown keys, symbols, regexes, embargo decisions. Exit 1 on errors.")
+    static class ValidateCmd implements Callable<Integer> {
+        @CommandLine.ParentCommand
+        Main parent;
+
+        @Override
+        public Integer call() {
+            ConfigCheck.Report r = ConfigCheck.check(store(parent.root).configDir);
+            r.warnings().forEach(w -> {
+                log("warning: " + w);
+                annotate("warning", "config", w);
+            });
+            r.errors().forEach(e -> {
+                log("ERROR: " + e);
+                annotate("error", "config", e);
+            });
+            log(r.ok() ? "config OK (" + r.warnings().size() + " warning(s))" : r.errors().size() + " config error(s)");
+            return r.ok() ? 0 : 1;
+        }
     }
 
     @Command(name = "watch", description = "Poll WordPress.org, record new releases, verify zips, compute the community signal.")
@@ -61,7 +90,14 @@ public class Main {
             log("changes: " + r.changes().size() + ", errors: " + r.errors().size());
             r.changes().forEach(c -> log("  " + c.kind() + " " + c.subject() + " " + c.version()));
             r.errors().forEach(e -> log("  ERROR " + e));
-            return r.errors().isEmpty() ? 0 : 1;
+            // one plugin removed from WordPress.org (or one flaky endpoint) must not freeze the whole site: partial errors
+            // are reported (a warning annotation in GitHub Actions) and the data of every other plugin is still committed
+            r.errors().forEach(e -> annotate("warning", "watch", e));
+            if (r.totalFailure()) {
+                log("no tracked plugin could be read: treating the run as failed");
+                return 1;
+            }
+            return 0;
         }
     }
 
