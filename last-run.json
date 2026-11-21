@@ -1,10 +1,5 @@
 {
-  "at" : "2026-11-20T17:15:50.141384265Z",
-  "changes" : [ {
-    "kind" : "php-release",
-    "subject" : "php",
-    "version" : "8.6.0",
-    "detail" : "PHP 8.6.0"
-  } ],
+  "at" : "2026-11-21T05:14:35.162583880Z",
+  "changes" : [ ],
   "errors" : [ ]
 }
