@@ -63,6 +63,20 @@ class LabUnitTest {
     }
 
     @Test
+    void missingOrBrokenSandboxSecretsSkipL3InsteadOfBreakingTheRun() {
+        // GitHub Actions passes a secret that does not exist as "", which must mean "no sandbox data"
+        assertNull(LabRunner.sandboxJson(null));
+        assertNull(LabRunner.sandboxJson(""));
+        assertNull(LabRunner.sandboxJson("  \n"));
+        assertEquals("{\"a\":1}", LabRunner.sandboxJson(" {\"a\":1}\n"));
+        assertNull(LabRunner.sandboxJsonProblem("{\"testmode\":\"yes\"}"));
+        assertEquals("niepoprawny JSON", LabRunner.sandboxJsonProblem("{\"pos_id\": 123"));
+        assertEquals("to nie jest obiekt JSON", LabRunner.sandboxJsonProblem("[1,2]"));
+        // the reason never contains the secret value
+        assertFalse(LabRunner.sandboxJsonProblem("{\"client_secret\":\"s3cr3t\"").contains("s3cr3t"));
+    }
+
+    @Test
     void onlyDigestPinnedImagesAreAccepted() {
         String sha = "@sha256:" + "0123456789abcdef".repeat(4);
         assertTrue(LabEnv.pinned("wordpress:php8.3-apache" + sha));
