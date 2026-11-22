@@ -10,8 +10,6 @@ import pl.czymogeaktualizowac.core.Model.PluginHeaders;
 import pl.czymogeaktualizowac.core.Model.PluginState;
 import pl.czymogeaktualizowac.core.Model.PhpCycle;
 import pl.czymogeaktualizowac.core.Model.ReleaseRecord;
-import pl.czymogeaktualizowac.core.Model.ReleasesFile;
-import pl.czymogeaktualizowac.core.Model.ResultsFile;
 import pl.czymogeaktualizowac.core.Model.RunResult;
 import pl.czymogeaktualizowac.core.Model.TrackedPlugin;
 import pl.czymogeaktualizowac.core.Store;
@@ -83,10 +81,9 @@ public final class SiteBuilder {
 
     public BuildResult build(Store store, Path out, Instant now) throws IOException {
         SiteConfig cfg = loadConfig(store);
-        ReleasesFile releases = store.loadReleases();
-        Map<String, ResultsFile> results = Embargo.load(store).apply(store.allResults(), now);
         List<TrackedPlugin> tracked = store.trackedPlugins();
-        Ecosystem eco = releases.ecosystem();
+        Published pub = Published.of(store, now);
+        Ecosystem eco = pub.ecosystem();
 
         Site site = new Site(cfg.baseUrl(), cfg.name(), cfg.tagline(), cfg.contactEmail(),
                 cfg.signupFormUrl().isBlank() ? "#" : cfg.signupFormUrl(), !cfg.signupFormUrl().isBlank(),
@@ -101,21 +98,17 @@ public final class SiteBuilder {
 
         List<PluginOption> options = tracked.stream().map(t -> new PluginOption(t.slug(), t.name(), false)).toList();
         List<PluginRow> rows = new ArrayList<>();
-        Map<String, PluginState> states = releases.plugins();
 
-        for (TrackedPlugin tp : tracked) {
-            PluginState st = states.get(tp.slug());
-            if (st == null || st.releases() == null || st.releases().isEmpty()) {
-                continue;
-            }
-            PluginRow row = pluginRow(tp, st, results);
+        for (Published.Plugin p : pub.plugins()) {
+            TrackedPlugin tp = p.tracked();
+            PluginState st = p.state();
+            PluginRow row = pluginRow(p);
             rows.add(row);
 
             List<ReleaseRow> relRows = new ArrayList<>();
-            for (ReleaseRecord rel : st.releases()) {
-                List<RunResult> runs = runs(results, tp.slug(), rel.version());
-                relRows.add(releaseRow(tp.slug(), rel, runs));
-                writeRelease(out, site, tp, st, rel, runs);
+            for (Published.Release rel : p.releases()) {
+                relRows.add(releaseRow(tp.slug(), rel));
+                writeRelease(out, site, p, rel);
             }
             List<PluginOption> opt = options.stream()
                     .map(o -> new PluginOption(o.slug(), o.name(), o.slug().equals(tp.slug()))).toList();
@@ -128,7 +121,7 @@ public final class SiteBuilder {
                     st.homepage(), "powiadomienia", opt);
             render(out, "pluginy/" + tp.slug() + "/index.html", "plugin.jte", page);
             write(out, "pluginy/" + tp.slug() + "/rss.xml", Feeds.rss(site, "Wydania: " + st.name(),
-                    "/pluginy/" + tp.slug() + "/", feedItems(site, tp, st, results)));
+                    "/pluginy/" + tp.slug() + "/", feedItems(site, p)));
         }
 
         // index
@@ -142,17 +135,17 @@ public final class SiteBuilder {
         // compatibility pages
         List<Link> compatLinks = new ArrayList<>();
         if (eco != null) {
-            compatLinks.add(compatEcosystem(out, site, tracked, states, results, "woocommerce", eco.woo().latest(), false));
+            compatLinks.add(compatEcosystem(out, site, pub, "woocommerce", eco.woo().latest(), false));
             if (eco.woo().prerelease() != null) {
-                compatLinks.add(compatEcosystem(out, site, tracked, states, results, "woocommerce", eco.woo().prerelease(), true));
+                compatLinks.add(compatEcosystem(out, site, pub, "woocommerce", eco.woo().prerelease(), true));
             }
-            compatLinks.add(compatEcosystem(out, site, tracked, states, results, "wordpress", eco.wp().latest(), false));
+            compatLinks.add(compatEcosystem(out, site, pub, "wordpress", eco.wp().latest(), false));
             if (eco.wp().development() != null) {
-                compatLinks.add(compatEcosystem(out, site, tracked, states, results, "wordpress", eco.wp().development(), true));
+                compatLinks.add(compatEcosystem(out, site, pub, "wordpress", eco.wp().development(), true));
             }
             compatLinks.add(new Link("PHP: koniec wsparcia i wtyczki, które wymagają nowszej wersji", "/kompatybilnosc/php/",
                     "daty EOL z endoflife.date"));
-            writePhp(out, site, eco, tracked, states);
+            writePhp(out, site, eco, pub, now);
         }
         render(out, "kompatybilnosc/index.html", "compat-index.jte", new CompatIndexPage(site,
                 new Meta("Zgodność polskich wtyczek z nowym WooCommerce, WordPress i PHP | " + cfg.name(),
@@ -177,8 +170,8 @@ public final class SiteBuilder {
         render(out, "404.html", "notfound.jte", simple(site, "Nie znaleziono strony | " + cfg.name(), "Nie znaleziono strony.", "/404.html", "404"));
 
         // machine-readable and technical files
-        write(out, "rss.xml", Feeds.rss(site, "Wszystkie wydania śledzonych wtyczek", "/", globalFeedItems(site, tracked, states, results)));
-        write(out, "feed/v1/feed.json", Feeds.feedJson(cfg, tracked, releases, results, now));
+        write(out, "rss.xml", Feeds.rss(site, "Wszystkie wydania śledzonych wtyczek", "/", globalFeedItems(site, pub)));
+        write(out, "feed/v1/feed.json", Feeds.feedJson(cfg, pub, now));
         write(out, "robots.txt", "User-agent: *\nAllow: /\nDisallow: /ankieta/\n\nSitemap: " + cfg.baseUrl() + "/sitemap.xml\n");
         write(out, "CNAME", cfg.baseUrl().replaceFirst("^https?://", "") + "\n");
         write(out, ".nojekyll", "");
@@ -190,12 +183,15 @@ public final class SiteBuilder {
 
     // ------------------------------------------------------------------ pages
 
-    private void writeRelease(Path out, Site site, TrackedPlugin tp, PluginState st, ReleaseRecord rel, List<RunResult> runs) throws IOException {
+    private void writeRelease(Path out, Site site, Published.Plugin p, Published.Release pr) throws IOException {
+        TrackedPlugin tp = p.tracked();
+        PluginState st = p.state();
+        ReleaseRecord rel = pr.record();
         PluginHeaders h = rel.headers();
-        View.Verdict verdict = Verdicts.of(rel, runs);
+        View.Verdict verdict = pr.verdict();
         List<TopicRow> topics = rel.forum() == null ? List.of() : rel.forum().sample().stream()
                 .map(t -> new TopicRow(t.title(), t.link(), DATE.format(t.date()))).toList();
-        List<RunRow> runRows = runs.stream().map(this::runRow).toList();
+        List<RunRow> runRows = pr.runs().stream().map(this::runRow).toList();
         String path = "/pluginy/" + tp.slug() + "/" + seg(rel.version()) + "/";
         ReleasePage page = new ReleasePage(site,
                 new Meta(st.name() + " " + rel.version() + ": czy mogę zaktualizować? | " + site.name(),
@@ -208,7 +204,7 @@ public final class SiteBuilder {
                 h == null || h.requiresPlugins() == null ? List.of() : h.requiresPlugins(),
                 rel.checksum() == null ? "–" : rel.checksum().status() + ": " + rel.checksum().detail(),
                 rel.zipSha256() == null ? "–" : rel.zipSha256(), "https://wordpress.org/plugins/" + tp.slug() + "/", rel.prerelease(),
-                Embargo.isHeld(runs));
+                pr.held());
         render(out, "pluginy/" + tp.slug() + "/" + seg(rel.version()) + "/index.html", "release.jte", page);
     }
 
@@ -221,37 +217,33 @@ public final class SiteBuilder {
                         : r.highestPassed() == null ? "żaden (błąd L0)" : r.highestPassed().name(), levels);
     }
 
-    private PluginRow pluginRow(TrackedPlugin tp, PluginState st, Map<String, ResultsFile> results) {
-        ReleaseRecord latest = st.releases().stream().filter(r -> r.version().equals(st.latestVersion())).findFirst()
-                .orElse(st.releases().get(0));
-        List<RunResult> runs = runs(results, tp.slug(), latest.version());
-        return new PluginRow(tp.slug(), st.name(), nz(st.vendor()), CATEGORY.getOrDefault(st.category(), "Inne"),
-                installs(st.activeInstalls()), latest.version(), date(latest.released()), Verdicts.of(latest, runs),
-                Verdicts.forumText(latest.forum()), Verdicts.forumCss(latest.forum()), "/pluginy/" + tp.slug() + "/",
-                Verdicts.labSummary(runs));
+    private PluginRow pluginRow(Published.Plugin p) {
+        PluginState st = p.state();
+        ReleaseRecord latest = p.latest().record();
+        return new PluginRow(p.slug(), st.name(), nz(st.vendor()), CATEGORY.getOrDefault(st.category(), "Inne"),
+                installs(st.activeInstalls()), latest.version(), date(latest.released()), p.latest().verdict(),
+                Verdicts.forumText(latest.forum()), Verdicts.forumCss(latest.forum()), "/pluginy/" + p.slug() + "/",
+                p.latest().labSummary());
     }
 
-    private ReleaseRow releaseRow(String slug, ReleaseRecord rel, List<RunResult> runs) {
+    private ReleaseRow releaseRow(String slug, Published.Release pr) {
+        ReleaseRecord rel = pr.record();
         PluginHeaders h = rel.headers();
-        return new ReleaseRow(rel.version(), date(rel.released()), Verdicts.of(rel, runs), Verdicts.labSummary(runs),
+        return new ReleaseRow(rel.version(), date(rel.released()), pr.verdict(), pr.labSummary(),
                 Verdicts.forumText(rel.forum()), Verdicts.forumCss(rel.forum()), dash(h == null ? null : h.wcTested()),
                 dash(h == null ? null : h.requiresPhp()), rel.checksum() == null ? "–" : rel.checksum().status(),
                 rel.prerelease(), "/pluginy/" + slug + "/" + seg(rel.version()) + "/");
     }
 
-    private Link compatEcosystem(Path out, Site site, List<TrackedPlugin> tracked, Map<String, PluginState> states,
-                                 Map<String, ResultsFile> results, String product, String version, boolean pre) throws IOException {
+    private Link compatEcosystem(Path out, Site site, Published pub, String product, String version, boolean pre) throws IOException {
         boolean woo = product.equals("woocommerce");
         String productName = woo ? "WooCommerce" : "WordPress";
         String heading = productName + " " + version + (pre ? " (wersja testowa)" : "") + ": status polskich wtyczek";
         List<CompatItem> items = new ArrayList<>();
-        for (TrackedPlugin tp : tracked) {
-            PluginState st = states.get(tp.slug());
-            if (st == null || st.releases() == null || st.releases().isEmpty()) {
-                continue;
-            }
-            ReleaseRecord latest = st.releases().stream().filter(r -> r.version().equals(st.latestVersion())).findFirst()
-                    .orElse(st.releases().get(0));
+        for (Published.Plugin p : pub.plugins()) {
+            TrackedPlugin tp = p.tracked();
+            PluginState st = p.state();
+            ReleaseRecord latest = p.latest().record();
             PluginHeaders h = latest.headers();
             String declaredVal = h == null ? null : (woo ? h.wcTested() : h.testedWp());
             String declared;
@@ -266,13 +258,22 @@ public final class SiteBuilder {
                 declared = "testowana tylko do " + declaredVal;
                 css = "warn";
             }
-            List<RunResult> matching = runs(results, tp.slug(), latest.version()).stream()
+            List<RunResult> matching = p.latest().runs().stream()
                     .filter(r -> version.equals(woo ? r.woo() : r.wp())).toList();
-            View.Verdict v = matching.isEmpty()
-                    ? new View.Verdict("none", "Brak testów na tej wersji", null)
-                    : Verdicts.of(latest, matching);
-            items.add(new CompatItem(st.name(), tp.slug(), latest.version(), declared, css,
-                    matching.isEmpty() ? "brak" : Verdicts.labSummary(matching), v, "/pluginy/" + tp.slug() + "/"));
+            View.Verdict v;
+            String lab;
+            if (p.latest().held()) {
+                // held results are hidden here too, but the page must not claim there were no tests
+                v = Verdicts.HELD;
+                lab = p.latest().labSummary();
+            } else if (matching.isEmpty()) {
+                v = new View.Verdict("none", "Brak testów na tej wersji", null);
+                lab = "brak";
+            } else {
+                v = Verdicts.of(latest, matching);
+                lab = Verdicts.labSummary(matching);
+            }
+            items.add(new CompatItem(st.name(), tp.slug(), latest.version(), declared, css, lab, v, "/pluginy/" + tp.slug() + "/"));
         }
         String path = "/kompatybilnosc/" + product + "-" + seg(version) + "/";
         CompatPage page = new CompatPage(site,
@@ -290,13 +291,12 @@ public final class SiteBuilder {
                 pre ? "wcześniejsze ostrzeżenie" : "najnowsza stabilna");
     }
 
-    private void writePhp(Path out, Site site, Ecosystem eco, List<TrackedPlugin> tracked, Map<String, PluginState> states) throws IOException {
-        LocalDate today = LocalDate.now(ZoneId.of("Europe/Warsaw"));
+    private void writePhp(Path out, Site site, Ecosystem eco, Published pub, Instant now) throws IOException {
+        // the build time, not the wall clock: the same data always renders the same page
+        LocalDate today = LocalDate.ofInstant(now, ZoneId.of("Europe/Warsaw"));
         List<PhpRow> rows = new ArrayList<>();
         for (PhpCycle c : eco.php()) {
-            String blockers = tracked.stream().map(tp -> states.get(tp.slug())).filter(java.util.Objects::nonNull)
-                    .filter(st -> !st.releases().isEmpty())
-                    .map(st -> st.releases().stream().filter(r -> r.version().equals(st.latestVersion())).findFirst().orElse(st.releases().get(0)))
+            String blockers = pub.plugins().stream().map(p -> p.latest().record())
                     .filter(r -> r.headers() != null && r.headers().requiresPhp() != null
                             && Versions.compare(r.headers().requiresPhp(), c.cycle()) > 0)
                     .map(r -> r.headers().pluginName() + " (PHP " + r.headers().requiresPhp() + "+)")
@@ -339,36 +339,28 @@ public final class SiteBuilder {
         return r;
     }
 
-    private List<Feeds.Item> globalFeedItems(Site site, List<TrackedPlugin> tracked, Map<String, PluginState> states, Map<String, ResultsFile> results) {
+    private List<Feeds.Item> globalFeedItems(Site site, Published pub) {
         List<Feeds.Item> items = new ArrayList<>();
-        for (TrackedPlugin tp : tracked) {
-            PluginState st = states.get(tp.slug());
-            if (st != null) {
-                items.addAll(feedItems(site, tp, st, results));
-            }
+        for (Published.Plugin p : pub.plugins()) {
+            items.addAll(feedItems(site, p));
         }
         items.sort(Comparator.comparing(Feeds.Item::date).reversed());
         return items.stream().limit(60).toList();
     }
 
-    private List<Feeds.Item> feedItems(Site site, TrackedPlugin tp, PluginState st, Map<String, ResultsFile> results) {
+    private List<Feeds.Item> feedItems(Site site, Published.Plugin p) {
         List<Feeds.Item> items = new ArrayList<>();
-        for (ReleaseRecord rel : st.releases()) {
-            View.Verdict v = Verdicts.of(rel, runs(results, tp.slug(), rel.version()));
-            String link = site.baseUrl() + "/pluginy/" + tp.slug() + "/" + seg(rel.version()) + "/";
-            items.add(new Feeds.Item(st.name() + " " + rel.version() + ": " + v.label(), link,
-                    (v.detail() == null ? "" : v.detail() + " ") + "Forum: " + Verdicts.forumText(rel.forum()) + ".",
-                    rel.released() != null ? rel.released() : rel.firstSeen()));
+        for (Published.Release pr : p.releases()) {
+            View.Verdict v = pr.verdict();
+            String link = site.baseUrl() + "/pluginy/" + p.slug() + "/" + seg(pr.version()) + "/";
+            items.add(new Feeds.Item(p.name() + " " + pr.version() + ": " + v.label(), link,
+                    (v.detail() == null ? "" : v.detail() + " ") + "Forum: " + Verdicts.forumText(pr.record().forum()) + ".",
+                    pr.when()));
         }
         return items;
     }
 
     // ------------------------------------------------------------------ helpers
-
-    private static List<RunResult> runs(Map<String, ResultsFile> results, String slug, String version) {
-        ResultsFile f = results.get(slug + "|" + version);
-        return f == null || f.runs() == null ? List.of() : f.runs();
-    }
 
     private SimplePage simple(Site site, String title, String desc, String path, String crumb) {
         return new SimplePage(site, new Meta(title, desc, path, false),

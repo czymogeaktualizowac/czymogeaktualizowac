@@ -20,11 +20,19 @@ public final class Verdicts {
     private Verdicts() {
     }
 
+    /** Neutral on purpose: a held result is not published yet, so nothing may claim a pass or hint a failure. */
+    public static final Verdict HELD = new Verdict("none", "Wyniki testów w weryfikacji",
+            "Wyniki tej wersji sprawdzamy przed publikacją. Do tego czasu nie traktuj jej jako przetestowanej.");
+
+    /** Verdict of a release whose results are not held by the embargo. */
     public static Verdict of(ReleaseRecord rel, List<RunResult> runs) {
-        if (Embargo.isHeld(runs)) {
-            // neutral on purpose: the result is not published yet, so the page must neither claim a pass nor hint a failure
-            return new Verdict("none", "Wyniki testów w weryfikacji",
-                    "Wyniki tej wersji sprawdzamy przed publikacją. Do tego czasu nie traktuj jej jako przetestowanej.");
+        return of(rel, runs, false);
+    }
+
+    /** @param held the embargo holds this release back (see {@link Published}); {@code runs} are then ignored */
+    public static Verdict of(ReleaseRecord rel, List<RunResult> runs, boolean held) {
+        if (held) {
+            return HELD;
         }
         // A code-file checksum mismatch is serious but, in real data, usually a packaging artefact (SVN keywords,
         // line endings), so we flag it as a warning and say so; we never accuse an author of tampering.
@@ -97,7 +105,11 @@ public final class Verdicts {
 
     /** One-line summary of the levels reached, e.g. "P2 klasyczny: L2 · P2 blokowy: L2 · P3 klasyczny: L2". */
     public static String labSummary(List<RunResult> runs) {
-        if (Embargo.isHeld(runs)) {
+        return labSummary(runs, false);
+    }
+
+    public static String labSummary(List<RunResult> runs, boolean held) {
+        if (held) {
             return "w weryfikacji";
         }
         if (runs.isEmpty()) {

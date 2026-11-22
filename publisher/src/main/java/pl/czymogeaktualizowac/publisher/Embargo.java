@@ -12,7 +12,6 @@ import java.nio.file.Path;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,9 +46,6 @@ public final class Embargo {
 
     public static final int DEFAULT_HOLD_DAYS = 7;
 
-    /** Replaces the runs of a held release; recognised by identity, so publisher code needs no other parameter. */
-    static final List<RunResult> HELD_RUNS = Collections.unmodifiableList(new ArrayList<>());
-
     private final int holdDays;
     private final Map<String, Decision> decisions = new LinkedHashMap<>();
 
@@ -71,8 +67,9 @@ public final class Embargo {
         return new Embargo(Files.exists(p) ? Json.read(p, Config.class) : null);
     }
 
-    static boolean isHeld(List<RunResult> runs) {
-        return runs == HELD_RUNS;
+    /** Whether this release's results are held back at {@code now} (see {@link Published}, which hides them). */
+    public boolean holds(ResultsFile f, Instant now) {
+        return check(f, now) != null;
     }
 
     /** The releases held back at {@code now}. */
@@ -83,16 +80,6 @@ public final class Embargo {
             if (h != null) {
                 out.add(h);
             }
-        }
-        return out;
-    }
-
-    /** A copy of {@code results} in which every held release has {@link #HELD_RUNS} in place of its runs. */
-    public Map<String, ResultsFile> apply(Map<String, ResultsFile> results, Instant now) {
-        Map<String, ResultsFile> out = new LinkedHashMap<>();
-        for (var en : results.entrySet()) {
-            ResultsFile f = en.getValue();
-            out.put(en.getKey(), check(f, now) == null ? f : new ResultsFile(f.pluginSlug(), f.pluginVersion(), HELD_RUNS));
         }
         return out;
     }
