@@ -1,10 +1,11 @@
 # One disposable WooCommerce lab store. Parameters come from the environment (see LabEnv):
-#   LAB_PROJECT  compose project name      PHP   PHP version tag (8.1 .. 8.5)      PORT  free host port
+#   LAB_PROJECT  compose project name      PORT  free host port
+#   DB_IMAGE / WP_IMAGE  images pinned to a digest ("name:tag@sha256:..."), from config/lab-images.json
 # Nothing here is persistent: the database lives in tmpfs and `down -v` removes everything.
 name: ${LAB_PROJECT}
 services:
   db:
-    image: mariadb:11.4
+    image: ${DB_IMAGE:?pinned database image required}
     environment:
       MARIADB_DATABASE: wp
       MARIADB_USER: wp
@@ -18,7 +19,7 @@ services:
       timeout: 5s
       retries: 40
   wp:
-    image: wordpress:php${PHP}-apache
+    image: ${WP_IMAGE:?pinned WordPress image required}
     depends_on:
       db:
         condition: service_healthy

@@ -22,7 +22,9 @@
 @endif
 
 <h2>Wyniki testów laboratoryjnych</h2>
-@if(page.runs().isEmpty())
+@if(page.held())
+  <p>To wydanie zostało już przetestowane w laboratorium; szczegóły wyników opublikujemy po ich weryfikacji.</p>
+@elseif(page.runs().isEmpty())
   <p>Tego wydania nie przetestowaliśmy jeszcze w laboratorium. Poziomy i profile opisuje strona <a href="/jak-testujemy/">Jak testujemy</a>.</p>
 @else
   @for(var r : page.runs())

@@ -39,7 +39,14 @@ public final class LabEnv implements AutoCloseable {
     private final int port;
     private boolean started;
 
-    public LabEnv(String phpVersion) throws IOException {
+    /**
+     * @param wordpressImage pinned WordPress image ("name:tag@sha256:…") for the PHP version of the run
+     * @param databaseImage  pinned database image
+     */
+    public LabEnv(String wordpressImage, String databaseImage) throws IOException {
+        if (!pinned(wordpressImage) || !pinned(databaseImage)) {
+            throw new InfraException("the lab only runs images pinned to a digest, got: " + wordpressImage + ", " + databaseImage);
+        }
         this.project = "czm-" + UUID.randomUUID().toString().substring(0, 8);
         this.port = freePort();
         this.tmpDir = Files.createTempDirectory(project);
@@ -47,7 +54,12 @@ public final class LabEnv implements AutoCloseable {
         try (InputStream in = LabEnv.class.getResourceAsStream("/lab/docker-compose.yml")) {
             Files.copy(in, composeFile);
         }
-        this.env = Map.of("LAB_PROJECT", project, "PHP", phpVersion, "PORT", String.valueOf(port));
+        this.env = Map.of("LAB_PROJECT", project, "WP_IMAGE", wordpressImage, "DB_IMAGE", databaseImage, "PORT", String.valueOf(port));
+    }
+
+    /** "name:tag@sha256:<64 hex>" (a tag alone can move to a different image at any time). */
+    static boolean pinned(String image) {
+        return image != null && image.matches("[a-z0-9][a-z0-9._/-]*(:[\\w.-]+)?@sha256:[0-9a-f]{64}");
     }
 
     public String baseUrl() {

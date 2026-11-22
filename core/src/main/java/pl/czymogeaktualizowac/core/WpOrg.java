@@ -26,8 +26,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/** Client for the public, read-only WordPress.org endpoints we depend on (see Spike 0 notes in docs/spike0.md). */
-public final class WpOrg {
+/** Client for the public, read-only WordPress.org endpoints we depend on (see docs/spike0-findings.md). Not final so tests can stand in for WordPress.org. */
+public class WpOrg {
 
     private final Http http;
     private final Path cacheDir;

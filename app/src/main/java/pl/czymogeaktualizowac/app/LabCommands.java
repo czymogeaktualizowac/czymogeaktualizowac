@@ -3,21 +3,28 @@ package pl.czymogeaktualizowac.app;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
+import pl.czymogeaktualizowac.core.Http;
+import pl.czymogeaktualizowac.core.Json;
+import pl.czymogeaktualizowac.core.Model;
 import pl.czymogeaktualizowac.core.Model.PluginState;
 import pl.czymogeaktualizowac.core.Model.Status;
 import pl.czymogeaktualizowac.core.Store;
+import pl.czymogeaktualizowac.lab.ImagePins;
 import pl.czymogeaktualizowac.lab.LabService;
 import pl.czymogeaktualizowac.lab.RunSpec;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-/** {@code lab prepare | run | baseline | selftest} */
+/** {@code lab prepare | run | baseline | selftest | pin-images} */
 @Command(name = "lab", description = "Disposable WooCommerce lab: run levels L0-L4 for plugin releases.",
-        subcommands = {LabCommands.PrepareCmd.class, LabCommands.RunCmd.class, LabCommands.BaselineCmd.class, LabCommands.SelftestCmd.class})
+        subcommands = {LabCommands.PrepareCmd.class, LabCommands.RunCmd.class, LabCommands.BaselineCmd.class, LabCommands.SelftestCmd.class,
+                LabCommands.PinImagesCmd.class})
 final class LabCommands implements Callable<Integer> {
 
     @Override
@@ -43,6 +50,43 @@ final class LabCommands implements Callable<Integer> {
         @Override
         public Integer call() throws IOException {
             new LabService(store(), Main::log, true).prepare();
+            return 0;
+        }
+    }
+
+    @Command(name = "pin-images", description = "Resolve the lab's docker images to their current digests and rewrite config/lab-images.json. "
+            + "Review the diff and merge it via a PR.")
+    static class PinImagesCmd extends Base implements Callable<Integer> {
+        @Option(names = "--php", split = ",", description = "PHP versions to pin (default: those already pinned plus every profile's).")
+        String[] php = new String[0];
+
+        @Override
+        public Integer call() throws IOException {
+            Store store = store();
+            Path file = store.configDir.resolve("lab-images.json");
+            Model.LabImages current = Files.exists(file) ? store.labImages() : null;
+            java.util.TreeSet<String> phps = new java.util.TreeSet<>(Arrays.asList(php));
+            if (phps.isEmpty()) {
+                if (current != null && current.wordpress() != null) {
+                    phps.addAll(current.wordpress().keySet());
+                }
+                store.profiles().forEach(p -> phps.add(p.php()));
+            }
+            Model.LabImages fresh = new ImagePins(new Http()).resolve(current, phps);
+            Json.write(file, fresh);
+            int changed = 0;
+            for (String v : phps) {
+                String before = current == null || current.wordpress() == null ? null : current.wordpress().get(v);
+                if (!fresh.wordpress().get(v).equals(before)) {
+                    changed++;
+                    Main.log("PHP " + v + ": " + fresh.wordpress().get(v));
+                }
+            }
+            if (current == null || !fresh.database().equals(current.database())) {
+                changed++;
+                Main.log("database: " + fresh.database());
+            }
+            Main.log(changed == 0 ? "all pins are current" : changed + " pin(s) changed in " + file);
             return 0;
         }
     }
@@ -77,9 +121,16 @@ final class LabCommands implements Callable<Integer> {
                 var r = svc.execute(s);
                 if (r.levels().stream().anyMatch(l -> l.status() == Status.ERROR)) {
                     bad++;
+                    Main.annotate("warning", "lab error", plugin + " " + r.pluginVersion() + " " + s.profileId() + "/" + s.checkout()
+                            + "/" + s.mode() + ": " + r.notes());
                 }
             }
-            return bad == 0 ? 0 : 1;
+            // a lab ERROR is a stored result ("result unknown", retried by the pipeline), not a crash of this command:
+            // exiting non-zero would stop the remaining runs and the upload of the results that did complete
+            if (bad > 0) {
+                Main.log(bad + " run(s) ended with a lab (infrastructure) error; stored as 'result unknown'");
+            }
+            return 0;
         }
     }
 
@@ -117,8 +168,8 @@ final class LabCommands implements Callable<Integer> {
                     }
                 }
             }
-            Main.log("baseline finished, runs with infrastructure errors: " + errors);
-            return errors == 0 ? 0 : 1;
+            Main.log("baseline finished, runs with infrastructure errors (stored as 'result unknown'): " + errors);
+            return 0;
         }
     }
 

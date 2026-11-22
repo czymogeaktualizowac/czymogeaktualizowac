@@ -21,7 +21,8 @@ import java.util.Map;
  * Holds back failing results before they reach the site, feeds and alerts (plan §2.4: vendors get a private failure
  * report before publication; and a failure may be a lab problem, which must never be published as the plugin's).
  *
- * <p>A release is held when any of its runs has a FAIL or ERROR level, until one of:
+ * <p>A release is held when any of its runs has a FAIL level (ERROR is the lab's problem and is shown as "result
+ * unknown", never as a failure, so it is not held), until one of:
  * a {@code "publish"} decision in {@code config/embargo.json}; or {@code holdDays} have passed since the failing run
  * (unless the decision is {@code "hold"}, which keeps it back until changed). A retest that passes lifts it on its own.
  *
@@ -105,7 +106,8 @@ public final class Embargo {
         for (RunResult r : f.runs()) {
             boolean failed = false;
             for (LevelResult l : r.levels()) {
-                if (l.status() == Status.FAIL || l.status() == Status.ERROR) {
+                // only FAIL: an ERROR (lab problem) is never published as a failure (see Verdicts), so there is nothing to hold
+                if (l.status() == Status.FAIL) {
                     where.add(l.level() + " " + l.status() + " (" + r.profileId() + ", " + r.checkout() + ", " + r.mode() + ")");
                     failed = true;
                 }

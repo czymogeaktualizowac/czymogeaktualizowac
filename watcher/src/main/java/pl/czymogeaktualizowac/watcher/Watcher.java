@@ -19,7 +19,6 @@ import pl.czymogeaktualizowac.core.WpOrg;
 
 import java.io.IOException;
 import java.time.Clock;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -31,7 +30,9 @@ import java.util.function.Consumer;
 /**
  * Component A. Polls WordPress.org for the tracked plugins and for the WordPress / WooCommerce / PHP ecosystem,
  * downloads and verifies new plugin versions, parses their headers, computes the community signal and writes
- * {@code data/releases.json} plus {@code data/last-run.json} (what changed: input for the lab and the alerts).
+ * {@code data/releases.json} plus {@code data/last-run.json}, a diagnostic report of the run (what changed, which plugins
+ * failed). Nothing downstream reads last-run.json: the lab queue is "every verified release without a result" (CI) and
+ * alerts compare against {@code data/published-state.json}.
  */
 public final class Watcher {
 
@@ -39,7 +40,15 @@ public final class Watcher {
     public record Change(String kind, String subject, String version, String detail) {
     }
 
-    public record RunReport(Instant at, List<Change> changes, List<String> errors) {
+    /**
+     * @param pluginsOk      tracked plugins processed without error
+     * @param pluginsTracked tracked plugins this run looked at
+     */
+    public record RunReport(Instant at, List<Change> changes, List<String> errors, int pluginsOk, int pluginsTracked) {
+        /** Nothing at all could be read (WordPress.org down, network gone): the only case that should stop the pipeline. */
+        public boolean totalFailure() {
+            return pluginsTracked > 0 && pluginsOk == 0;
+        }
     }
 
     public record Options(int backfill, Set<String> onlyPlugins, boolean skipForum) {
@@ -47,6 +56,9 @@ public final class Watcher {
             return new Options(0, Set.of(), false);
         }
     }
+
+    /** Checksum status of a release whose zip or checksum file could not be fetched; retried on the next run. */
+    public static final String FETCH_FAILED = "FETCH_FAILED";
 
     private final Store store;
     private final WpOrg wp;
@@ -66,15 +78,19 @@ public final class Watcher {
         Map<String, PluginState> state = new LinkedHashMap<>(previous.plugins());
         List<Change> changes = new ArrayList<>();
         List<String> errors = new ArrayList<>();
+        int ok = 0;
+        int seen = 0;
 
         for (TrackedPlugin tp : store.trackedPlugins()) {
             if (!opts.onlyPlugins().isEmpty() && !opts.onlyPlugins().contains(tp.slug())) {
                 continue;
             }
+            seen++;
             try {
                 PluginState before = state.get(tp.slug());
                 PluginState after = processPlugin(tp, before, opts, now, changes);
                 state.put(tp.slug(), after);
+                ok++;
             } catch (IOException | RuntimeException e) {
                 String msg = tp.slug() + ": " + e.getMessage();
                 errors.add(msg);
@@ -93,7 +109,7 @@ public final class Watcher {
         }
 
         store.saveReleases(state, eco, now);
-        RunReport report = new RunReport(now, changes, errors);
+        RunReport report = new RunReport(now, changes, errors, ok, seen);
         Json.write(store.dataDir.resolve("last-run.json"), report);
         return report;
     }
@@ -142,11 +158,20 @@ public final class Watcher {
         for (String version : wanted) {
             ReleaseRecord old = existing.get(version);
             Instant released = tagDates.get(version);
-            if (old != null) {
+            boolean retry = old != null && old.checksum() != null && FETCH_FAILED.equals(old.checksum().status());
+            if (old != null && !retry) {
                 releases.add(refresh(old, released, topics, now, opts.skipForum()));
                 continue;
             }
             ReleaseRecord rec = fetchRelease(tp.slug(), version, released, topics, now);
+            if (retry) {
+                // a download that failed earlier is retried on every run; it keeps its original first-seen time
+                rec = new ReleaseRecord(rec.version(), rec.released() != null ? rec.released() : old.released(), old.firstSeen(),
+                        rec.prerelease(), rec.headers(), rec.checksum(), rec.zipSha256(), rec.zipBytes(), rec.forum());
+                releases.add(rec);
+                log.accept("retried " + tp.slug() + " " + version + " checksum=" + rec.checksum().status());
+                continue;
+            }
             releases.add(rec);
             // the first run for a plugin is a baseline, and backfilled old versions are history: neither is "news"
             if (before != null && before.latestVersion() != null && Versions.compare(version, before.latestVersion()) > 0) {
@@ -162,22 +187,32 @@ public final class Watcher {
     }
 
     private ReleaseRecord fetchRelease(String slug, String version, Instant released, List<ForumTopic> topics, Instant now) {
-        PluginHeaders headers = null;
-        ChecksumResult checksum;
-        String sha = null;
-        long bytes = 0;
+        ForumSignal forum = Signals.forum(topics, version, released, now);
+        byte[] zip;
         try {
-            byte[] zip = wp.zip(slug, version);
-            sha = PluginZip.sha256(zip);
-            bytes = zip.length;
+            zip = wp.zip(slug, version);
+        } catch (IOException e) {
+            // transient (network, 5xx): FETCH_FAILED is retried on the next run and never handed to the lab
+            return new ReleaseRecord(version, released, now, Versions.isPrerelease(version), null,
+                    new ChecksumResult(FETCH_FAILED, 0, List.of(), List.of(), "download failed: " + e.getMessage()), null, 0, forum);
+        }
+        ChecksumResult checksum;
+        try {
             JsonNode checks = wp.checksums(slug, version);
             checksum = PluginZip.verify(zip, slug, checks);
+        } catch (IOException e) {
+            return new ReleaseRecord(version, released, now, Versions.isPrerelease(version), null,
+                    new ChecksumResult(FETCH_FAILED, 0, List.of(), List.of(), "checksum check failed: " + e.getMessage()), null, 0, forum);
+        }
+        // headers are informational: a zip whose header cannot be parsed keeps its (valid) checksum result
+        PluginHeaders headers = null;
+        try {
             headers = PluginZip.headers(zip, slug);
         } catch (IOException e) {
-            checksum = new ChecksumResult("UNAVAILABLE", 0, List.of(), List.of(), "download or parse failed: " + e.getMessage());
+            log.accept("warn " + slug + " " + version + ": cannot parse plugin headers (" + e.getMessage() + ")");
         }
-        ForumSignal forum = Signals.forum(topics, version, released, now);
-        return new ReleaseRecord(version, released, now, Versions.isPrerelease(version), headers, checksum, sha, bytes, forum);
+        return new ReleaseRecord(version, released, now, Versions.isPrerelease(version), headers, checksum,
+                PluginZip.sha256(zip), zip.length, forum);
     }
 
     /** Fills in a release date that was unknown before and recomputes the signal until its 7-day window is complete. */
@@ -213,10 +248,5 @@ public final class Watcher {
         if (newPhp != null && !newPhp.equals(oldPhp)) {
             changes.add(new Change("php-release", "php", newPhp, "PHP " + newPhp));
         }
-    }
-
-    /** Convenience for callers that only need the freshness of the data. */
-    public static Duration age(ReleasesFile f, Instant now) {
-        return f.generatedAt() == null ? null : Duration.between(f.generatedAt(), now);
     }
 }

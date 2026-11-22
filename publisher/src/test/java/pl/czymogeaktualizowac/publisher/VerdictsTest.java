@@ -77,6 +77,20 @@ class VerdictsTest {
     }
 
     @Test
+    void labErrorOnCoreProfileIsNeverBlamedOnThePlugin() {
+        RunResult err = run("P3", "classic", null, lr(Level.L0, Status.ERROR), lr(Level.L1, Status.ERROR), lr(Level.L2, Status.ERROR));
+        Verdict v = Verdicts.of(release("NONE", "OK"), List.of(err));
+        assertEquals("none", v.code());
+        assertTrue(v.label().contains("błąd środowiska"));
+        assertEquals("P3 klasyczny: błąd środowiska", Verdicts.labSummary(List.of(err)));
+        // a lab error elsewhere does not spoil a real pass, and does not mask a real failure
+        RunResult ok = run("P2", "classic", Level.L2, lr(Level.L0, Status.PASS), lr(Level.L1, Status.PASS), lr(Level.L2, Status.PASS));
+        assertEquals("ok", Verdicts.of(release("NONE", "OK"), List.of(ok, err)).code());
+        RunResult fail = run("P2", "block", Level.L1, lr(Level.L0, Status.PASS), lr(Level.L1, Status.PASS), lr(Level.L2, Status.FAIL));
+        assertEquals("bad", Verdicts.of(release("NONE", "OK"), List.of(fail, err)).code());
+    }
+
+    @Test
     void failedL3CountsOnlyWhenItActuallyFailed() {
         RunResult r = run("P3", "classic", Level.L2, lr(Level.L0, Status.PASS), lr(Level.L1, Status.PASS), lr(Level.L2, Status.PASS),
                 lr(Level.L3, Status.FAIL));

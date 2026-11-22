@@ -35,16 +35,23 @@ public final class Verdicts {
         }
         List<String> failsCore = new ArrayList<>();
         List<String> failsEdge = new ArrayList<>();
+        List<String> labErrors = new ArrayList<>();
         boolean anyCorePass = false;
         for (RunResult r : runs) {
             boolean coreProfile = r.profileId().equals("P2") || r.profileId().equals("P3");
+            String where = r.profileId() + (r.checkout().equals("none") ? "" : ", " + r.checkout());
+            if (hasLabError(r)) {
+                // ERROR = the lab itself failed (docker, network, control pass): it says nothing about the plugin,
+                // so it must never turn into a "bad"/"warn" verdict or an alert
+                labErrors.add(where);
+                continue;
+            }
             for (LevelResult l : r.levels()) {
                 if (l.level().ordinal() > Level.L2.ordinal() && l.status() != Status.FAIL) {
                     continue; // L3/L4 only count when they actually failed; SKIPPED is "not tested", never a pass
                 }
-                if (l.status() == Status.FAIL || l.status() == Status.ERROR) {
-                    String where = l.level() + " (" + r.profileId() + (r.checkout().equals("none") ? "" : ", " + r.checkout()) + ")";
-                    (coreProfile ? failsCore : failsEdge).add(where);
+                if (l.status() == Status.FAIL) {
+                    (coreProfile ? failsCore : failsEdge).add(l.level() + " (" + where + ")");
                 }
             }
             if (coreProfile && Level.L2.compareTo(r.highestPassed() == null ? Level.L0 : r.highestPassed()) <= 0
@@ -73,6 +80,11 @@ public final class Verdicts {
             return new Verdict("ok", "Testy L0–L2 bez błędów",
                     "Instalacja, koszyk i zamówienie testowe działają w naszych konfiguracjach. To nie jest gwarancja dla Twojego sklepu.");
         }
+        if (!labErrors.isEmpty() && !elevated) {
+            return new Verdict("none", "Wynik nieznany: błąd środowiska testowego",
+                    "Test nie został ukończony z powodu problemu laboratorium, nie wtyczki (" + String.join("; ", labErrors)
+                            + "). Powtórzymy go; do tego czasu nie traktuj tej wersji jako przetestowanej.");
+        }
         if (elevated) {
             return new Verdict("warn", "Brak testów laboratoryjnych, ale są zgłoszenia na forum",
                     "Podwyższona liczba zgłoszeń w 7 dni po wydaniu.");
@@ -94,8 +106,21 @@ public final class Verdicts {
         return runs.stream()
                 .filter(r -> r.mode().equals("solo"))
                 .map(r -> r.profileId() + (r.checkout().equals("none") ? "" : " " + checkoutPl(r.checkout()))
-                        + ": " + (r.highestPassed() == null ? "błąd L0" : r.highestPassed().name()))
+                        + ": " + reached(r))
                 .collect(Collectors.joining(" · "));
+    }
+
+    /** True when the lab itself failed during this run (any ERROR level): the run says nothing about the plugin. */
+    public static boolean hasLabError(RunResult r) {
+        return r.levels().stream().anyMatch(l -> l.status() == Status.ERROR);
+    }
+
+    /** Highest level reached, worded so that a lab error is never shown as the plugin's L0 failure. */
+    public static String reached(RunResult r) {
+        if (hasLabError(r)) {
+            return "błąd środowiska";
+        }
+        return r.highestPassed() == null ? "błąd L0" : r.highestPassed().name();
     }
 
     public static String checkoutPl(String c) {

@@ -27,6 +27,7 @@ concurrency:
 jobs:
   watch:
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     permissions:
       contents: write          # pushes the data branch
     outputs:
@@ -46,9 +47,15 @@ jobs:
           distribution: temurin
           java-version: "21"
           cache: maven
-      - run: mvn -B -q -DskipTests package
+      # with tests: a build that fails its tests never reaches the lab or the public site (lab/publish depend on watch)
+      - run: mvn -B -q package
+      - name: Validate config
+        run: java -jar app/target/czymogeaktualizowac.jar validate
       - name: Watch WordPress.org
-        run: java -jar app/target/czymogeaktualizowac.jar watch --backfill "${{ github.event.inputs.backfill || '0' }}"
+        env:
+          BACKFILL: ${{ github.event.inputs.backfill || '0' }}
+        # exits non-zero only when no plugin at all could be read; errors of single plugins are warnings
+        run: java -jar app/target/czymogeaktualizowac.jar watch --backfill "$BACKFILL"
       - name: Commit data
         run: |
           cd data
@@ -57,9 +64,11 @@ jobs:
           git add -A
           git diff --cached --quiet || git commit -m "data: watch $(date -u +%FT%TZ)"
           git push origin HEAD:data
-      # Lab queue: every known stable release without a lab result yet. This covers new releases, the first-run
-      # baseline and backfilled history alike (the watcher reports only new releases as "changes", for alerts).
-      # Newest release of each plugin first; capped per run, the rest is picked up by the next runs.
+      # Lab queue: every known stable release the watcher verified (has a zipSha256) that has no lab result yet, then
+      # releases whose stored result contains a lab ERROR (only those runs are repeated: `lab run` without --force skips
+      # runs that completed). This covers new releases, the first-run baseline and backfilled history alike.
+      # Order: forced retests, untested (newest release of each plugin first), ERROR retries; capped per run, the rest
+      # is picked up by the next runs.
       # The `retest` input adds releases again, run with --force: `slug` (its latest release), `slug@version`, or `all`.
       - id: matrix
         env:
@@ -71,13 +80,20 @@ jobs:
                  | $rt - $known - ["all"] | join(",")' data/releases.json)
           if [ -n "$UNKNOWN" ]; then echo "::error::retest: unknown plugin or version: $UNKNOWN"; exit 1; fi
           jq -r --argjson rt "$RETEST_JSON" '.plugins[] | .slug as $s | .releases | map(select(.prerelease | not)) | to_entries[]
+                 | select(.value.zipSha256 != null)
                  | .value.version as $v
                  | "\(.key)\t\($s)\t\($v)\t\(if (.key == 0 and ($rt | any(. == "all" or . == $s))) or ($rt | any(. == "\($s)@\($v)")) then 1 else 0 end)"' data/releases.json \
-            | sort -s -n -k1,1 \
             | while IFS=$'\t' read -r rank slug version force; do
-                if [ "$force" = 1 ] || [ ! -f "data/results/$slug/$version.json" ]; then
-                  jq -cn --arg s "$slug" --arg v "$version" --argjson f "$force" '{slug: $s, version: $v, force: ($f == 1)}'
-                fi
+                f="data/results/$slug/$version.json"
+                if [ "$force" = 1 ]; then prio=0
+                elif [ ! -f "$f" ]; then prio=1
+                elif jq -e '[.runs[].levels[].status] | index("ERROR")' "$f" >/dev/null; then prio=2
+                else continue; fi
+                printf '%s\t%s\t%s\t%s\t%s\n' "$prio" "$rank" "$slug" "$version" "$force"
+              done \
+            | sort -s -n -k1,1 -k2,2 \
+            | while IFS=$'\t' read -r prio rank slug version force; do
+                jq -cn --arg s "$slug" --arg v "$version" --argjson f "$force" '{slug: $s, version: $v, force: ($f == 1)}'
               done \
             | jq -cs --argjson cap "$LAB_QUEUE_CAP" '.[0:$cap]' > lab-queue.json
           echo "lab queue: $(jq length lab-queue.json) release(s)"
@@ -87,6 +103,7 @@ jobs:
     needs: watch
     if: needs.watch.outputs.releases != '[]'
     runs-on: ubuntu-24.04
+    timeout-minutes: 120
     environment: sandbox       # sandbox-only credentials for L3/L4; never live credentials
     strategy:
       fail-fast: false
@@ -120,26 +137,36 @@ jobs:
           java -jar app/target/czymogeaktualizowac.jar lab run --plugin "$SLUG" --version "$VERSION" --profiles P3 --mode stack $FORCE
       # Upload only this release's result file: the data checkout holds every older result too, and publish merges
       # all artifacts into one folder, so a stale copy from another job could overwrite a fresh result.
+      # always(): runs that completed before a crash of the step are still kept (lab ERRORs no longer fail the step).
       - name: Stage this release's result
+        if: always()
         env:
           SLUG: ${{ matrix.release.slug }}
           VERSION: ${{ matrix.release.version }}
         run: |
           mkdir -p "lab-out/$SLUG"
-          cp "data/results/$SLUG/$VERSION.json" "lab-out/$SLUG/"
+          if [ -f "data/results/$SLUG/$VERSION.json" ]; then
+            cp "data/results/$SLUG/$VERSION.json" "lab-out/$SLUG/"
+          else
+            echo "::warning title=lab::no result written for $SLUG $VERSION"
+          fi
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
         with:
           name: results-${{ matrix.release.slug }}-${{ matrix.release.version }}
           path: lab-out
+          if-no-files-found: ignore
 
   publish:
     needs: [watch, lab]
     if: always() && needs.watch.result == 'success'
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     permissions:
       contents: write
       pages: write
       id-token: write
+      issues: write            # one issue per release held by the embargo (GitHub e-mails you)
     environment:
       name: github-pages
     steps:
@@ -159,8 +186,11 @@ jobs:
           java-version: "21"
           cache: maven
       - run: mvn -B -q -DskipTests package
+      # drafts go to the data branch (committed below), so nothing is lost while no mail provider is connected;
+      # publish --mark-published then moves the baseline on. Once a provider sends mail, advance the baseline only
+      # after a successful send (see README "Not done").
       - name: Plan alerts against the last published state (drafts only until a mail provider is connected)
-        run: java -jar app/target/czymogeaktualizowac.jar alerts
+        run: java -jar app/target/czymogeaktualizowac.jar alerts --outbox data/outbox
       - name: Build the site and record the published state
         run: java -jar app/target/czymogeaktualizowac.jar publish --mark-published
       - name: Commit data
@@ -179,16 +209,26 @@ jobs:
       - uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
-      # Last on purpose (the site is already deployed): a failing or erroring release is held back from the site,
-      # feeds and alerts (config/embargo.json). This step fails the run, so GitHub e-mails you, while any held
-      # release still waits for a decision.
-      - name: Embargo - failing results held back, review needed
+      # A failing release is held back from the site, feeds and alerts (config/embargo.json). Each held release gets
+      # one open issue labelled `embargo` (GitHub e-mails you once); the run itself stays green, so a red run always
+      # means something is actually broken. Close the issue when you have decided.
+      - name: Embargo - open an issue per held release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          if [ -s out/embargo-held.txt ]; then
-            while IFS= read -r line; do echo "::warning title=Embargo::$line"; done < out/embargo-held.txt
-            echo "Check the failure in the lab job log. A lab problem: fix it and retest (slug@version)."
-            echo "A real failure: tell the vendor, then add {\"slug\",\"version\",\"decision\": \"publish\" or \"hold\"} to config/embargo.json."
-            echo "Without a decision the result is published automatically after holdDays."
-            exit 1
-          fi
-          echo "nothing held back"
+          if [ ! -s out/embargo-held.txt ]; then echo "nothing held back"; exit 0; fi
+          gh label create embargo --color B60205 --description "Failing lab result held back, decision needed" --force >/dev/null
+          while IFS= read -r line; do
+            echo "::warning title=Embargo::$line"
+            key="${line%%:*}"   # "slug version"
+            open=$(gh issue list --label embargo --state open --search "\"Embargo: $key\" in:title" --json number --jq 'length')
+            if [ "$open" = "0" ]; then
+              printf '%s\n\n%s\n\n%s\n%s\n%s\n' "$line" "Lab log: $RUN_URL" \
+                "- A lab problem: fix it and retest (Run workflow, retest: slug@version); a pass lifts the hold by itself." \
+                "- A real failure: tell the vendor, then add {\"slug\", \"version\", \"decision\": \"publish\" or \"hold\", \"note\"} to config/embargo.json." \
+                "- Without a decision the result is published automatically after holdDays." \
+                | gh issue create --label embargo --title "Embargo: $key" --body-file -
+            fi
+          done < out/embargo-held.txt

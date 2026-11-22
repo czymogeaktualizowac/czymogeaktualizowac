@@ -51,13 +51,23 @@ public final class LabRunner {
         List<LevelResult> levels = new ArrayList<>();
         List<String> excerpt = new ArrayList<>();
         String notes = spec.notes();
+        // what this run really used: pinned images, WP-CLI, and every plugin active before the one under test
+        java.util.Map<String, String> environment = new java.util.LinkedHashMap<>();
+        environment.put("wordpressImage", spec.wordpressImage());
+        environment.put("databaseImage", spec.databaseImage());
+        environment.put("wpCli", LabEnv.WP_CLI_VERSION);
         log.accept("lab run: " + spec.slug() + " " + spec.version() + " | " + spec.profileId() + " php " + spec.php() + " wp " + spec.wp()
                 + " woo " + spec.woo() + " | " + spec.checkout() + " | " + spec.mode());
-        try (LabEnv env = new LabEnv(spec.php());
+        try (LabEnv env = new LabEnv(spec.wordpressImage(), spec.databaseImage());
              Playwright pw = Playwright.create(new Playwright.CreateOptions().setEnv(java.util.Map.of("PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", "1")))) {
             Browser browser = pw.chromium().launch(new BrowserType.LaunchOptions().setHeadless(headless));
             try {
                 StoreBrowser.Store store = prepareStore(env, spec);
+                // dependencies and (mode "stack") the other tracked plugins go in BEFORE the control pass, so the control
+                // pass and the PHP-log baseline cover everything except the plugin under test: errors of other plugins
+                // are then never attributed to it
+                installSurroundings(env, spec, excerpt);
+                environment.put("plugins", activePlugins(env));
 
                 // ---- control pass: the store must work without the plugin, otherwise the run is an infrastructure ERROR
                 try (StoreBrowser control = new StoreBrowser(browser, store, "none")) {
@@ -65,7 +75,8 @@ public final class LabRunner {
                     LevelResult c2 = c1.status() == Status.PASS ? control.l2(spec.checkout()) : null;
                     if (c1.status() != Status.PASS || c2 == null || c2.status() != Status.PASS) {
                         String why = c1.status() != Status.PASS ? "L1: " + c1.detail() : "L2: " + (c2 == null ? "n/a" : c2.detail());
-                        throw new LabEnv.InfraException("kontrola bez wtyczki nie przeszła (" + why + ")");
+                        throw new LabEnv.InfraException("kontrola bez wtyczki" + (spec.stack().isEmpty() ? "" : " (z pozostałymi wtyczkami zestawu)")
+                                + " nie przeszła (" + why + ")");
                     }
                 }
                 // errors already in the PHP log without the plugin are not the plugin's (see DebugLog)
@@ -108,7 +119,25 @@ public final class LabRunner {
             levels.add(skipped(Level.values()[levels.size()], "nie uruchomiono"));
         }
         return new RunResult(spec.slug(), spec.version(), spec.profileId(), spec.mode(), spec.checkout(), spec.php(), spec.wp(), spec.woo(),
-                started, Instant.now(), levels, highest(levels), notes, excerpt.stream().limit(40).toList());
+                started, Instant.now(), levels, highest(levels), notes, excerpt.stream().limit(40).toList(), environment);
+    }
+
+    /** "slug@version,…" of the active plugins (WooCommerce, dependencies, stack), from WP-CLI's CSV output. */
+    private static String activePlugins(LabEnv env) throws IOException {
+        Docker.Result r = env.wp("plugin", "list", "--status=active", "--fields=name,version", "--format=csv");
+        return r.ok() ? pluginCsv(r.out()) : "?";
+    }
+
+    static String pluginCsv(String csv) {
+        List<String> out = new ArrayList<>();
+        for (String line : csv.strip().split("\\R")) {
+            String[] f = line.strip().split(",");
+            if (f.length == 2 && !f[0].equals("name") && f[0].matches("[a-z0-9][a-z0-9-]*")) {
+                out.add(f[0] + "@" + f[1]);
+            }
+        }
+        java.util.Collections.sort(out);
+        return String.join(",", out);
     }
 
     // ------------------------------------------------------------------ store preparation (infrastructure)
@@ -132,11 +161,11 @@ public final class LabRunner {
         return new StoreBrowser.Store(env.baseUrl(), j.path("product_id").asLong(), j.path("cart_id").asLong(), j.path("checkout_id").asLong());
     }
 
-    /** Installs the plugin (and companions) and runs L0. Failures here belong to the plugin: they are FAIL. */
-    private LevelResult installAndLevel0(LabEnv env, RunSpec spec, StoreBrowser.Store store, List<String> excerpt,
-                                         java.util.Set<String> baseline) throws IOException {
-        long t0 = System.currentTimeMillis();
-        // dependencies declared by the plugin itself ("Requires Plugins") and by our hints, then the stack (mode "stack")
+    /**
+     * Installs what surrounds the plugin under test: its dependencies ("Requires Plugins" and our companion hints) and,
+     * in mode "stack", the other tracked plugins. Runs before the control pass (infrastructure, not the plugin's fault).
+     */
+    private void installSurroundings(LabEnv env, RunSpec spec, List<String> excerpt) throws IOException {
         List<String> deps = new ArrayList<>();
         try {
             PluginHeaders h = PluginZip.headers(Files.readAllBytes(spec.zip()), spec.slug());
@@ -160,6 +189,12 @@ public final class LabRunner {
                 excerpt.add("stack: " + other.slug() + " could not be activated: " + LabEnv.tail(r.out(), 3));
             }
         }
+    }
+
+    /** Installs the plugin under test and runs L0. Failures here belong to the plugin: they are FAIL. */
+    private LevelResult installAndLevel0(LabEnv env, RunSpec spec, StoreBrowser.Store store, List<String> excerpt,
+                                         java.util.Set<String> baseline) throws IOException {
+        long t0 = System.currentTimeMillis();
         Docker.Result inst = installZip(env, spec.slug(), spec.zip());
         if (!inst.ok()) {
             boolean pluginFault = Pattern.compile("fatal error|could not be activated|Parse error|PHP Fatal", Pattern.CASE_INSENSITIVE).matcher(inst.out()).find();

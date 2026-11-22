@@ -23,7 +23,9 @@ public record RunSpec(
         /* classic | block */ String checkout,
         /* solo | stack */ String mode,
         List<StackItem> stack,
-        String notes) {
+        String notes,
+        /* pinned images ("name:tag@sha256:…"), see config/lab-images.json */ String wordpressImage,
+        String databaseImage) {
 
     public record StackItem(String slug, Path zip) {
     }
