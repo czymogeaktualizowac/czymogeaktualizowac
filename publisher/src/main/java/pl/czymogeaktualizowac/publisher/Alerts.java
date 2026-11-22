@@ -4,9 +4,6 @@ import pl.czymogeaktualizowac.core.Json;
 import pl.czymogeaktualizowac.core.Model.Ecosystem;
 import pl.czymogeaktualizowac.core.Model.PluginState;
 import pl.czymogeaktualizowac.core.Model.ReleaseRecord;
-import pl.czymogeaktualizowac.core.Model.ReleasesFile;
-import pl.czymogeaktualizowac.core.Model.ResultsFile;
-import pl.czymogeaktualizowac.core.Model.RunResult;
 import pl.czymogeaktualizowac.core.Model.TrackedPlugin;
 import pl.czymogeaktualizowac.core.Store;
 import pl.czymogeaktualizowac.core.Versions;
@@ -71,18 +68,14 @@ public final class Alerts {
     }
 
     public static PublishedState currentState(Store store, Instant now) {
-        ReleasesFile rel = store.loadReleases();
-        Map<String, ResultsFile> results = Embargo.load(store).apply(store.allResults(), now);
+        Published pub = Published.of(store, now);
         Map<String, String> latest = new LinkedHashMap<>();
         Map<String, String> verdict = new LinkedHashMap<>();
-        for (var en : rel.plugins().entrySet()) {
-            ReleaseRecord r = latestRelease(en.getValue());
-            if (r != null) {
-                latest.put(en.getKey(), r.version());
-                verdict.put(en.getKey(), Verdicts.of(r, runs(results, en.getKey(), r.version())).code());
-            }
+        for (Published.Plugin p : pub.plugins()) {
+            latest.put(p.slug(), p.latest().version());
+            verdict.put(p.slug(), p.latest().verdict().code());
         }
-        Ecosystem e = rel.ecosystem();
+        Ecosystem e = pub.ecosystem();
         return new PublishedState(now, latest, verdict,
                 e == null ? null : e.woo().latest(), e == null ? null : e.woo().prerelease(),
                 e == null ? null : e.wp().latest(), e == null ? null : e.wp().development(),
@@ -95,27 +88,22 @@ public final class Alerts {
 
     public static List<Draft> plan(Store store, SiteBuilder.SiteConfig cfg, Instant now, boolean digest) {
         PublishedState prev = Files.exists(statePath(store)) ? Json.read(statePath(store), PublishedState.class) : null;
-        ReleasesFile rel = store.loadReleases();
-        Map<String, ResultsFile> results = Embargo.load(store).apply(store.allResults(), now);
         List<Draft> out = new ArrayList<>();
         if (prev == null) {
             return out; // first publication is a baseline: nobody has been told anything yet, so nothing is "news"
         }
-        for (TrackedPlugin tp : store.trackedPlugins()) {
-            PluginState st = rel.plugins().get(tp.slug());
-            ReleaseRecord latest = latestRelease(st);
-            if (latest == null) {
-                continue;
-            }
-            Verdict v = Verdicts.of(latest, runs(results, tp.slug(), latest.version()));
-            String before = prev.verdict().get(tp.slug());
-            boolean changed = !latest.version().equals(prev.latestVersion().get(tp.slug())) || !v.code().equals(before);
+        Published pub = Published.of(store, now);
+        for (Published.Plugin p : pub.plugins()) {
+            ReleaseRecord latest = p.latest().record();
+            Verdict v = p.latest().verdict();
+            String before = prev.verdict().get(p.slug());
+            boolean changed = !latest.version().equals(prev.latestVersion().get(p.slug())) || !v.code().equals(before);
             boolean alarming = v.code().equals("bad") || (v.code().equals("warn") && latest.forum() != null && "ELEVATED".equals(latest.forum().level()));
             if (changed && alarming) {
-                out.add(badRelease(cfg, tp, st, latest, v, now));
+                out.add(badRelease(cfg, p.tracked(), p.state(), latest, v, now));
             }
         }
-        Ecosystem e = rel.ecosystem();
+        Ecosystem e = pub.ecosystem();
         if (e != null) {
             List<String> news = new ArrayList<>();
             if (differs(prev.woo(), e.woo().latest())) news.add("WooCommerce " + e.woo().latest());
@@ -124,11 +112,11 @@ public final class Alerts {
             if (e.wp().development() != null && differs(prev.wpDev(), e.wp().development())) news.add("WordPress " + e.wp().development() + " (testowa)");
             if (!e.php().isEmpty() && differs(prev.php(), e.php().get(0).latest())) news.add("PHP " + e.php().get(0).latest());
             if (!news.isEmpty()) {
-                out.add(compat(cfg, store, rel, results, news, now));
+                out.add(compat(cfg, pub, news, now));
             }
         }
         if (digest) {
-            out.add(digestDraft(cfg, store, rel, results, now));
+            out.add(digestDraft(cfg, pub, now));
         }
         return out;
     }
@@ -155,40 +143,31 @@ public final class Alerts {
                 lines, now);
     }
 
-    private static Draft compat(SiteBuilder.SiteConfig cfg, Store store, ReleasesFile rel, Map<String, ResultsFile> results,
-                                List<String> news, Instant now) {
+    private static Draft compat(SiteBuilder.SiteConfig cfg, Published pub, List<String> news, Instant now) {
         List<String> lines = new ArrayList<>();
         lines.add("Nowe wydania: " + String.join(", ", news) + ".");
         lines.add("Status śledzonych polskich wtyczek (deklaracje autorów i nasze testy) znajdziesz na stronie zgodności.");
-        for (TrackedPlugin tp : store.trackedPlugins()) {
-            PluginState st = rel.plugins().get(tp.slug());
-            ReleaseRecord latest = latestRelease(st);
-            if (latest == null) {
-                continue;
-            }
-            Verdict v = Verdicts.of(latest, runs(results, tp.slug(), latest.version()));
-            lines.add("• " + st.name() + " " + latest.version() + ": " + v.label()
+        for (Published.Plugin p : pub.plugins()) {
+            ReleaseRecord latest = p.latest().record();
+            Verdict v = p.latest().verdict();
+            lines.add("• " + p.name() + " " + latest.version() + ": " + v.label()
                     + (latest.headers() != null && latest.headers().wcTested() != null ? " (autor testował z WooCommerce " + latest.headers().wcTested() + ")" : ""));
         }
         return draft("compat", null, null, "Nowe wersje: " + String.join(", ", news) + ". Status polskich wtyczek",
                 List.of("alert:compat"), cfg, cfg.baseUrl() + "/kompatybilnosc/", lines, now);
     }
 
-    private static Draft digestDraft(SiteBuilder.SiteConfig cfg, Store store, ReleasesFile rel, Map<String, ResultsFile> results, Instant now) {
+    private static Draft digestDraft(SiteBuilder.SiteConfig cfg, Published pub, Instant now) {
         Instant since = now.minus(Duration.ofDays(30));
         List<String> lines = new ArrayList<>();
         lines.add("Wydania z ostatnich 30 dni:");
         int n = 0;
-        for (TrackedPlugin tp : store.trackedPlugins()) {
-            PluginState st = rel.plugins().get(tp.slug());
-            if (st == null) {
-                continue;
-            }
-            for (ReleaseRecord r : st.releases()) {
-                Instant when = r.released() != null ? r.released() : r.firstSeen();
-                if (when != null && when.isAfter(since) && !r.prerelease()) {
-                    Verdict v = Verdicts.of(r, runs(results, tp.slug(), r.version()));
-                    lines.add("• " + st.name() + " " + r.version() + ": " + v.label() + ". Forum: " + Verdicts.forumText(r.forum()));
+        for (Published.Plugin p : pub.plugins()) {
+            for (Published.Release pr : p.releases()) {
+                Instant when = pr.when();
+                if (when != null && when.isAfter(since) && !pr.record().prerelease()) {
+                    lines.add("• " + p.name() + " " + pr.version() + ": " + pr.verdict().label() + ". Forum: "
+                            + Verdicts.forumText(pr.record().forum()));
                     n++;
                 }
             }
@@ -228,18 +207,6 @@ public final class Alerts {
     }
 
     // ------------------------------------------------------------------ helpers
-
-    private static ReleaseRecord latestRelease(PluginState st) {
-        if (st == null || st.releases() == null || st.releases().isEmpty()) {
-            return null;
-        }
-        return st.releases().stream().filter(r -> r.version().equals(st.latestVersion())).findFirst().orElse(st.releases().get(0));
-    }
-
-    private static List<RunResult> runs(Map<String, ResultsFile> results, String slug, String version) {
-        ResultsFile f = results.get(slug + "|" + version);
-        return f == null || f.runs() == null ? List.of() : f.runs();
-    }
 
     private static boolean differs(String a, String b) {
         return a == null ? b != null : !a.equals(b);

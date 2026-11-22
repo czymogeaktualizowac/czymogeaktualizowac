@@ -4,10 +4,6 @@ import pl.czymogeaktualizowac.core.Json;
 import pl.czymogeaktualizowac.core.Model.PluginHeaders;
 import pl.czymogeaktualizowac.core.Model.PluginState;
 import pl.czymogeaktualizowac.core.Model.ReleaseRecord;
-import pl.czymogeaktualizowac.core.Model.ReleasesFile;
-import pl.czymogeaktualizowac.core.Model.ResultsFile;
-import pl.czymogeaktualizowac.core.Model.RunResult;
-import pl.czymogeaktualizowac.core.Model.TrackedPlugin;
 import pl.czymogeaktualizowac.publisher.View.Site;
 
 import java.time.Instant;
@@ -59,43 +55,38 @@ final class Feeds {
         return sb.append("</urlset>\n").toString();
     }
 
-    static String feedJson(SiteBuilder.SiteConfig cfg, List<TrackedPlugin> tracked, ReleasesFile releases,
-                           Map<String, ResultsFile> results, Instant now) {
+    static String feedJson(SiteBuilder.SiteConfig cfg, Published pub, Instant now) {
         Map<String, Object> root = new LinkedHashMap<>();
         root.put("schemaVersion", 1);
         root.put("generatedAt", now.toString());
         root.put("signature", null);
         root.put("site", cfg.baseUrl());
-        root.put("ecosystem", releases.ecosystem());
+        root.put("ecosystem", pub.ecosystem());
         List<Object> plugins = new ArrayList<>();
-        for (TrackedPlugin tp : tracked) {
-            PluginState st = releases.plugins().get(tp.slug());
-            if (st == null) {
-                continue;
-            }
+        for (Published.Plugin pp : pub.plugins()) {
+            PluginState st = pp.state();
             Map<String, Object> p = new LinkedHashMap<>();
-            p.put("slug", tp.slug());
+            p.put("slug", pp.slug());
             p.put("name", st.name());
             p.put("category", st.category());
             p.put("latestVersion", st.latestVersion());
             List<Object> rels = new ArrayList<>();
-            for (ReleaseRecord r : st.releases()) {
-                ResultsFile rf = results.get(tp.slug() + "|" + r.version());
-                List<RunResult> runs = rf == null ? List.of() : rf.runs();
-                View.Verdict v = Verdicts.of(r, runs);
+            for (Published.Release pr : pp.releases()) {
+                ReleaseRecord r = pr.record();
+                View.Verdict v = pr.verdict();
                 PluginHeaders h = r.headers();
                 Map<String, Object> m = new LinkedHashMap<>();
                 m.put("version", r.version());
                 m.put("released", r.released() == null ? null : r.released().toString());
                 m.put("verdict", v.code());
                 m.put("verdictLabel", v.label());
-                m.put("labSummary", Verdicts.labSummary(runs));
+                m.put("labSummary", pr.labSummary());
                 m.put("forumLevel", r.forum() == null ? null : r.forum().level());
                 m.put("forumTopics7d", r.forum() == null ? null : r.forum().topics7d());
                 m.put("wcTested", h == null ? null : h.wcTested());
                 m.put("requiresPhp", h == null ? null : h.requiresPhp());
                 m.put("checksum", r.checksum() == null ? null : r.checksum().status());
-                m.put("url", cfg.baseUrl() + "/pluginy/" + tp.slug() + "/" + SiteBuilder.seg(r.version()) + "/");
+                m.put("url", cfg.baseUrl() + "/pluginy/" + pp.slug() + "/" + SiteBuilder.seg(r.version()) + "/");
                 rels.add(m);
             }
             p.put("releases", rels);

@@ -5,10 +5,13 @@ import pl.czymogeaktualizowac.core.Model.ChecksumResult;
 import pl.czymogeaktualizowac.core.Model.ForumSignal;
 import pl.czymogeaktualizowac.core.Model.Level;
 import pl.czymogeaktualizowac.core.Model.LevelResult;
+import pl.czymogeaktualizowac.core.Model.PluginState;
 import pl.czymogeaktualizowac.core.Model.ReleaseRecord;
+import pl.czymogeaktualizowac.core.Model.ReleasesFile;
 import pl.czymogeaktualizowac.core.Model.ResultsFile;
 import pl.czymogeaktualizowac.core.Model.RunResult;
 import pl.czymogeaktualizowac.core.Model.Status;
+import pl.czymogeaktualizowac.core.Model.TrackedPlugin;
 import pl.czymogeaktualizowac.publisher.View.Verdict;
 
 import java.time.Duration;
@@ -19,7 +22,6 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EmbargoTest {
@@ -47,15 +49,23 @@ class EmbargoTest {
                 "sha", 1, new ForumSignal(0, 0, "NONE", true, List.of()));
     }
 
+    /** The release "p 1.0.0" as the site, feeds and alerts see it (see {@link Published}). */
+    private static Published.Release published(Embargo embargo, Map<String, ResultsFile> results, Instant now) {
+        var tracked = List.of(new TrackedPlugin("p", "P", "V", "shipping", null, null));
+        var state = new PluginState("p", "P", "V", "shipping", 1, "1.0.0", null, null, null, 0, 0, null, RUN_AT, List.of(release()));
+        var releases = new ReleasesFile(RUN_AT, Map.of("p", state), null);
+        return Published.of(tracked, releases, results, embargo, now).plugins().get(0).latest();
+    }
+
     @Test
     void failingReleaseIsHeldAndShownNeutrally() {
-        Map<String, ResultsFile> applied = embargo(null).apply(results(run(Status.PASS, Status.FAIL)), RUN_AT.plusSeconds(60));
-        List<RunResult> runs = applied.get("p|1.0.0").runs();
-        assertSame(Embargo.HELD_RUNS, runs);
-        Verdict v = Verdicts.of(release(), runs);
+        Published.Release r = published(embargo(null), results(run(Status.PASS, Status.FAIL)), RUN_AT.plusSeconds(60));
+        assertTrue(r.held());
+        assertTrue(r.runs().isEmpty(), "held runs are hidden from everything downstream");
+        Verdict v = r.verdict();
         assertEquals("none", v.code());
         assertTrue(v.label().contains("weryfikacji"));
-        assertEquals("w weryfikacji", Verdicts.labSummary(runs));
+        assertEquals("w weryfikacji", r.labSummary());
     }
 
     @Test
@@ -63,15 +73,27 @@ class EmbargoTest {
         Map<String, ResultsFile> in = results(run(Status.ERROR, Status.SKIPPED));
         assertTrue(embargo(null).held(in, RUN_AT).isEmpty());
         // even long after holdDays, an ERROR-only release reads "result unknown", never "bad"
-        List<RunResult> runs = embargo(null).apply(in, RUN_AT.plus(Duration.ofDays(30))).get("p|1.0.0").runs();
-        assertEquals("none", Verdicts.of(release(), runs).code());
+        Published.Release r = published(embargo(null), in, RUN_AT.plus(Duration.ofDays(30)));
+        assertFalse(r.held());
+        assertEquals("none", r.verdict().code());
     }
 
     @Test
     void passingAndSkippedResultsAreNotHeld() {
         Map<String, ResultsFile> in = results(run(Status.PASS, Status.SKIPPED), run(Status.PASS, Status.PASS));
         assertTrue(embargo(null).held(in, RUN_AT).isEmpty());
-        assertSame(in.get("p|1.0.0"), embargo(null).apply(in, RUN_AT).get("p|1.0.0"));
+        Published.Release r = published(embargo(null), in, RUN_AT);
+        assertFalse(r.held());
+        assertEquals(2, r.runs().size());
+        assertEquals("ok", r.verdict().code());
+    }
+
+    @Test
+    void heldStateSurvivesAnyCopyOfTheRuns() {
+        // the old design recognised "held" by the identity of one empty list, so any copy silently lost it
+        Published.Release r = published(embargo(null), results(run(Status.PASS, Status.FAIL)), RUN_AT);
+        assertEquals("none", Verdicts.of(release(), new java.util.ArrayList<>(r.runs()), r.held()).code());
+        assertTrue(Verdicts.of(release(), List.copyOf(r.runs()), r.held()).label().contains("weryfikacji"));
     }
 
     @Test
