@@ -264,13 +264,25 @@ public final class LabRunner {
         } else if (!l2ok) {
             out.add(skipped(Level.L3, "poprzedni poziom nie przeszedł"));
         } else {
-            String json = h.sandboxEnvPrefix() == null ? null : System.getenv(h.sandboxEnvPrefix() + "_OPTION_JSON");
+            String var = h.sandboxEnvPrefix() == null ? "?" : h.sandboxEnvPrefix() + "_OPTION_JSON";
+            String json = sandboxJson(h.sandboxEnvPrefix() == null ? null : System.getenv(var));
+            String problem = json == null ? null : sandboxJsonProblem(json);
             if (json == null || h.gatewayId() == null || h.optionName() == null || h.redirectHostRegex() == null) {
                 out.add(skipped(Level.L3, "brak danych sandboxowych lub konfiguracji bramki (gatewayId/optionName w config/plugins.json, zmienna "
-                        + (h.sandboxEnvPrefix() == null ? "?" : h.sandboxEnvPrefix() + "_OPTION_JSON") + ")"));
+                        + var + ")"));
+            } else if (problem != null) {
+                // a configuration problem of ours: L3 is not tested (never PASS), L0-L2 keep their results
+                log.accept("  warn: " + var + " is not usable: " + problem);
+                out.add(skipped(Level.L3, "nieprawidłowe dane sandboxowe w zmiennej " + var + " (" + problem + ")"));
             } else {
-                infra(env.wp("option", "update", h.optionName(), json, "--format=json"), "apply sandbox settings");
-                out.add(sb.l3(spec.checkout(), h.gatewayId(), h.redirectHostRegex()));
+                // results are public: never copy WP-CLI's output here, it may echo the sandbox credentials
+                Docker.Result applied = env.wp("option", "update", h.optionName(), json, "--format=json");
+                if (!applied.ok()) {
+                    log.accept("  warn: WordPress rejected the sandbox settings from " + var + " (exit " + applied.exit() + ")");
+                    out.add(skipped(Level.L3, "WordPress odrzucił ustawienia sandboxa ze zmiennej " + var + " (kod " + applied.exit() + ")"));
+                } else {
+                    out.add(sb.l3(spec.checkout(), h.gatewayId(), h.redirectHostRegex()));
+                }
             }
         }
         // L4: carrier widgets
@@ -287,6 +299,24 @@ public final class LabRunner {
     }
 
     // ------------------------------------------------------------------ helpers
+
+    /**
+     * Sandbox settings from the environment, or null when there are none. GitHub Actions passes a secret that does not
+     * exist as an EMPTY string, not as an unset variable, so blank means "no sandbox data" (L3 skipped).
+     */
+    static String sandboxJson(String raw) {
+        return raw == null || raw.isBlank() ? null : raw.strip();
+    }
+
+    /** Null when the sandbox settings are a JSON object; otherwise why not (never echoes the value: it is a secret). */
+    static String sandboxJsonProblem(String json) {
+        try {
+            JsonNode n = Json.tree(json);
+            return n != null && n.isObject() ? null : "to nie jest obiekt JSON";
+        } catch (RuntimeException e) {
+            return "niepoprawny JSON";
+        }
+    }
 
     static Level highest(List<LevelResult> levels) {
         Level best = null;
