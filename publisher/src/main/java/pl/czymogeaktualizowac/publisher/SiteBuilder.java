@@ -210,7 +210,8 @@ public final class SiteBuilder {
 
     private RunRow runRow(RunResult r) {
         List<LevelRow> levels = r.levels().stream().map(l -> new LevelRow(l.level().name(), l.level().label,
-                statusPl(l.status().name()), statusCss(l.status().name()), l.detail() == null ? "" : l.detail())).toList();
+                l.notApplicable() ? "nie dotyczy" : statusPl(l.status().name()), statusCss(l.status().name()),
+                l.detail() == null ? "" : l.detail())).toList();
         return new RunRow(r.profileId(), r.php(), r.wp(), r.woo(), Verdicts.checkoutPl(r.checkout()),
                 r.mode().equals("stack") ? "pełny zestaw wtyczek" : "wtyczka solo",
                 Verdicts.hasLabError(r) ? "nieznany (błąd środowiska, nie wtyczki)"
