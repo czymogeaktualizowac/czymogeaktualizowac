@@ -260,7 +260,7 @@ public final class LabRunner {
         boolean l2ok = reached != null && reached.ordinal() >= Level.L2.ordinal();
         // L3: payment gateways with sandbox data
         if (!"payment".equals(spec.category())) {
-            out.add(skipped(Level.L3, "nie dotyczy wtyczek z kategorii " + spec.category()));
+            out.add(skipped(Level.L3, LevelResult.NOT_APPLICABLE + " wtyczek z kategorii " + spec.category()));
         } else if (!l2ok) {
             out.add(skipped(Level.L3, "poprzedni poziom nie przeszedł"));
         } else {
@@ -287,7 +287,7 @@ public final class LabRunner {
         }
         // L4: carrier widgets
         if (!"shipping".equals(spec.category())) {
-            out.add(skipped(Level.L4, "nie dotyczy wtyczek z kategorii " + spec.category()));
+            out.add(skipped(Level.L4, LevelResult.NOT_APPLICABLE + " wtyczek z kategorii " + spec.category()));
         } else if (!l2ok) {
             out.add(skipped(Level.L4, "poprzedni poziom nie przeszedł"));
         } else if (h.shippingMethodRegex() == null || h.lockerSelector() == null) {

@@ -45,6 +45,10 @@ public final class Verdicts {
         List<String> failsEdge = new ArrayList<>();
         List<String> labErrors = new ArrayList<>();
         boolean anyCorePass = false;
+        // L3/L4 are claimed in the verdict only when EVERY core run that passed L2 also passed them
+        int coreL2Runs = 0;
+        int coreL3Pass = 0;
+        int coreL4Pass = 0;
         for (RunResult r : runs) {
             boolean coreProfile = r.profileId().equals("P2") || r.profileId().equals("P3");
             String where = r.profileId() + (r.checkout().equals("none") ? "" : ", " + r.checkout());
@@ -65,8 +69,14 @@ public final class Verdicts {
             if (coreProfile && Level.L2.compareTo(r.highestPassed() == null ? Level.L0 : r.highestPassed()) <= 0
                     && r.highestPassed() != null) {
                 anyCorePass = true;
+                coreL2Runs++;
+                coreL3Pass += status(r, Level.L3) == Status.PASS ? 1 : 0;
+                coreL4Pass += status(r, Level.L4) == Status.PASS ? 1 : 0;
             }
         }
+        boolean l3 = coreL2Runs > 0 && coreL3Pass == coreL2Runs;
+        boolean l4 = coreL2Runs > 0 && coreL4Pass == coreL2Runs;
+        String levels = l3 && l4 ? "L0–L4" : l3 ? "L0–L3" : l4 ? "L0–L2 i L4" : "L0–L2";
         boolean elevated = rel.forum() != null && "ELEVATED".equals(rel.forum().level());
         if (!failsCore.isEmpty()) {
             return new Verdict("bad", "Wstrzymaj aktualizację: testy wykryły błąd",
@@ -78,15 +88,23 @@ public final class Verdicts {
         }
         if (anyCorePass) {
             if (checksumWarning) {
-                return new Verdict("warn", "Testy L0–L2 bez błędów, ale pliki kodu różnią się od sum kontrolnych",
+                return new Verdict("warn", "Testy " + levels + " bez błędów, ale pliki kodu różnią się od sum kontrolnych",
                         rel.checksum().detail() + ".");
             }
             if (elevated) {
                 return new Verdict("warn", "Testy przeszły, ale użytkownicy zgłaszają problemy",
                         "Podwyższona liczba zgłoszeń na forum w 7 dni po wydaniu. Sprawdź tematy poniżej.");
             }
-            return new Verdict("ok", "Testy L0–L2 bez błędów",
-                    "Instalacja, koszyk i zamówienie testowe działają w naszych konfiguracjach. To nie jest gwarancja dla Twojego sklepu.");
+            List<String> works = new ArrayList<>(List.of("Instalacja", "koszyk", "zamówienie testowe"));
+            if (l3) {
+                works.add("przekierowanie do bramki płatności (sandbox)");
+            }
+            if (l4) {
+                works.add("widget wyboru punktu odbioru");
+            }
+            String what = String.join(", ", works.subList(0, works.size() - 1)) + " i " + works.get(works.size() - 1);
+            return new Verdict("ok", "Testy " + levels + " bez błędów",
+                    what + " działają w naszych konfiguracjach. To nie jest gwarancja dla Twojego sklepu.");
         }
         if (!labErrors.isEmpty() && !elevated) {
             return new Verdict("none", "Wynik nieznany: błąd środowiska testowego",
@@ -120,6 +138,10 @@ public final class Verdicts {
                 .map(r -> r.profileId() + (r.checkout().equals("none") ? "" : " " + checkoutPl(r.checkout()))
                         + ": " + reached(r))
                 .collect(Collectors.joining(" · "));
+    }
+
+    private static Status status(RunResult r, Level level) {
+        return r.levels().stream().filter(l -> l.level() == level).map(LevelResult::status).findFirst().orElse(Status.SKIPPED);
     }
 
     /** True when the lab itself failed during this run (any ERROR level): the run says nothing about the plugin. */

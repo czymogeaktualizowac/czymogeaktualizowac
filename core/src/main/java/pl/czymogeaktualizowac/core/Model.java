@@ -182,6 +182,13 @@ public final class Model {
     public enum Status {PASS, FAIL, SKIPPED, ERROR}
 
     public record LevelResult(Level level, Status status, String detail, long durationMs) {
+        /** Start of the detail of a level that does not apply to the plugin (e.g. L3 for a shipping plugin). */
+        public static final String NOT_APPLICABLE = "nie dotyczy";
+
+        /** SKIPPED because the level does not apply to this kind of plugin, rather than because something was missing. */
+        public boolean notApplicable() {
+            return status == Status.SKIPPED && detail != null && detail.startsWith(NOT_APPLICABLE);
+        }
     }
 
     /** One lab run: one plugin version, one profile, one checkout type, solo or in the full Polish stack. */

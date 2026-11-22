@@ -49,6 +49,34 @@ class VerdictsTest {
     }
 
     @Test
+    void passedGatewayIsNamedOnlyWhenEveryCoreRunPassedIt() {
+        RunResult p2 = run("P2", "classic", Level.L3, lr(Level.L0, Status.PASS), lr(Level.L1, Status.PASS), lr(Level.L2, Status.PASS),
+                lr(Level.L3, Status.PASS), lr(Level.L4, Status.SKIPPED));
+        RunResult p3 = run("P3", "block", Level.L3, lr(Level.L0, Status.PASS), lr(Level.L1, Status.PASS), lr(Level.L2, Status.PASS),
+                lr(Level.L3, Status.PASS), lr(Level.L4, Status.SKIPPED));
+        Verdict both = Verdicts.of(release("NONE", "OK"), List.of(p2, p3));
+        assertEquals("ok", both.code());
+        assertEquals("Testy L0–L3 bez błędów", both.label());
+        assertTrue(both.detail().contains("bramki płatności"));
+        // one core run without L3 (e.g. no sandbox data there): only L0–L2 is claimed
+        RunResult p3noL3 = run("P3", "classic", Level.L2, lr(Level.L0, Status.PASS), lr(Level.L1, Status.PASS), lr(Level.L2, Status.PASS),
+                lr(Level.L3, Status.SKIPPED));
+        Verdict partial = Verdicts.of(release("NONE", "OK"), List.of(p2, p3noL3));
+        assertEquals("Testy L0–L2 bez błędów", partial.label());
+        assertEquals("Instalacja, koszyk i zamówienie testowe działają w naszych konfiguracjach. To nie jest gwarancja dla Twojego sklepu.",
+                partial.detail(), "the L0–L2 wording is unchanged");
+    }
+
+    @Test
+    void notApplicableIsASkipThatIsNeverAPass() {
+        var na = new pl.czymogeaktualizowac.core.Model.LevelResult(Level.L3, Status.SKIPPED, "nie dotyczy wtyczek z kategorii shipping", 0);
+        var missing = new pl.czymogeaktualizowac.core.Model.LevelResult(Level.L3, Status.SKIPPED, "brak danych sandboxowych", 0);
+        assertTrue(na.notApplicable());
+        assertTrue(!missing.notApplicable());
+        assertTrue(!new pl.czymogeaktualizowac.core.Model.LevelResult(Level.L3, Status.PASS, "nie dotyczy", 0).notApplicable());
+    }
+
+    @Test
     void failureOnCoreProfileIsBad() {
         RunResult r = run("P3", "block", Level.L1, lr(Level.L0, Status.PASS), lr(Level.L1, Status.PASS), lr(Level.L2, Status.FAIL));
         Verdict v = Verdicts.of(release("NONE", "OK"), List.of(r));

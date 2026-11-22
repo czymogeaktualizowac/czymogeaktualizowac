@@ -22,7 +22,7 @@
     <tr><td><strong>L4</strong></td><td>Widget wyboru paczkomatu lub punktu odbioru pojawia się po wybraniu metody dostawy (samego wyboru punktu nie sprawdzamy). Tylko tam, gdzie mamy konfigurację; w innym razie „pominięto”.</td></tr>
   </tbody>
 </table>
-<p><strong>„Pominięto” nigdy nie oznacza „zaliczono”.</strong> Werdykt „testy L0–L2 bez błędów” mówi tylko o L0–L2.</p>
+<p><strong>„Pominięto” nigdy nie oznacza „zaliczono”.</strong> Werdykt wymienia tylko poziomy zaliczone we wszystkich głównych profilach (P2, P3): „testy L0–L2 bez błędów” mówi tylko o L0–L2, a „L0–L3” dodatkowo o bramce płatności. „Nie dotyczy” oznacza poziom, który nie ma sensu dla danego rodzaju wtyczki (np. bramka płatności dla wtyczki kurierskiej).</p>
 <p>Każdy test zaczynamy od przebiegu kontrolnego bez testowanej wtyczki (z jej zależnościami, a w trybie „stack” z pozostałymi wtyczkami zestawu). Jeśli sklep nie działa już wtedy, to problem laboratorium, nie wtyczki: pokazujemy „wynik nieznany” i powtarzamy test. Błąd przypisujemy wtyczce dopiero wtedy, gdy powtórzy się w drugim, niezależnym uruchomieniu.</p>
 
 <h2>Profile testowe</h2>
