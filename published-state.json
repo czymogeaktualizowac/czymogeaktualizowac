@@ -1,5 +1,5 @@
 {
-  "at" : "2026-11-23T05:37:36.701121076Z",
+  "at" : "2026-11-23T17:31:50.907881089Z",
   "latestVersion" : {
     "apaczka-pl" : "1.4.4",
     "apaczka-pl-mapa-punktow" : "1.4.7",
@@ -13,7 +13,7 @@
     "ksef-for-flexible-invoices" : "2.6.3",
     "omnibus" : "3.0.5",
     "pay-by-paynow-pl" : "2.5.13",
-    "pay-wp" : "2.3.2",
+    "pay-wp" : "2.3.3",
     "platnosci-online-blue-media" : "5.1.0",
     "trustmate-io-integration-for-woocommerce" : "1.18.1",
     "wc-price-history" : "3.2.9",
