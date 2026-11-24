@@ -1,6 +1,11 @@
 {
-  "at" : "2026-11-24T05:26:22.178657535Z",
-  "changes" : [ ],
+  "at" : "2026-11-24T17:20:34.353830279Z",
+  "changes" : [ {
+    "kind" : "wordpress-prerelease",
+    "subject" : "wordpress",
+    "version" : "7.2-RC3",
+    "detail" : "WordPress 7.2-RC3"
+  } ],
   "errors" : [ ],
   "pluginsOk" : 17,
   "pluginsTracked" : 17
