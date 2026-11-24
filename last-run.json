@@ -1,11 +1,6 @@
 {
-  "at" : "2026-11-23T17:22:54.219408510Z",
-  "changes" : [ {
-    "kind" : "plugin-release",
-    "subject" : "pay-wp",
-    "version" : "2.3.3",
-    "detail" : "Autopay dla WooCommerce 2.3.3"
-  } ],
+  "at" : "2026-11-24T05:26:22.178657535Z",
+  "changes" : [ ],
   "errors" : [ ],
   "pluginsOk" : 17,
   "pluginsTracked" : 17
