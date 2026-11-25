@@ -124,4 +124,45 @@ class VerdictsTest {
                 lr(Level.L3, Status.FAIL));
         assertEquals("bad", Verdicts.of(release("NONE", "OK"), List.of(r)).code());
     }
+
+    private static RunResult notApplicableRun(String profile) {
+        String why = LevelResult.NOT_APPLICABLE + ": wtyczka wymaga PHP 8.2 lub nowszego (ten profil: PHP 8.1); autor nie wspiera tej konfiguracji";
+        return run(profile, "classic", null, new LevelResult(Level.L0, Status.SKIPPED, why, 0), new LevelResult(Level.L1, Status.SKIPPED, why, 0),
+                new LevelResult(Level.L2, Status.SKIPPED, why, 0), new LevelResult(Level.L3, Status.SKIPPED, why, 0),
+                new LevelResult(Level.L4, Status.SKIPPED, why, 0));
+    }
+
+    @Test
+    void aProfileBelowThePluginsMinimumIsNotApplicableNeverAnL0Failure() {
+        RunResult p1 = notApplicableRun("P1");
+        RunResult p3 = run("P3", "classic", Level.L2, lr(Level.L0, Status.PASS), lr(Level.L1, Status.PASS), lr(Level.L2, Status.PASS),
+                lr(Level.L3, Status.SKIPPED), lr(Level.L4, Status.SKIPPED));
+        assertTrue(Verdicts.notApplicable(p1));
+        assertTrue(!Verdicts.notApplicable(p3));
+        assertEquals("nie dotyczy", Verdicts.reached(p1));
+        assertEquals("P1 klasyczny: nie dotyczy · P3 klasyczny: L2", Verdicts.labSummary(List.of(p1, p3)));
+        assertEquals("ok", Verdicts.of(release("NONE", "OK"), List.of(p1, p3)).code());
+        Verdict only = Verdicts.of(release("NONE", "OK"), List.of(p1));
+        assertEquals("none", only.code());
+        assertTrue(only.label().startsWith("Brak testów"));
+        assertTrue(only.detail().contains("PHP 8.2"), only.detail());
+    }
+
+    @Test
+    void checksumResultIsWordedInPolishFromTheFileLists() {
+        ChecksumResult bad = new ChecksumResult("MISMATCH", 40, List.of("includes/Invoice.php", "readme.txt"), List.of(),
+                "1 code file(s) differ from the WordPress.org checksums, 0 missing: includes/Invoice.php");
+        assertEquals("niezgodne: pliki kodu inne niż w sumach kontrolnych WordPress.org: 1, brakujące: 0 (includes/Invoice.php)",
+                Verdicts.checksumText(bad));
+        ChecksumResult ok = new ChecksumResult("OK", 169, List.of("readme.txt"), List.of(), "all 169 listed files checked: code files match");
+        assertEquals("zgodne: sprawdzono 169 plików z listy WordPress.org, pliki kodu się zgadzają (inne pliki, np. readme lub tłumaczenia, różnią się: 1)",
+                Verdicts.checksumText(ok));
+        Verdict v = Verdicts.of(new ReleaseRecord("1.0.0", Instant.EPOCH, Instant.EPOCH, false, null, bad, "sha", 1,
+                new ForumSignal(0, 0, "NONE", true, List.of())), List.of());
+        assertTrue(!v.detail().contains("code file(s)"), v.detail());
+        assertEquals("plik", Verdicts.files(1));
+        assertEquals("pliki", Verdicts.files(22));
+        assertEquals("plików", Verdicts.files(12));
+        assertEquals("plików", Verdicts.files(169));
+    }
 }

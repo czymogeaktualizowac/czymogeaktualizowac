@@ -202,7 +202,7 @@ public final class SiteBuilder {
                 h == null ? null : h.changelogHead(), dash(h == null ? null : h.requiresPhp()), dash(h == null ? null : h.wcRequires()),
                 dash(h == null ? null : h.wcTested()), dash(h == null ? null : h.testedWp()), dash(h == null ? null : h.license()),
                 h == null || h.requiresPlugins() == null ? List.of() : h.requiresPlugins(),
-                rel.checksum() == null ? "–" : rel.checksum().status() + ": " + rel.checksum().detail(),
+                rel.checksum() == null ? "–" : Verdicts.checksumText(rel.checksum()),
                 rel.zipSha256() == null ? "–" : rel.zipSha256(), "https://wordpress.org/plugins/" + tp.slug() + "/", rel.prerelease(),
                 pr.held());
         render(out, "pluginy/" + tp.slug() + "/" + seg(rel.version()) + "/index.html", "release.jte", page);
@@ -215,6 +215,7 @@ public final class SiteBuilder {
         return new RunRow(r.profileId(), r.php(), r.wp(), r.woo(), Verdicts.checkoutPl(r.checkout()),
                 r.mode().equals("stack") ? "pełny zestaw wtyczek" : "wtyczka solo",
                 Verdicts.hasLabError(r) ? "nieznany (błąd środowiska, nie wtyczki)"
+                        : Verdicts.notApplicable(r) ? "nie dotyczy (nie testowano: wymagania wtyczki)"
                         : r.highestPassed() == null ? "żaden (błąd L0)" : r.highestPassed().name(), levels);
     }
 
@@ -283,7 +284,8 @@ public final class SiteBuilder {
                         path, false),
                 List.of(new Crumb("Wtyczki", "/"), new Crumb("Zgodność", "/kompatybilnosc/"), new Crumb(productName + " " + version, null)),
                 heading,
-                pre ? "To wersja przedpremierowa. Sprawdzamy ją wcześniej, aby ostrzec, zanim trafi do Twojego sklepu."
+                pre ? "To wersja przedpremierowa. Pokazujemy, czy autorzy deklarują z nią zgodność; testy laboratoryjne wersji"
+                        + " przedpremierowych (profil P4) jeszcze nie są uruchamiane."
                         : "Najnowsza stabilna wersja. Deklaracja autora to nagłówek wtyczki; nasze testy dotyczą konfiguracji laboratoryjnych.",
                 items, "Deklaracja autora pochodzi z nagłówka wtyczki („" + (woo ? "WC tested up to" : "Tested up to")
                 + "”). Brak testów nie oznacza błędu: oznacza, że jeszcze nie sprawdzaliśmy tej konfiguracji.");

@@ -39,4 +39,14 @@ class VersionsTest {
         assertEquals(0, Versions.compare("2.0", "2.0.0"));
         assertTrue(Versions.compare("2.0.1", "2.0") > 0);
     }
+
+    @Test
+    void requirementsCompareReleasesAndIgnorePrereleaseSuffixes() {
+        assertFalse(Versions.meets("8.1", "8.2"));
+        assertTrue(Versions.meets("8.2", "8.2"));
+        assertTrue(Versions.meets("8.3", "8.2"));
+        assertTrue(Versions.meets("7.0.9", "5.3"));
+        assertTrue(Versions.meets("7.2-RC3", "7.2"), "WordPress strips -RC before comparing with Requires at least");
+        assertFalse(Versions.meets("11.2.2", "11.3"));
+    }
 }

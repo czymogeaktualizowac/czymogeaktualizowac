@@ -25,6 +25,14 @@ public final class Versions {
         return comparePre(pa[1], pb[1]);
     }
 
+    /**
+     * True when {@code have} meets a "Requires …" minimum. Pre-release suffixes are ignored, as WordPress does for its
+     * own version ("7.2-RC3" meets "Requires at least: 7.2"); {@code have} "8.1" does not meet "8.2".
+     */
+    public static boolean meets(String have, String required) {
+        return compareCore(split(have)[0], split(required)[0]) >= 0;
+    }
+
     public static boolean isPrerelease(String v) {
         return !split(v)[1].isEmpty();
     }

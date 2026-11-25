@@ -25,7 +25,7 @@
     </tbody>
   </table>
   </div>
-  <p class="small">Werdykt opisuje, co faktycznie sprawdziliśmy (poziomy L0–L4, profile P1–P4), a nie „bezpieczeństwo” aktualizacji. <a href="/jak-testujemy/">Co oznaczają poziomy i profile?</a></p>
+  <p class="small">Werdykt opisuje, co faktycznie sprawdziliśmy (poziomy L0–L4, profile P1–P3), a nie „bezpieczeństwo” aktualizacji. <a href="/jak-testujemy/">Co oznaczają poziomy i profile?</a></p>
 </section>
 
 <section>
