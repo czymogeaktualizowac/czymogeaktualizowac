@@ -1,0 +1,327 @@
+{
+  "pluginSlug" : "ksef-for-flexible-invoices",
+  "pluginVersion" : "2.5.3",
+  "runs" : [ {
+    "pluginSlug" : "ksef-for-flexible-invoices",
+    "pluginVersion" : "2.5.3",
+    "profileId" : "P1",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.1",
+    "wp" : "7.0.9",
+    "woo" : "11.2.2",
+    "startedAt" : "2026-11-25T22:52:15.688582621Z",
+    "finishedAt" : "2026-11-25T22:52:58.453570563Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych (pominięto 1 błędów, które występują też bez wtyczki: to błąd WordPressa/WooCommerce lub laboratorium)",
+      "durationMs" : 3654
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 1149
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1487
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ "[25-Nov-2026 22:52:32 UTC] PHP Fatal error:  Cannot redeclare addslashes_gpc() (previously declared in /var/www/html/wp-includes/formatting.php:2848) in /var/www/html/wp-includes/deprecated.php on line 6505", "[25-Nov-2026 22:52:32 UTC] PHP Fatal error:  Cannot redeclare addslashes_gpc() (previously declared in /var/www/html/wp-includes/formatting.php:2848) in /var/www/html/wp-includes/deprecated.php on line 6505" ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "flexible-invoices@7.1.3,woocommerce@11.2.2",
+      "wordpressImage" : "wordpress:php8.1-apache@sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "ksef-for-flexible-invoices",
+    "pluginVersion" : "2.5.3",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:53:35.294602779Z",
+    "finishedAt" : "2026-11-25T22:54:14.864128302Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3719
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 1536
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 3049
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "flexible-invoices@7.1.3,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "ksef-for-flexible-invoices",
+    "pluginVersion" : "2.5.3",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:52:58.481240568Z",
+    "finishedAt" : "2026-11-25T22:53:35.280360648Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3670
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 1137
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1506
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "flexible-invoices@7.1.3,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "ksef-for-flexible-invoices",
+    "pluginVersion" : "2.5.3",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:54:51.754085141Z",
+    "finishedAt" : "2026-11-25T22:55:28.443554712Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3770
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 1534
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 3109
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "flexible-invoices@7.1.3,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "ksef-for-flexible-invoices",
+    "pluginVersion" : "2.5.3",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:54:14.866448766Z",
+    "finishedAt" : "2026-11-25T22:54:51.751154931Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3710
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 1139
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1513
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "flexible-invoices@7.1.3,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "ksef-for-flexible-invoices",
+    "pluginVersion" : "2.5.3",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:56:53.895780189Z",
+    "finishedAt" : "2026-11-25T22:58:06.380302640Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 4388
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 3943
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 3554
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,flexible-shipping@6.13.9,furgonetka@1.9.10,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,omnibus@3.0.5,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.0,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "ksef-for-flexible-invoices",
+    "pluginVersion" : "2.5.3",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:55:36.025057983Z",
+    "finishedAt" : "2026-11-25T22:56:53.862948453Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 4334
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem (informacyjnie: 1 wyjątków JS i 1 błędów konsoli niezwiązanych jednoznacznie z wtyczką)",
+      "durationMs" : 6212
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 2926
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii invoicing",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,flexible-shipping@6.13.9,furgonetka@1.9.10,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,omnibus@3.0.5,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.0,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  } ]
+}

@@ -1,0 +1,327 @@
+{
+  "pluginSlug" : "flexible-shipping",
+  "pluginVersion" : "6.13.3",
+  "runs" : [ {
+    "pluginSlug" : "flexible-shipping",
+    "pluginVersion" : "6.13.3",
+    "profileId" : "P1",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.1",
+    "wp" : "7.0.9",
+    "woo" : "11.2.2",
+    "startedAt" : "2026-11-25T23:16:49.550674246Z",
+    "finishedAt" : "2026-11-25T23:17:25.975512477Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3027
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 1041
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1370
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii shipping",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "brak konfiguracji widgetu (shippingMethodRegex/lockerSelector w config/plugins.json) i danych sandboxowych przewoźnika",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.2.2",
+      "wordpressImage" : "wordpress:php8.1-apache@sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-shipping",
+    "pluginVersion" : "6.13.3",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:17:55.641448856Z",
+    "finishedAt" : "2026-11-25T23:18:28.903051963Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3092
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 1342
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 2919
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii shipping",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "brak konfiguracji widgetu (shippingMethodRegex/lockerSelector w config/plugins.json) i danych sandboxowych przewoźnika",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-shipping",
+    "pluginVersion" : "6.13.3",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:17:25.996826748Z",
+    "finishedAt" : "2026-11-25T23:17:55.628309679Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3029
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 1088
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1413
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii shipping",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "brak konfiguracji widgetu (shippingMethodRegex/lockerSelector w config/plugins.json) i danych sandboxowych przewoźnika",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-shipping",
+    "pluginVersion" : "6.13.3",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:18:58.503397587Z",
+    "finishedAt" : "2026-11-25T23:19:31.895564257Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3057
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 1369
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 2901
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii shipping",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "brak konfiguracji widgetu (shippingMethodRegex/lockerSelector w config/plugins.json) i danych sandboxowych przewoźnika",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-shipping",
+    "pluginVersion" : "6.13.3",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:18:28.905262308Z",
+    "finishedAt" : "2026-11-25T23:18:58.500425228Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3027
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 1045
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1393
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii shipping",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "brak konfiguracji widgetu (shippingMethodRegex/lockerSelector w config/plugins.json) i danych sandboxowych przewoźnika",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-shipping",
+    "pluginVersion" : "6.13.3",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:20:41.683246377Z",
+    "finishedAt" : "2026-11-25T23:21:38.382987392Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3681
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 2634
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 3304
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii shipping",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "brak konfiguracji widgetu (shippingMethodRegex/lockerSelector w config/plugins.json) i danych sandboxowych przewoźnika",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,furgonetka@1.9.10,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,omnibus@3.0.5,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.0,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-shipping",
+    "pluginVersion" : "6.13.3",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:19:38.997112095Z",
+    "finishedAt" : "2026-11-25T23:20:41.659845184Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3674
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem (informacyjnie: 1 wyjątków JS i 1 błędów konsoli niezwiązanych jednoznacznie z wtyczką)",
+      "durationMs" : 4429
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 2640
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii shipping",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "brak konfiguracji widgetu (shippingMethodRegex/lockerSelector w config/plugins.json) i danych sandboxowych przewoźnika",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,furgonetka@1.9.10,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,omnibus@3.0.5,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.0,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  } ]
+}

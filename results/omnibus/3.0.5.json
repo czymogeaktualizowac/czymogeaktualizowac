@@ -8,39 +8,43 @@
     "mode" : "solo",
     "checkout" : "classic",
     "php" : "8.1",
-    "wp" : "7.0.8",
+    "wp" : "7.0.9",
     "woo" : "11.2.2",
-    "startedAt" : "2026-11-15T23:07:47.049101198Z",
-    "finishedAt" : "2026-11-15T23:08:22.616140059Z",
+    "startedAt" : "2026-11-25T22:22:28.994190863Z",
+    "finishedAt" : "2026-11-25T22:22:29.007488549Z",
     "levels" : [ {
       "level" : "L0",
-      "status" : "PASS",
-      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2911
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy: wtyczka wymaga PHP 8.2 lub nowszego (ten profil: PHP 8.1); autor nie wspiera tej konfiguracji",
+      "durationMs" : 0
     }, {
       "level" : "L1",
-      "status" : "PASS",
-      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1146
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy: wtyczka wymaga PHP 8.2 lub nowszego (ten profil: PHP 8.1); autor nie wspiera tej konfiguracji",
+      "durationMs" : 0
     }, {
       "level" : "L2",
-      "status" : "PASS",
-      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1511
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy: wtyczka wymaga PHP 8.2 lub nowszego (ten profil: PHP 8.1); autor nie wspiera tej konfiguracji",
+      "durationMs" : 0
     }, {
       "level" : "L3",
       "status" : "SKIPPED",
-      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "detail" : "nie dotyczy: wtyczka wymaga PHP 8.2 lub nowszego (ten profil: PHP 8.1); autor nie wspiera tej konfiguracji",
       "durationMs" : 0
     }, {
       "level" : "L4",
       "status" : "SKIPPED",
-      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "detail" : "nie dotyczy: wtyczka wymaga PHP 8.2 lub nowszego (ten profil: PHP 8.1); autor nie wspiera tej konfiguracji",
       "durationMs" : 0
     } ],
-    "highestPassed" : "L2",
     "notes" : "",
-    "logExcerpt" : [ ]
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "wordpressImage" : "wordpress:php8.1-apache@sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
+      "wpCli" : "2.12.0"
+    }
   }, {
     "pluginSlug" : "omnibus",
     "pluginVersion" : "3.0.5",
@@ -48,25 +52,25 @@
     "mode" : "solo",
     "checkout" : "block",
     "php" : "8.2",
-    "wp" : "7.1.4",
-    "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:08:53.372570327Z",
-    "finishedAt" : "2026-11-15T23:09:27.532146277Z",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:23:03.916377294Z",
+    "finishedAt" : "2026-11-25T22:23:35.575129383Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2928
+      "durationMs" : 2879
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 1555
+      "durationMs" : 1250
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3225
+      "durationMs" : 2844
     }, {
       "level" : "L3",
       "status" : "SKIPPED",
@@ -80,7 +84,13 @@
     } ],
     "highestPassed" : "L2",
     "notes" : "",
-    "logExcerpt" : [ ]
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
   }, {
     "pluginSlug" : "omnibus",
     "pluginVersion" : "3.0.5",
@@ -88,25 +98,25 @@
     "mode" : "solo",
     "checkout" : "classic",
     "php" : "8.2",
-    "wp" : "7.1.4",
-    "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:08:22.641414834Z",
-    "finishedAt" : "2026-11-15T23:08:53.356303162Z",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:22:29.049313218Z",
+    "finishedAt" : "2026-11-25T22:23:03.912289233Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2950
+      "durationMs" : 2898
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1163
+      "durationMs" : 971
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1524
+      "durationMs" : 1323
     }, {
       "level" : "L3",
       "status" : "SKIPPED",
@@ -120,7 +130,13 @@
     } ],
     "highestPassed" : "L2",
     "notes" : "",
-    "logExcerpt" : [ ]
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
   }, {
     "pluginSlug" : "omnibus",
     "pluginVersion" : "3.0.5",
@@ -128,25 +144,25 @@
     "mode" : "solo",
     "checkout" : "block",
     "php" : "8.3",
-    "wp" : "7.1.4",
-    "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:09:57.279668022Z",
-    "finishedAt" : "2026-11-15T23:10:34.210287523Z",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:24:03.556729399Z",
+    "finishedAt" : "2026-11-25T22:24:34.075308147Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2973
+      "durationMs" : 2870
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 1528
+      "durationMs" : 1225
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3120
+      "durationMs" : 2808
     }, {
       "level" : "L3",
       "status" : "SKIPPED",
@@ -160,7 +176,13 @@
     } ],
     "highestPassed" : "L2",
     "notes" : "",
-    "logExcerpt" : [ ]
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
   }, {
     "pluginSlug" : "omnibus",
     "pluginVersion" : "3.0.5",
@@ -168,25 +190,25 @@
     "mode" : "solo",
     "checkout" : "classic",
     "php" : "8.3",
-    "wp" : "7.1.4",
-    "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:09:27.534638980Z",
-    "finishedAt" : "2026-11-15T23:09:57.276671168Z",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:23:35.577958276Z",
+    "finishedAt" : "2026-11-25T22:24:03.552464659Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 2968
+      "durationMs" : 2860
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
-      "durationMs" : 1149
+      "durationMs" : 971
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 1553
+      "durationMs" : 1330
     }, {
       "level" : "L3",
       "status" : "SKIPPED",
@@ -200,7 +222,13 @@
     } ],
     "highestPassed" : "L2",
     "notes" : "",
-    "logExcerpt" : [ ]
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
   }, {
     "pluginSlug" : "omnibus",
     "pluginVersion" : "3.0.5",
@@ -208,25 +236,25 @@
     "mode" : "stack",
     "checkout" : "block",
     "php" : "8.3",
-    "wp" : "7.1.4",
-    "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:11:52.686276235Z",
-    "finishedAt" : "2026-11-15T23:13:00.735055802Z",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:25:49.769365370Z",
+    "finishedAt" : "2026-11-25T22:26:51.553112965Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 33753
+      "durationMs" : 3469
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
-      "durationMs" : 3447
+      "durationMs" : 3647
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3792
+      "durationMs" : 3143
     }, {
       "level" : "L3",
       "status" : "SKIPPED",
@@ -240,7 +268,13 @@
     } ],
     "highestPassed" : "L2",
     "notes" : "",
-    "logExcerpt" : [ ]
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,flexible-shipping@6.13.9,furgonetka@1.9.10,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.0,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
   }, {
     "pluginSlug" : "omnibus",
     "pluginVersion" : "3.0.5",
@@ -248,25 +282,25 @@
     "mode" : "stack",
     "checkout" : "classic",
     "php" : "8.3",
-    "wp" : "7.1.4",
-    "woo" : "11.3.0",
-    "startedAt" : "2026-11-15T23:10:41.752323592Z",
-    "finishedAt" : "2026-11-15T23:11:52.661013719Z",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T22:24:41.394415251Z",
+    "finishedAt" : "2026-11-25T22:25:49.731013411Z",
     "levels" : [ {
       "level" : "L0",
       "status" : "PASS",
       "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
-      "durationMs" : 33765
+      "durationMs" : 3521
     }, {
       "level" : "L1",
       "status" : "PASS",
       "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem (informacyjnie: 1 wyjątków JS i 1 błędów konsoli niezwiązanych jednoznacznie z wtyczką)",
-      "durationMs" : 7401
+      "durationMs" : 6439
     }, {
       "level" : "L2",
       "status" : "PASS",
       "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
-      "durationMs" : 3961
+      "durationMs" : 2794
     }, {
       "level" : "L3",
       "status" : "SKIPPED",
@@ -280,6 +314,12 @@
     } ],
     "highestPassed" : "L2",
     "notes" : "",
-    "logExcerpt" : [ ]
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,flexible-shipping@6.13.9,furgonetka@1.9.10,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.0,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
   } ]
 }

@@ -1,0 +1,327 @@
+{
+  "pluginSlug" : "omnibus",
+  "pluginVersion" : "2.5.7",
+  "runs" : [ {
+    "pluginSlug" : "omnibus",
+    "pluginVersion" : "2.5.7",
+    "profileId" : "P1",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.1",
+    "wp" : "7.0.9",
+    "woo" : "11.2.2",
+    "startedAt" : "2026-11-25T23:28:12.639712053Z",
+    "finishedAt" : "2026-11-25T23:28:54.950851128Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych (pominięto 1 błędów, które występują też bez wtyczki: to błąd WordPressa/WooCommerce lub laboratorium), 2 ostrzeżeń/uwag/przestarzałych wywołań z plików wtyczki",
+      "durationMs" : 2859
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 980
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1335
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ "[25-Nov-2026 23:28:37 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/var/www/html/wp-includes/ai-client/adapters/class-wp-ai-client-http-client.php' (include_path='.:/usr/local/lib/php') in /var/www/html/wp-settings.php:290", "[25-Nov-2026 23:28:48 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:28:48 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:28:37 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/var/www/html/wp-includes/ai-client/adapters/class-wp-ai-client-http-client.php' (include_path='.:/usr/local/lib/php') in /var/www/html/wp-settings.php:290", "[25-Nov-2026 23:28:48 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:28:48 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586" ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.2.2",
+      "wordpressImage" : "wordpress:php8.1-apache@sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "omnibus",
+    "pluginVersion" : "2.5.7",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:29:23.235729574Z",
+    "finishedAt" : "2026-11-25T23:29:54.109446659Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych, 2 ostrzeżeń/uwag/przestarzałych wywołań z plików wtyczki",
+      "durationMs" : 2910
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 1274
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 2853
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ "[25-Nov-2026 23:29:46 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:29:46 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:29:46 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:29:46 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586" ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "omnibus",
+    "pluginVersion" : "2.5.7",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:28:54.974206142Z",
+    "finishedAt" : "2026-11-25T23:29:23.222882884Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych, 2 ostrzeżeń/uwag/przestarzałych wywołań z plików wtyczki",
+      "durationMs" : 2908
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 987
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1338
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ "[25-Nov-2026 23:29:16 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:29:16 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:29:16 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:29:16 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586" ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "omnibus",
+    "pluginVersion" : "2.5.7",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:30:19.393236500Z",
+    "finishedAt" : "2026-11-25T23:30:51.207456985Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych, 2 ostrzeżeń/uwag/przestarzałych wywołań z plików wtyczki",
+      "durationMs" : 2919
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 1275
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 2848
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ "[25-Nov-2026 23:30:42 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:30:42 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:30:42 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:30:42 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586" ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "omnibus",
+    "pluginVersion" : "2.5.7",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:29:54.111551535Z",
+    "finishedAt" : "2026-11-25T23:30:19.391331873Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych, 2 ostrzeżeń/uwag/przestarzałych wywołań z plików wtyczki",
+      "durationMs" : 2928
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 973
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1350
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ "[25-Nov-2026 23:30:12 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:30:12 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:30:12 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:30:12 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586" ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "omnibus",
+    "pluginVersion" : "2.5.7",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:32:07.240334388Z",
+    "finishedAt" : "2026-11-25T23:33:09.797197528Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych, 2 ostrzeżeń/uwag/przestarzałych wywołań z plików wtyczki",
+      "durationMs" : 3566
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 3664
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 3200
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ "[25-Nov-2026 23:32:59 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:32:59 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:32:59 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:32:59 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586" ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,flexible-shipping@6.13.9,furgonetka@1.9.10,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.0,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "omnibus",
+    "pluginVersion" : "2.5.7",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-25T23:30:58.610513445Z",
+    "finishedAt" : "2026-11-25T23:32:07.215040259Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych, 2 ostrzeżeń/uwag/przestarzałych wywołań z plików wtyczki",
+      "durationMs" : 3593
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem (informacyjnie: 1 wyjątków JS i 1 błędów konsoli niezwiązanych jednoznacznie z wtyczką)",
+      "durationMs" : 6039
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 2758
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii compliance",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "",
+    "logExcerpt" : [ "[25-Nov-2026 23:31:54 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:31:54 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:31:54 UTC] PHP Warning:  Undefined variable $min in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586", "[25-Nov-2026 23:31:54 UTC] PHP Warning:  Undefined variable $max in /var/www/html/wp-content/plugins/omnibus/includes/iworks/rate/rate.php on line 586" ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,flexible-shipping@6.13.9,furgonetka@1.9.10,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.0,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  } ]
+}
