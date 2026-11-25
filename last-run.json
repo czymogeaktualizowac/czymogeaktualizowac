@@ -1,6 +1,11 @@
 {
-  "at" : "2026-11-25T05:28:17.580848437Z",
-  "changes" : [ ],
+  "at" : "2026-11-25T17:19:16.413877277Z",
+  "changes" : [ {
+    "kind" : "plugin-release",
+    "subject" : "inpost-for-woocommerce",
+    "version" : "2.0.1",
+    "detail" : "InPost for WooCommerce 2.0.1"
+  } ],
   "errors" : [ ],
   "pluginsOk" : 17,
   "pluginsTracked" : 17
