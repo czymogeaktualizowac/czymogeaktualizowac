@@ -33,10 +33,11 @@
     <tr><td><strong>P1 Legacy-PL</strong></td><td>8.1</td><td>poprzednia linia WP i Woo</td><td>klasyczny</td></tr>
     <tr><td><strong>P2 Mainstream</strong></td><td>8.2</td><td>najnowsze</td><td>klasyczny i blokowy</td></tr>
     <tr><td><strong>P3 Current</strong></td><td>8.3</td><td>najnowsze</td><td>klasyczny i blokowy</td></tr>
-    <tr><td><strong>P4 Edge</strong></td><td>8.4</td><td>wersje beta/RC WP i Woo (jeśli są)</td><td>blokowy</td></tr>
+    <tr><td><strong>P4 Edge</strong> (planowany, jeszcze nie uruchamiany)</td><td>8.4</td><td>wersje beta/RC WP i Woo (jeśli są)</td><td>blokowy</td></tr>
   </tbody>
 </table>
-<p>Poza testowaną wtyczką w sklepie jest tylko WooCommerce (tryb „solo”) albo cały zestaw śledzonych wtyczek w najnowszych wersjach (tryb „stack”, wykrywa konflikty). Błąd w P2 lub P3 daje werdykt „wstrzymaj”; błąd w P1 lub P4 daje „uwaga”.</p>
+<p>Poza testowaną wtyczką w sklepie jest tylko WooCommerce i wtyczki, których ona wymaga (tryb „solo”), albo, w profilu P3, cały zestaw śledzonych wtyczek w najnowszych wersjach (tryb „stack”, wykrywa konflikty). Błąd w P2 lub P3 daje werdykt „wstrzymaj”; błąd w P1 lub P4 daje „uwaga”.</p>
+<p>Jeśli autor wtyczki deklaruje wyższą minimalną wersję PHP, WordPressa lub WooCommerce niż dany profil, tego profilu nie testujemy i oznaczamy go „nie dotyczy”: autor nie wspiera takiej konfiguracji, a przy zbyt starym PHP lub WordPressie WordPress w ogóle nie włączy wtyczki.</p>
 
 <h2>Czego nie robimy</h2>
 <ul>

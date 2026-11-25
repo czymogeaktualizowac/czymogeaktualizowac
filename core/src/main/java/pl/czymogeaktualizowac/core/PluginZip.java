@@ -212,7 +212,8 @@ public final class PluginZip {
         return new ChecksumResult(ok ? "OK" : "MISMATCH", expected.size(), mismatched, missing, detail);
     }
 
-    static boolean isCode(String path) {
+    /** Code files decide the checksum status; readme and translation files are routinely changed by WordPress.org. */
+    public static boolean isCode(String path) {
         String p = path.toLowerCase();
         for (String ext : new String[]{".php", ".phtml", ".inc", ".js", ".mjs", ".so", ".dll", ".exe", ".sh", ".phar"}) {
             if (p.endsWith(ext)) {

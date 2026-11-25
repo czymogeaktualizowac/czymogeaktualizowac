@@ -1,10 +1,12 @@
 package pl.czymogeaktualizowac.publisher;
 
+import pl.czymogeaktualizowac.core.Model.ChecksumResult;
 import pl.czymogeaktualizowac.core.Model.Level;
 import pl.czymogeaktualizowac.core.Model.LevelResult;
 import pl.czymogeaktualizowac.core.Model.ReleaseRecord;
 import pl.czymogeaktualizowac.core.Model.RunResult;
 import pl.czymogeaktualizowac.core.Model.Status;
+import pl.czymogeaktualizowac.core.PluginZip;
 import pl.czymogeaktualizowac.publisher.View.Verdict;
 
 import java.util.ArrayList;
@@ -37,9 +39,12 @@ public final class Verdicts {
         // A code-file checksum mismatch is serious but, in real data, usually a packaging artefact (SVN keywords,
         // line endings), so we flag it as a warning and say so; we never accuse an author of tampering.
         boolean checksumWarning = rel.checksum() != null && "MISMATCH".equals(rel.checksum().status());
+        // a profile below the plugin's declared minimum (PHP, WordPress, WooCommerce) was not tested at all
+        List<RunResult> notApplicable = runs.stream().filter(Verdicts::notApplicable).toList();
+        runs = runs.stream().filter(r -> !notApplicable(r)).toList();
         if (checksumWarning && runs.isEmpty()) {
             return new Verdict("warn", "Uwaga: pliki kodu różnią się od sum kontrolnych WordPress.org",
-                    rel.checksum().detail() + ". Zwykle to artefakt pakowania, ale sprawdzamy to; do czasu wyjaśnienia zachowaj ostrożność.");
+                    checksumText(rel.checksum()) + ". Zwykle to artefakt pakowania, ale sprawdzamy to; do czasu wyjaśnienia zachowaj ostrożność.");
         }
         List<String> failsCore = new ArrayList<>();
         List<String> failsEdge = new ArrayList<>();
@@ -89,7 +94,7 @@ public final class Verdicts {
         if (anyCorePass) {
             if (checksumWarning) {
                 return new Verdict("warn", "Testy " + levels + " bez błędów, ale pliki kodu różnią się od sum kontrolnych",
-                        rel.checksum().detail() + ".");
+                        checksumText(rel.checksum()) + ".");
             }
             if (elevated) {
                 return new Verdict("warn", "Testy przeszły, ale użytkownicy zgłaszają problemy",
@@ -114,6 +119,10 @@ public final class Verdicts {
         if (elevated) {
             return new Verdict("warn", "Brak testów laboratoryjnych, ale są zgłoszenia na forum",
                     "Podwyższona liczba zgłoszeń w 7 dni po wydaniu.");
+        }
+        if (runs.isEmpty() && !notApplicable.isEmpty()) {
+            String why = notApplicable.get(0).levels().get(0).detail().substring(LevelResult.NOT_APPLICABLE.length()).replaceFirst("^[:\\s]+", "");
+            return new Verdict("none", "Brak testów: nasze profile nie spełniają wymagań wtyczki", "Nie testowaliśmy: " + why + ".");
         }
         if (rel.forum() != null && "LOW".equals(rel.forum().level())) {
             return new Verdict("none", "Brak testów laboratoryjnych; pojedyncze zgłoszenia na forum", null);
@@ -149,12 +158,58 @@ public final class Verdicts {
         return r.levels().stream().anyMatch(l -> l.status() == Status.ERROR);
     }
 
+    /**
+     * True when the whole run was not applicable (every level "nie dotyczy"): the profile is below a minimum the plugin
+     * declares, so the lab did not install it. Says nothing about the plugin.
+     */
+    public static boolean notApplicable(RunResult r) {
+        return !r.levels().isEmpty() && r.levels().stream().allMatch(LevelResult::notApplicable);
+    }
+
     /** Highest level reached, worded so that a lab error is never shown as the plugin's L0 failure. */
     public static String reached(RunResult r) {
         if (hasLabError(r)) {
             return "błąd środowiska";
         }
+        if (notApplicable(r)) {
+            return "nie dotyczy";
+        }
         return r.highestPassed() == null ? "błąd L0" : r.highestPassed().name();
+    }
+
+    /**
+     * The checksum result in Polish, built from the file lists (the watcher's {@code detail} is an English log line).
+     * Like the watcher's status, only code files decide; readme and translation differences are only mentioned.
+     */
+    public static String checksumText(ChecksumResult c) {
+        if (c == null) {
+            return "brak danych";
+        }
+        List<String> mismatched = c.mismatched() == null ? List.of() : c.mismatched();
+        List<String> missing = c.missing() == null ? List.of() : c.missing();
+        List<String> codeBad = mismatched.stream().filter(PluginZip::isCode).toList();
+        List<String> codeMissing = missing.stream().filter(PluginZip::isCode).toList();
+        long other = mismatched.size() + missing.size() - codeBad.size() - codeMissing.size();
+        List<String> named = java.util.stream.Stream.concat(codeBad.stream(), codeMissing.stream()).limit(5).toList();
+        return switch (c.status()) {
+            case "OK" -> "zgodne: sprawdzono " + c.filesChecked() + " " + files(c.filesChecked()) + " z listy WordPress.org, pliki kodu się zgadzają"
+                    + (other == 0 ? "" : " (inne pliki, np. readme lub tłumaczenia, różnią się: " + other + ")");
+            case "MISMATCH" -> "niezgodne: pliki kodu inne niż w sumach kontrolnych WordPress.org: " + codeBad.size() + ", brakujące: " + codeMissing.size()
+                    + (named.isEmpty() ? "" : " (" + String.join(", ", named) + (codeBad.size() + codeMissing.size() > 5 ? ", …" : "") + ")");
+            case "UNAVAILABLE" -> "niedostępne: WordPress.org nie publikuje sum kontrolnych tej wersji";
+            case "FETCH_FAILED" -> "nie sprawdzono: nie udało się pobrać wydania, ponowimy przy następnym sprawdzeniu";
+            default -> c.status();
+        };
+    }
+
+    /** Polish plural of "plik": 1 plik, 2-4 pliki (not 12-14), otherwise plików. */
+    static String files(long n) {
+        if (n == 1) {
+            return "plik";
+        }
+        long d = n % 10;
+        long dd = n % 100;
+        return d >= 2 && d <= 4 && (dd < 12 || dd > 14) ? "pliki" : "plików";
     }
 
     public static String checkoutPl(String c) {

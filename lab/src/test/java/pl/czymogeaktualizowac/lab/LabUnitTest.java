@@ -182,4 +182,18 @@ class LabUnitTest {
         assertEquals("plain message", StoreBrowser.firstLine("plain message\nsecond line"));
         assertEquals("", StoreBrowser.firstLine(null));
     }
+
+    @Test
+    void aProfileBelowTheDeclaredMinimumIsNotApplicable() {
+        // InPost 2.0.1 and Omnibus 3.0.5 declare "Requires PHP: 8.2"; P1 runs PHP 8.1
+        var h = new pl.czymogeaktualizowac.core.Model.PluginHeaders("X", "2.0.1", "GPL", "8.2", "5.3", "9.0", null, "7.1", "2.0.1",
+                List.of(), null);
+        assertEquals("PHP 8.2 lub nowszego (ten profil: PHP 8.1)", LabRunner.unmetRequirement(h, "8.1", "7.0.9", "11.2.2"));
+        assertNull(LabRunner.unmetRequirement(h, "8.2", "7.1.5", "11.3.1"));
+        var wc = new pl.czymogeaktualizowac.core.Model.PluginHeaders("X", "1", "GPL", null, "6.0", "11.3", null, null, "1", List.of(), null);
+        assertTrue(LabRunner.unmetRequirement(wc, "8.1", "7.0.9", "11.2.2").startsWith("WooCommerce 11.3"));
+        assertNull(LabRunner.unmetRequirement(null, "8.1", "7.0.9", "11.2.2"), "unreadable headers: run the test");
+        var blank = new pl.czymogeaktualizowac.core.Model.PluginHeaders("X", "1", "GPL", " ", null, null, null, null, "1", List.of(), null);
+        assertNull(LabRunner.unmetRequirement(blank, "8.1", "7.2-RC3", "11.2.2"));
+    }
 }

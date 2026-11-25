@@ -58,6 +58,19 @@ public final class LabRunner {
         environment.put("wpCli", LabEnv.WP_CLI_VERSION);
         log.accept("lab run: " + spec.slug() + " " + spec.version() + " | " + spec.profileId() + " php " + spec.php() + " wp " + spec.wp()
                 + " woo " + spec.woo() + " | " + spec.checkout() + " | " + spec.mode());
+        PluginHeaders headers = readHeaders(spec);
+        // Below the plugin's declared minimum, WordPress refuses to activate it, but `wp plugin install --activate` still
+        // exits 0 (activation failure is only a warning there). Testing it would test a store without the plugin, so
+        // such a profile is "not applicable" (the author does not support it): never PASS, never the plugin's FAIL.
+        String unmet = unmetRequirement(headers, spec.php(), spec.wp(), spec.woo());
+        if (unmet != null) {
+            log.accept("  not applicable: the plugin requires " + unmet);
+            for (Level l : Level.values()) {
+                levels.add(skipped(l, LevelResult.NOT_APPLICABLE + ": wtyczka wymaga " + unmet + "; autor nie wspiera tej konfiguracji"));
+            }
+            return new RunResult(spec.slug(), spec.version(), spec.profileId(), spec.mode(), spec.checkout(), spec.php(), spec.wp(),
+                    spec.woo(), started, Instant.now(), levels, null, notes, List.of(), environment);
+        }
         try (LabEnv env = new LabEnv(spec.wordpressImage(), spec.databaseImage());
              Playwright pw = Playwright.create(new Playwright.CreateOptions().setEnv(java.util.Map.of("PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", "1")))) {
             Browser browser = pw.chromium().launch(new BrowserType.LaunchOptions().setHeadless(headless));
@@ -66,7 +79,7 @@ public final class LabRunner {
                 // dependencies and (mode "stack") the other tracked plugins go in BEFORE the control pass, so the control
                 // pass and the PHP-log baseline cover everything except the plugin under test: errors of other plugins
                 // are then never attributed to it
-                installSurroundings(env, spec, excerpt);
+                installSurroundings(env, spec, headers, excerpt);
                 environment.put("plugins", activePlugins(env));
 
                 // ---- control pass: the store must work without the plugin, otherwise the run is an infrastructure ERROR
@@ -165,15 +178,10 @@ public final class LabRunner {
      * Installs what surrounds the plugin under test: its dependencies ("Requires Plugins" and our companion hints) and,
      * in mode "stack", the other tracked plugins. Runs before the control pass (infrastructure, not the plugin's fault).
      */
-    private void installSurroundings(LabEnv env, RunSpec spec, List<String> excerpt) throws IOException {
+    private void installSurroundings(LabEnv env, RunSpec spec, PluginHeaders h, List<String> excerpt) throws IOException {
         List<String> deps = new ArrayList<>();
-        try {
-            PluginHeaders h = PluginZip.headers(Files.readAllBytes(spec.zip()), spec.slug());
-            if (h.requiresPlugins() != null) {
-                deps.addAll(h.requiresPlugins());
-            }
-        } catch (IOException e) {
-            log.accept("  warn: cannot read headers of " + spec.zip().getFileName() + ": " + e.getMessage());
+        if (h != null && h.requiresPlugins() != null) {
+            deps.addAll(h.requiresPlugins());
         }
         LabHints hints = spec.hints() == null ? new LabHints(null, null, null, null, null, null, null) : spec.hints();
         if (hints.companions() != null) {
@@ -184,6 +192,9 @@ public final class LabRunner {
             infra(env.wp("plugin", "install", dep, "--activate"), "install dependency " + dep);
         }
         for (RunSpec.StackItem other : spec.stack()) {
+            if (deps.contains(other.slug())) {
+                continue; // already installed and active as a dependency; a second install only fails ("folder exists")
+            }
             Docker.Result r = installZip(env, other.slug(), other.zip());
             if (!r.ok()) {
                 excerpt.add("stack: " + other.slug() + " could not be activated: " + LabEnv.tail(r.out(), 3));
@@ -207,6 +218,15 @@ public final class LabRunner {
         if (!load.ok() || FATAL_TEXT.matcher(load.out()).find()) {
             return new LevelResult(Level.L0, Status.FAIL, "WordPress nie ładuje się z aktywną wtyczką: " + LabEnv.tail(load.out(), 3), System.currentTimeMillis() - t0);
         }
+        // `install --activate` exits 0 even when WordPress refused the activation, so ask WordPress itself
+        // (exit 1 = installed but not active; WordPress loads, see above, so any other code is a WP-CLI/docker problem)
+        Docker.Result active = env.wp("plugin", "is-active", spec.slug());
+        if (active.exit() == 1) {
+            excerpt.addAll(relevantLines(inst.out(), spec.slug(), 10));
+            return new LevelResult(Level.L0, Status.FAIL, "wtyczka zainstalowana, ale WordPress jej nie aktywował: " + LabEnv.tail(inst.out(), 3),
+                    System.currentTimeMillis() - t0);
+        }
+        infra(active, "wp plugin is-active " + spec.slug());
         // front pages
         List<String> bad = new ArrayList<>();
         HttpClient http = HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NORMAL).connectTimeout(Duration.ofSeconds(10)).build();
@@ -376,6 +396,34 @@ public final class LabRunner {
             }
         }
         return out;
+    }
+
+    private PluginHeaders readHeaders(RunSpec spec) {
+        try {
+            return PluginZip.headers(Files.readAllBytes(spec.zip()), spec.slug());
+        } catch (IOException | RuntimeException e) {
+            log.accept("  warn: cannot read headers of " + spec.zip().getFileName() + ": " + e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * The first declared minimum ("Requires PHP", "Requires at least", "WC requires at least") the profile does not meet,
+     * worded for the result, e.g. "PHP 8.2 lub nowszego (ten profil: PHP 8.1)"; null when every declared minimum is met.
+     */
+    static String unmetRequirement(PluginHeaders h, String php, String wp, String woo) {
+        if (h == null) {
+            return null;
+        }
+        String[][] checks = {{"PHP", h.requiresPhp(), php}, {"WordPress", h.requiresWp(), wp}, {"WooCommerce", h.wcRequires(), woo}};
+        for (String[] c : checks) {
+            String required = c[1];
+            String have = c[2];
+            if (required != null && !required.isBlank() && have != null && !pl.czymogeaktualizowac.core.Versions.meets(have, required.strip())) {
+                return c[0] + " " + required.strip() + " lub nowszego (ten profil: " + c[0] + " " + have + ")";
+            }
+        }
+        return null;
     }
 
     private static String join(String a, String b) {
