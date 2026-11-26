@@ -1,0 +1,320 @@
+{
+  "pluginSlug" : "pay-by-paynow-pl",
+  "pluginVersion" : "2.5.4",
+  "runs" : [ {
+    "pluginSlug" : "pay-by-paynow-pl",
+    "pluginVersion" : "2.5.4",
+    "profileId" : "P1",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.1",
+    "wp" : "7.0.9",
+    "woo" : "11.2.2",
+    "startedAt" : "2026-11-26T17:36:28.973765350Z",
+    "finishedAt" : "2026-11-26T17:36:58.281656146Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "instalacja/aktywacja nie powiodła się: #15 phar:///usr/local/bin/wp/php/boot-phar.php(20): include('phar:///usr/loc...') | #16 /usr/local/bin/wp(4): include('phar:///usr/loc...') | #17 {main} |   thrown in /var/www/html/wp-content/plugins/pay-by-paynow-pl/pay-by-paynow-pl.php on line 45",
+      "durationMs" : 1409
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.2.2",
+      "wordpressImage" : "wordpress:php8.1-apache@sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "pay-by-paynow-pl",
+    "pluginVersion" : "2.5.4",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T17:38:09.405844727Z",
+    "finishedAt" : "2026-11-26T17:38:34.197987807Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "instalacja/aktywacja nie powiodła się: #15 phar:///usr/local/bin/wp/php/boot-phar.php(20): include('phar:///usr/loc...') | #16 /usr/local/bin/wp(4): include('phar:///usr/loc...') | #17 {main} |   thrown in /var/www/html/wp-content/plugins/pay-by-paynow-pl/pay-by-paynow-pl.php on line 45",
+      "durationMs" : 1404
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "pay-by-paynow-pl",
+    "pluginVersion" : "2.5.4",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T17:37:21.533099402Z",
+    "finishedAt" : "2026-11-26T17:37:44.615676683Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "instalacja/aktywacja nie powiodła się: #15 phar:///usr/local/bin/wp/php/boot-phar.php(20): include('phar:///usr/loc...') | #16 /usr/local/bin/wp(4): include('phar:///usr/loc...') | #17 {main} |   thrown in /var/www/html/wp-content/plugins/pay-by-paynow-pl/pay-by-paynow-pl.php on line 45",
+      "durationMs" : 1392
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "pay-by-paynow-pl",
+    "pluginVersion" : "2.5.4",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T17:39:45.215061572Z",
+    "finishedAt" : "2026-11-26T17:40:10.235742203Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "instalacja/aktywacja nie powiodła się: #15 phar:///usr/local/bin/wp/php/boot-phar.php(20): include('phar:///usr/loc...') | #16 /usr/local/bin/wp(4): include('phar:///usr/loc...') | #17 {main} |   thrown in /var/www/html/wp-content/plugins/pay-by-paynow-pl/pay-by-paynow-pl.php on line 45",
+      "durationMs" : 1449
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "pay-by-paynow-pl",
+    "pluginVersion" : "2.5.4",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T17:38:57.303500784Z",
+    "finishedAt" : "2026-11-26T17:39:20.487752184Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "instalacja/aktywacja nie powiodła się: #15 phar:///usr/local/bin/wp/php/boot-phar.php(20): include('phar:///usr/loc...') | #16 /usr/local/bin/wp(4): include('phar:///usr/loc...') | #17 {main} |   thrown in /var/www/html/wp-content/plugins/pay-by-paynow-pl/pay-by-paynow-pl.php on line 45",
+      "durationMs" : 1407
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "pay-by-paynow-pl",
+    "pluginVersion" : "2.5.4",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T17:43:01.136238166Z",
+    "finishedAt" : "2026-11-26T17:43:54.271942719Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "instalacja/aktywacja nie powiodła się: #15 phar:///usr/local/bin/wp/php/boot-phar.php(20): include('phar:///usr/loc...') | #16 /usr/local/bin/wp(4): include('phar:///usr/loc...') | #17 {main} |   thrown in /var/www/html/wp-content/plugins/pay-by-paynow-pl/pay-by-paynow-pl.php on line 45",
+      "durationMs" : 1652
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,flexible-shipping@6.13.9,furgonetka@1.9.11,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,omnibus@3.0.5,pay-wp@2.3.3,platnosci-online-blue-media@5.1.1,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "pay-by-paynow-pl",
+    "pluginVersion" : "2.5.4",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T17:41:11.503145438Z",
+    "finishedAt" : "2026-11-26T17:42:08.028251012Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "instalacja/aktywacja nie powiodła się: #15 phar:///usr/local/bin/wp/php/boot-phar.php(20): include('phar:///usr/loc...') | #16 /usr/local/bin/wp(4): include('phar:///usr/loc...') | #17 {main} |   thrown in /var/www/html/wp-content/plugins/pay-by-paynow-pl/pay-by-paynow-pl.php on line 45",
+      "durationMs" : 1666
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,flexible-shipping@6.13.9,furgonetka@1.9.11,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,omnibus@3.0.5,pay-wp@2.3.3,platnosci-online-blue-media@5.1.1,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  } ]
+}

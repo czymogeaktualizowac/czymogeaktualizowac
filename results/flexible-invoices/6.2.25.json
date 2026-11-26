@@ -1,0 +1,320 @@
+{
+  "pluginSlug" : "flexible-invoices",
+  "pluginVersion" : "6.2.25",
+  "runs" : [ {
+    "pluginSlug" : "flexible-invoices",
+    "pluginVersion" : "6.2.25",
+    "profileId" : "P1",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.1",
+    "wp" : "7.0.9",
+    "woo" : "11.2.2",
+    "startedAt" : "2026-11-26T17:55:03.065752518Z",
+    "finishedAt" : "2026-11-26T17:55:31.479142529Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "WordPress nie ładuje się z aktywną wtyczką: #20 {main} |   thrown in /var/www/html/wp-content/plugins/flexible-invoices/vendor_prefixed/wpdesk/wp-plugin-flow-common/src/Initialization/Simple/SimpleFreeStrategy.php on line 60 | Error: There has been a critical error on this website.Learn more about troubleshooting WordPress. There has been a critical error on this website.",
+      "durationMs" : 2207
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.2.2",
+      "wordpressImage" : "wordpress:php8.1-apache@sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-invoices",
+    "pluginVersion" : "6.2.25",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T17:56:52.086745341Z",
+    "finishedAt" : "2026-11-26T17:57:20.573745003Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "WordPress nie ładuje się z aktywną wtyczką: #20 {main} |   thrown in /var/www/html/wp-content/plugins/flexible-invoices/vendor_prefixed/wpdesk/wp-plugin-flow-common/src/Initialization/Simple/SimpleFreeStrategy.php on line 60 | Error: There has been a critical error on this website.Learn more about troubleshooting WordPress. There has been a critical error on this website.",
+      "durationMs" : 2252
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-invoices",
+    "pluginVersion" : "6.2.25",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T17:55:57.762183036Z",
+    "finishedAt" : "2026-11-26T17:56:23.875174778Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "WordPress nie ładuje się z aktywną wtyczką: #20 {main} |   thrown in /var/www/html/wp-content/plugins/flexible-invoices/vendor_prefixed/wpdesk/wp-plugin-flow-common/src/Initialization/Simple/SimpleFreeStrategy.php on line 60 | Error: There has been a critical error on this website.Learn more about troubleshooting WordPress. There has been a critical error on this website.",
+      "durationMs" : 2194
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-invoices",
+    "pluginVersion" : "6.2.25",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T17:58:44.006634693Z",
+    "finishedAt" : "2026-11-26T17:59:12.404895034Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "WordPress nie ładuje się z aktywną wtyczką: #20 {main} |   thrown in /var/www/html/wp-content/plugins/flexible-invoices/vendor_prefixed/wpdesk/wp-plugin-flow-common/src/Initialization/Simple/SimpleFreeStrategy.php on line 60 | Error: There has been a critical error on this website.Learn more about troubleshooting WordPress. There has been a critical error on this website.",
+      "durationMs" : 2233
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-invoices",
+    "pluginVersion" : "6.2.25",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T17:57:46.637033042Z",
+    "finishedAt" : "2026-11-26T17:58:12.745229323Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "WordPress nie ładuje się z aktywną wtyczką: #20 {main} |   thrown in /var/www/html/wp-content/plugins/flexible-invoices/vendor_prefixed/wpdesk/wp-plugin-flow-common/src/Initialization/Simple/SimpleFreeStrategy.php on line 60 | Error: There has been a critical error on this website.Learn more about troubleshooting WordPress. There has been a critical error on this website.",
+      "durationMs" : 2220
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-invoices",
+    "pluginVersion" : "6.2.25",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T18:02:12.427355288Z",
+    "finishedAt" : "2026-11-26T18:03:08.412519555Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "WordPress nie ładuje się z aktywną wtyczką: #20 {main} |   thrown in /var/www/html/wp-content/plugins/flexible-invoices/vendor_prefixed/wpdesk/wp-plugin-flow-common/src/Initialization/Simple/SimpleFreeStrategy.php on line 60 | Error: There has been a critical error on this website.Learn more about troubleshooting WordPress. There has been a critical error on this website.",
+      "durationMs" : 2487
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-shipping@6.13.9,furgonetka@1.9.11,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,omnibus@3.0.5,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.1,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "flexible-invoices",
+    "pluginVersion" : "6.2.25",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T18:00:19.069170363Z",
+    "finishedAt" : "2026-11-26T18:01:16.547712027Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "FAIL",
+      "detail" : "WordPress nie ładuje się z aktywną wtyczką: #20 {main} |   thrown in /var/www/html/wp-content/plugins/flexible-invoices/vendor_prefixed/wpdesk/wp-plugin-flow-common/src/Initialization/Simple/SimpleFreeStrategy.php on line 60 | Error: There has been a critical error on this website.Learn more about troubleshooting WordPress. There has been a critical error on this website.",
+      "durationMs" : 2476
+    }, {
+      "level" : "L1",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L2",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L3",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "poprzedni poziom (L0) nie przeszedł",
+      "durationMs" : 0
+    } ],
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-shipping@6.13.9,furgonetka@1.9.11,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,omnibus@3.0.5,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.1,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woo-payu-payment-gateway@2.12.2,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  } ]
+}
