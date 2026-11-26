@@ -1,5 +1,5 @@
 {
-  "generatedAt" : "2026-11-26T05:29:24.059603580Z",
+  "generatedAt" : "2026-11-26T17:25:48.847535166Z",
   "plugins" : {
     "apaczka-pl" : {
       "slug" : "apaczka-pl",
@@ -14,7 +14,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://www.apaczka.com/zostan-sprzedawca",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "1.4.4",
         "released" : "2026-08-25T14:42:42.836877Z",
@@ -386,7 +386,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "1.4.7",
         "released" : "2026-08-25T13:53:21.825378Z",
@@ -744,7 +744,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://octol.io/dhl-polska",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "2.0.7",
         "released" : "2026-11-05T10:45:28.388420Z",
@@ -1134,7 +1134,7 @@
       "supportThreads" : 2,
       "supportThreadsResolved" : 1,
       "homepage" : "https://wordpress.org/plugins/flexible-invoices/",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "7.1.3",
         "released" : "2026-11-16T11:12:33.822632Z",
@@ -1525,7 +1525,7 @@
       "supportThreads" : 2,
       "supportThreadsResolved" : 2,
       "homepage" : "https://octol.io/fs-plugin-uri",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "6.13.9",
         "released" : "2026-11-18T09:33:27.139220Z",
@@ -1909,15 +1909,49 @@
       "vendor" : "Furgonetka",
       "category" : "shipping",
       "activeInstalls" : 7000,
-      "latestVersion" : "1.9.10",
-      "lastUpdated" : "2026-11-02 9:36am GMT",
-      "apiTestedWp" : "7.1.5",
+      "latestVersion" : "1.9.11",
+      "lastUpdated" : "2026-11-26 11:01am GMT",
+      "apiTestedWp" : "7.2",
       "apiRequiresPhp" : "7.1",
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://furgonetka.pl",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
+        "version" : "1.9.11",
+        "released" : "2026-11-26T11:01:22.621441Z",
+        "firstSeen" : "2026-11-26T17:25:48.847535166Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Furgonetka.pl",
+          "version" : "1.9.11",
+          "license" : "GPL-2.0+",
+          "requiresPhp" : "7.1",
+          "requiresWp" : "5.0",
+          "wcRequires" : "4.0",
+          "wcTested" : "11.3.1",
+          "testedWp" : "7.2",
+          "stableTag" : "1.9.11",
+          "requiresPlugins" : [ "woocommerce" ],
+          "changelogHead" : "= 1.9.11 =\n* Added courier names for Żabka, FOXPOST, Correos, La Poste, Nova Post and Packeta pickup points in order details\n* Fixed the pickup point map not working when LiteSpeed Cache JS minification is enabled - the map script is now excluded automatically, no manual \"JS Excludes\" entry is needed\n* The map script is also excluded from WP Rocket JS minification and combination\n* Verified compatibility with WordPress 7.2 and WooCommerce 11.3.1"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 110,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 110 listed files checked: code files match"
+        },
+        "zipSha256" : "86ba9074292dff6aa703de0ef3b12aa62192b5d2f37ed06bb9f2a9f63b7547b8",
+        "zipBytes" : 154209,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : false,
+          "sample" : [ ]
+        }
+      }, {
         "version" : "1.9.10",
         "released" : "2026-11-02T09:36:35.840571Z",
         "firstSeen" : "2026-11-14T23:03:17.979231534Z",
@@ -2314,7 +2348,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "2.7.1",
         "released" : "2026-10-28T10:23:18.848148Z",
@@ -2682,7 +2716,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://imoje.pl",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "4.16.1",
         "released" : "2026-09-08T10:02:02.165483Z",
@@ -3035,7 +3069,7 @@
       "supportThreads" : 3,
       "supportThreadsResolved" : 0,
       "homepage" : "https://wordpress.org/plugins/inpost-for-woocommerce/",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "2.0.1",
         "released" : "2026-11-25T08:32:48.698422Z",
@@ -3407,7 +3441,7 @@
       "supportThreads" : 2,
       "supportThreadsResolved" : 2,
       "homepage" : "https://www.wpdesk.pl/sklep/faktury-ksef/",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "2.6.3",
         "released" : "2026-11-17T11:03:18.638982Z",
@@ -3809,7 +3843,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/iworks/omnibus/",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "3.0.5",
         "released" : "2026-10-22T08:13:20.518091Z",
@@ -4189,7 +4223,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/pay-now/paynow-woocommerce",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "2.5.13",
         "released" : "2026-11-06T09:27:55.133629Z",
@@ -4559,7 +4593,7 @@
       "supportThreads" : 5,
       "supportThreadsResolved" : 3,
       "homepage" : "https://www.wpdesk.pl/sk/pay-wp-plugin",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "2.3.3",
         "released" : "2026-11-23T14:00:21.691142Z",
@@ -4939,15 +4973,49 @@
       "vendor" : "Autopay",
       "category" : "payment",
       "activeInstalls" : 3000,
-      "latestVersion" : "5.1.0",
-      "lastUpdated" : "2026-10-26 2:42pm GMT",
+      "latestVersion" : "5.1.1",
+      "lastUpdated" : "2026-11-26 10:57am GMT",
       "apiTestedWp" : "7.1.5",
       "apiRequiresPhp" : "7.4",
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://wordpress.org/plugins/platnosci-online-blue-media",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
+        "version" : "5.1.1",
+        "released" : "2026-11-26T10:57:01.413657Z",
+        "firstSeen" : "2026-11-26T17:25:48.847535166Z",
+        "prerelease" : false,
+        "headers" : {
+          "pluginName" : "Autopay",
+          "version" : "5.1.1",
+          "license" : "GPL-2.0-or-later",
+          "requiresPhp" : "7.4",
+          "requiresWp" : "6.0",
+          "wcRequires" : "7.9",
+          "wcTested" : "11.2.1",
+          "testedWp" : "7.1",
+          "stableTag" : "5.1.1",
+          "requiresPlugins" : [ ],
+          "changelogHead" : "### 5.1.1 (26.11.2026) ###\n* Fixed: multi-currency support — a payment is now always made in the currency of the order, with the payment methods and their settings (including the Google Pay mode) matched to that currency. Previously the store's base currency was used, so a customer could be charged the wrong amount or have the payment rejected.\n* Fixed: for a currency the store has not enabled in Autopay, the payment method is no longer offered, and a payment already started stops with a clear message.\n* Fixed: the Google Pay script is now loaded only where the Google Pay button actually appears, so stores without Google Pay no longer create any Google cookies. The script can also be switche …"
+        },
+        "checksum" : {
+          "status" : "OK",
+          "filesChecked" : 715,
+          "mismatched" : [ ],
+          "missing" : [ ],
+          "detail" : "all 715 listed files checked: code files match"
+        },
+        "zipSha256" : "7054686764c3a95c167411deb35504df6e64cfcbc11efae219002fbd8ef5dd2a",
+        "zipBytes" : 1874706,
+        "forum" : {
+          "topics7d" : 0,
+          "mentioningVersion" : 0,
+          "level" : "NONE",
+          "windowComplete" : false,
+          "sample" : [ ]
+        }
+      }, {
         "version" : "5.1.0",
         "released" : "2026-10-26T14:42:22.869673Z",
         "firstSeen" : "2026-11-14T23:03:17.979231534Z",
@@ -5319,7 +5387,7 @@
       "supportThreads" : 0,
       "supportThreadsResolved" : 0,
       "homepage" : "https://trustmate.io",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "1.18.1",
         "released" : "2026-09-28T05:50:02.763574Z",
@@ -5665,7 +5733,7 @@
       "supportThreads" : 2,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/kkarpieszuk/wc-price-history",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "3.2.9",
         "released" : "2026-10-30T09:27:41.114804Z",
@@ -6053,7 +6121,7 @@
       "supportThreads" : 1,
       "supportThreadsResolved" : 0,
       "homepage" : "https://github.com/PayU/woo-payu-payment-gateway",
-      "checkedAt" : "2026-11-26T05:29:24.059603580Z",
+      "checkedAt" : "2026-11-26T17:25:48.847535166Z",
       "releases" : [ {
         "version" : "2.12.2",
         "released" : "2026-11-19T08:30:55.707052Z",
@@ -6085,7 +6153,7 @@
           "topics7d" : 0,
           "mentioningVersion" : 0,
           "level" : "NONE",
-          "windowComplete" : false,
+          "windowComplete" : true,
           "sample" : [ ]
         }
       }, {
@@ -6498,6 +6566,6 @@
       "activeSupportUntil" : "2021-11-28",
       "eol" : "2022-11-28"
     } ],
-    "checkedAt" : "2026-11-26T05:29:24.059603580Z"
+    "checkedAt" : "2026-11-26T17:25:48.847535166Z"
   }
 }

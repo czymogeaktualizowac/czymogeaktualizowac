@@ -1,6 +1,16 @@
 {
-  "at" : "2026-11-26T05:29:24.059603580Z",
-  "changes" : [ ],
+  "at" : "2026-11-26T17:25:48.847535166Z",
+  "changes" : [ {
+    "kind" : "plugin-release",
+    "subject" : "furgonetka",
+    "version" : "1.9.11",
+    "detail" : "Furgonetka.pl 1.9.11"
+  }, {
+    "kind" : "plugin-release",
+    "subject" : "platnosci-online-blue-media",
+    "version" : "5.1.1",
+    "detail" : "Autopay (Blue Media) 5.1.1"
+  } ],
   "errors" : [ ],
   "pluginsOk" : 17,
   "pluginsTracked" : 17
