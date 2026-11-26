@@ -1,0 +1,327 @@
+{
+  "pluginSlug" : "woo-payu-payment-gateway",
+  "pluginVersion" : "2.10.0",
+  "runs" : [ {
+    "pluginSlug" : "woo-payu-payment-gateway",
+    "pluginVersion" : "2.10.0",
+    "profileId" : "P1",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.1",
+    "wp" : "7.0.9",
+    "woo" : "11.2.2",
+    "startedAt" : "2026-11-26T06:00:33.082570350Z",
+    "finishedAt" : "2026-11-26T06:01:51.376687292Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych (pominięto 1 błędów, które występują też bez wtyczki: to błąd WordPressa/WooCommerce lub laboratorium)",
+      "durationMs" : 2776
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 966
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1318
+    }, {
+      "level" : "L3",
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki (krok: oczekiwanie na przekierowanie do bramki, strona: localhost/, komunikat sklepu: \"Payment error: ERROR_VALUE_INVALID - Invalid field value (400)\"): Timeout 45000ms exceeded",
+      "durationMs" : 47842
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii payment",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ "[26-Nov-2026 06:00:46 UTC] PHP Fatal error:  Cannot redeclare addslashes_gpc() (previously declared in /var/www/html/wp-includes/formatting.php:2848) in /var/www/html/wp-includes/deprecated.php on line 6505", "[26-Nov-2026 06:00:46 UTC] PHP Fatal error:  Cannot redeclare addslashes_gpc() (previously declared in /var/www/html/wp-includes/formatting.php:2848) in /var/www/html/wp-includes/deprecated.php on line 6505" ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.2.2",
+      "wordpressImage" : "wordpress:php8.1-apache@sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "woo-payu-payment-gateway",
+    "pluginVersion" : "2.10.0",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T06:05:41.541523941Z",
+    "finishedAt" : "2026-11-26T06:07:01.682144396Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 2866
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 1263
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 2857
+    }, {
+      "level" : "L3",
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki (krok: oczekiwanie na przekierowanie do bramki, strona: localhost/, komunikat sklepu: \"Please fix the following error before continuing Payment error: ERROR_VALUE_INVALID - Invalid field value (400)\"): Timeout 45000ms exceeded",
+      "durationMs" : 49108
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii payment",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "woo-payu-payment-gateway",
+    "pluginVersion" : "2.10.0",
+    "profileId" : "P2",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.2",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T06:03:06.349625674Z",
+    "finishedAt" : "2026-11-26T06:04:21.271759600Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 2867
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 976
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1323
+    }, {
+      "level" : "L3",
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki (krok: oczekiwanie na przekierowanie do bramki, strona: localhost/, komunikat sklepu: \"Payment error: ERROR_VALUE_INVALID - Invalid field value (400)\"): Timeout 45000ms exceeded",
+      "durationMs" : 47523
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii payment",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.2-apache@sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "woo-payu-payment-gateway",
+    "pluginVersion" : "2.10.0",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T06:10:48.882082103Z",
+    "finishedAt" : "2026-11-26T06:12:09.022661135Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 2852
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 1268
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 2826
+    }, {
+      "level" : "L3",
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki (krok: oczekiwanie na przekierowanie do bramki, strona: localhost/, komunikat sklepu: \"Please fix the following error before continuing Payment error: ERROR_VALUE_INVALID - Invalid field value (400)\"): Timeout 45000ms exceeded",
+      "durationMs" : 49122
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii payment",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "woo-payu-payment-gateway",
+    "pluginVersion" : "2.10.0",
+    "profileId" : "P3",
+    "mode" : "solo",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T06:08:17.084154538Z",
+    "finishedAt" : "2026-11-26T06:09:28.654737570Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 2873
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem",
+      "durationMs" : 969
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 1345
+    }, {
+      "level" : "L3",
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki (krok: oczekiwanie na przekierowanie do bramki, strona: localhost/, komunikat sklepu: \"Payment error: ERROR_VALUE_INVALID - Invalid field value (400)\"): Timeout 45000ms exceeded",
+      "durationMs" : 47182
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii payment",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "woo-payu-payment-gateway",
+    "pluginVersion" : "2.10.0",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "block",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T06:17:59.916814191Z",
+    "finishedAt" : "2026-11-26T06:19:48.208703843Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3415
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (blokowa) wczytana z formularzem",
+      "durationMs" : 3673
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 3168
+    }, {
+      "level" : "L3",
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki (krok: oczekiwanie na przekierowanie do bramki, strona: localhost/, komunikat sklepu: \"Please fix the following error before continuing Payment error: ERROR_VALUE_INVALID - Invalid field value (400)\"): Timeout 45000ms exceeded",
+      "durationMs" : 49405
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii payment",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,flexible-shipping@6.13.9,furgonetka@1.9.10,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,omnibus@3.0.5,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.0,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  }, {
+    "pluginSlug" : "woo-payu-payment-gateway",
+    "pluginVersion" : "2.10.0",
+    "profileId" : "P3",
+    "mode" : "stack",
+    "checkout" : "classic",
+    "php" : "8.3",
+    "wp" : "7.1.5",
+    "woo" : "11.3.1",
+    "startedAt" : "2026-11-26T06:14:13.730273606Z",
+    "finishedAt" : "2026-11-26T06:16:08.104691546Z",
+    "levels" : [ {
+      "level" : "L0",
+      "status" : "PASS",
+      "detail" : "wtyczka zainstalowana i aktywna; strona główna, sklep i koszyk odpowiadają 200 bez błędów krytycznych; dziennik PHP: 0 błędów krytycznych",
+      "durationMs" : 3428
+    }, {
+      "level" : "L1",
+      "status" : "PASS",
+      "detail" : "koszyk pokazuje produkt, strona zamówienia (klasyczna) wczytana z formularzem (informacyjnie: 1 wyjątków JS i 1 błędów konsoli niezwiązanych jednoznacznie z wtyczką)",
+      "durationMs" : 5887
+    }, {
+      "level" : "L2",
+      "status" : "PASS",
+      "detail" : "zamówienie testowe (płatność przy odbiorze) złożone, strona potwierdzenia wczytana",
+      "durationMs" : 2714
+    }, {
+      "level" : "L3",
+      "status" : "FAIL",
+      "detail" : "brak przekierowania do bramki (krok: oczekiwanie na przekierowanie do bramki, strona: localhost/, komunikat sklepu: \"Payment error: ERROR_VALUE_INVALID - Invalid field value (400)\"): Timeout 45000ms exceeded",
+      "durationMs" : 48539
+    }, {
+      "level" : "L4",
+      "status" : "SKIPPED",
+      "detail" : "nie dotyczy wtyczek z kategorii payment",
+      "durationMs" : 0
+    } ],
+    "highestPassed" : "L2",
+    "notes" : "błąd potwierdzony w powtórzonym teście",
+    "logExcerpt" : [ ],
+    "environment" : {
+      "databaseImage" : "mariadb:11.4@sha256:5e73baf8179b29f115101bb102763a47a017361f3e9792daccba6646c3ab1532",
+      "plugins" : "apaczka-pl-mapa-punktow@1.4.7,apaczka-pl@1.4.4,dhl-polska@2.0.7,flexible-invoices@7.1.3,flexible-shipping@6.13.9,furgonetka@1.9.10,globkurier@2.7.1,imoje@4.16.1,inpost-for-woocommerce@2.0.1,ksef-for-flexible-invoices@2.6.3,omnibus@3.0.5,pay-by-paynow-pl@2.5.13,pay-wp@2.3.3,platnosci-online-blue-media@5.1.0,trustmate-io-integration-for-woocommerce@1.18.1,wc-price-history@3.2.9,woocommerce@11.3.1",
+      "wordpressImage" : "wordpress:php8.3-apache@sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
+      "wpCli" : "2.12.0"
+    }
+  } ]
+}
